@@ -557,6 +557,23 @@ function statsItemsMarkup(items = []) {
   `;
 }
 
+function statsSourceLinksMarkup(sourceUrl) {
+  const urls = String(sourceUrl || "")
+    .split(/\s+/)
+    .map((url) => url.trim())
+    .filter(Boolean);
+  if (!urls.length) return "";
+  return `
+    <div class="stats-source-actions">
+      ${urls.map((url, index) => `
+        <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
+          ${urls.length > 1 ? `打开来源 ${index + 1}` : "打开来源"}
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
 function statsRowMarkup(rows, config, id) {
   if (!rows.length) return `<p>当前没有匹配的统计明细。</p>`;
   return `
@@ -586,6 +603,7 @@ function statsRowMarkup(rows, config, id) {
             <p>${escapeHtml(row.rule || "暂无统计口径。")}</p>
             ${statsItemsMarkup(row.items || [])}
             ${blocker}
+            ${statsSourceLinksMarkup(row.sourceUrl)}
             ${row.target ? `<button class="text-link-button" type="button" data-target="${escapeHtml(row.target)}">进入对应环节</button>` : ""}
           </article>
         `;

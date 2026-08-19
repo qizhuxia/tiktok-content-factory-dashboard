@@ -1011,6 +1011,31 @@ button {
   border-color: #e0e7ee !important;
 }
 
+.stats-source-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats-source-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  color: #ffffff;
+  background: #2255b9;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.stats-source-actions a:hover,
+.stats-source-actions a:focus-visible {
+  background: #143d86;
+  outline: none;
+}
+
 .text-link-button {
   justify-self: start;
   padding: 0;

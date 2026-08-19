@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T15:42:16+08:00",
+  "generatedAt": "2026-08-19T15:48:38+08:00",
   "source": {
     "name": "Tiktok内容工厂",
     "mode": "sanitized-static-snapshot",
@@ -15,8 +15,8 @@
     "weeklyPlans": 2,
     "pendingPublish": 2,
     "pendingReview": 2,
-    "todayAdded": 1,
-    "weekTotal": 80,
+    "todayAdded": 2,
+    "weekTotal": 81,
     "trackedSegments": 9,
     "blockedSegments": 2
   },
@@ -31,82 +31,82 @@
     "highlightFrames": 5
   },
   "connection": {
-    "currentMode": "staticSnapshotNoFeishuLinks",
+    "currentMode": "staticSnapshotWithFeishuLinks",
     "nextMode": "manualSnapshotRefresh",
-    "note": "当前 GitHub Pages 版本只读 dashboard-data.json；实时后端暂缓，避免 vercel.app 访问超时影响使用。"
+    "note": "当前 GitHub Pages 版本只读 dashboard-data.json；网页不做飞书登录，入口按钮直接跳飞书，由飞书自身权限控制。"
   },
   "resources": [
     {
       "name": "爆款视频脚本收集表",
       "type": "table",
       "count": 55,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
     },
     {
       "name": "开头钩子收集",
       "type": "table",
       "count": 54,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
     },
     {
       "name": "中间叙事逻辑收集",
       "type": "table",
       "count": 56,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
     },
     {
       "name": "内容周测试计划表",
       "type": "table",
       "count": 2,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
     },
     {
       "name": "内容周复盘表",
       "type": "table",
       "count": 2,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
     },
     {
       "name": "钩子库",
       "type": "table",
       "count": 600,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
     },
     {
       "name": "卖点库",
       "type": "table",
       "count": 44,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
     },
     {
       "name": "痛点库",
       "type": "table",
       "count": 31,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
     },
     {
       "name": "选题库",
       "type": "table",
       "count": 5,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
     },
     {
       "name": "卖点可视化库",
       "type": "table",
       "count": 5,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
     },
     {
       "name": "高光帧库",
       "type": "table",
       "count": 5,
-      "url": ""
+      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
     },
     {
       "name": "音乐库收集文档",
       "type": "docx",
       "count": null,
-      "url": ""
+      "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
     }
   ],
   "detailPages": {
@@ -117,19 +117,19 @@
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
         }
       ],
       "tutorial": [
@@ -165,19 +165,19 @@
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
         }
       ],
       "tutorial": [
@@ -211,43 +211,43 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
         },
         {
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
         },
         {
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
         },
         {
           "name": "选题库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
         },
         {
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
         },
         {
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
         }
       ],
       "tutorial": [
@@ -281,7 +281,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         },
         {
           "name": "选题库｜文档",
@@ -346,7 +346,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         }
       ],
       "tutorial": [
@@ -379,13 +379,13 @@
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
         },
         {
           "name": "达人精灵数据下载-英区",
@@ -403,19 +403,19 @@
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         }
       ],
       "tutorial": [
@@ -452,37 +452,37 @@
           "name": "内容周复盘表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         },
         {
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
         }
       ],
       "tutorial": [
@@ -516,13 +516,13 @@
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         }
       ],
       "tutorial": [
@@ -557,13 +557,13 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
         }
       ],
       "tutorial": [
@@ -597,13 +597,13 @@
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
         }
       ],
       "tutorial": [
@@ -638,19 +638,19 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
         }
       ],
       "tutorial": [
@@ -684,13 +684,13 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
         },
         {
           "name": "文案-青木｜脚本文档",
@@ -729,7 +729,7 @@
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
         }
       ],
       "tutorial": [
@@ -765,19 +765,19 @@
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
         }
       ],
       "tutorial": [
@@ -813,19 +813,19 @@
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
         }
       ],
       "tutorial": [
@@ -859,43 +859,43 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
         },
         {
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
         },
         {
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
         },
         {
           "name": "选题库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
         },
         {
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
         },
         {
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
         }
       ],
       "tutorial": [
@@ -929,7 +929,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         },
         {
           "name": "选题库｜文档",
@@ -994,7 +994,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         },
         {
           "name": "选题库｜文档",
@@ -1059,13 +1059,13 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
         },
         {
           "name": "文案-青木｜脚本文档",
@@ -1104,7 +1104,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         }
       ],
       "tutorial": [
@@ -1137,13 +1137,13 @@
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
         },
         {
           "name": "达人精灵数据下载-英区",
@@ -1161,19 +1161,19 @@
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         }
       ],
       "tutorial": [
@@ -1210,37 +1210,37 @@
           "name": "内容周复盘表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         },
         {
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
         }
       ],
       "tutorial": [
@@ -1333,10 +1333,11 @@
       "date": "2026-08-19 00:00:00",
       "week": "2026-W34",
       "segment": "爆款样本新增",
-      "todayAdded": 0,
-      "todayDone": 0,
-      "weekTotal": 3,
+      "todayAdded": 1,
+      "todayDone": 1,
+      "weekTotal": 4,
       "sourceTable": "爆款视频脚本收集表",
+      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c",
       "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。",
       "blocker": "",
       "target": "source",
@@ -1352,6 +1353,7 @@
       "todayDone": 0,
       "weekTotal": 10,
       "sourceTable": "开头钩子收集",
+      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp",
       "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。",
       "blocker": "",
       "target": "deconstruct",
@@ -1367,6 +1369,7 @@
       "todayDone": 0,
       "weekTotal": 10,
       "sourceTable": "中间叙事逻辑收集",
+      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5",
       "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。",
       "blocker": "",
       "target": "deconstruct",
@@ -1382,6 +1385,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "音乐库收集文档 -> 音乐库统计索引",
+      "sourceUrl": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic",
       "rule": "以音乐库收集文档中的 BGM 表格曲名为业务键；首次运行建基线，之后新增曲名自动同步到统计索引并按运行日期计数。",
       "blocker": "",
       "target": "bgm",
@@ -1397,6 +1401,7 @@
       "todayDone": 1,
       "weekTotal": 1,
       "sourceTable": "4 个脚本文档 -> 脚本生产统计索引",
+      "sourceUrl": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c\nhttps://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe\nhttps://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf\nhttps://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc",
       "rule": "以脚本文档三级标题为业务键；首次运行建基线，之后新增标题自动同步到统计索引并按运行日期计数。",
       "blocker": "",
       "target": "script",
@@ -1420,6 +1425,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "内容周测试计划表",
+      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV",
       "rule": "第一版按本周计划里的“已发布视频数”汇总；当前源表缺少逐条发布日期，无法可靠拆成每日新增。",
       "blocker": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。",
       "target": "publish",
@@ -1435,6 +1441,7 @@
       "todayDone": 0,
       "weekTotal": 56,
       "sourceTable": "视频数据-英区/美区 + 商品点击数据-英区/美区",
+      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf",
       "rule": "视频数据按“手机截图日期 UTC+8”统计，商品点击数据按“日期 UTC-8”统计；只统计发布后的数据回流，不混入爆款收集。",
       "blocker": "",
       "target": "data",
@@ -1450,6 +1457,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "内容周复盘表",
+      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb",
       "rule": "按复盘状态=已完成且复盘时间落在对应日期/周内统计。",
       "blocker": "当前复盘表未发现本周“已完成+复盘时间”的记录。",
       "target": "review",
@@ -1465,6 +1473,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "钩子库、卖点库、痛点库、选题库、卖点可视化库、高光帧库",
+      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj",
       "rule": "按六个库表的系统创建时间汇总：今日新增=今日创建记录总数；本周累计=本周一至今日创建记录总数。",
       "blocker": "",
       "target": "libraries",
@@ -1476,9 +1485,9 @@
       "target": "source",
       "segment": "爆款样本新增",
       "title": "爆款样本新增",
-      "status": "今日 0 / 本周 3",
-      "progress": 47,
-      "evidence": "爆款视频脚本收集表：今日新增 0，今日完成 0，本周累计 3。",
+      "status": "今日 1 / 本周 4",
+      "progress": 51,
+      "evidence": "爆款视频脚本收集表：今日新增 1，今日完成 1，本周累计 4。",
       "blocker": "暂无明确卡点。",
       "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
       "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。"
@@ -1577,9 +1586,9 @@
       "target": "source",
       "segment": "爆款样本新增",
       "title": "爆款样本新增",
-      "status": "今日 0 / 本周 3",
-      "progress": 47,
-      "evidence": "爆款视频脚本收集表：今日新增 0，今日完成 0，本周累计 3。",
+      "status": "今日 1 / 本周 4",
+      "progress": 51,
+      "evidence": "爆款视频脚本收集表：今日新增 1，今日完成 1，本周累计 4。",
       "blocker": "暂无明确卡点。",
       "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
       "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。"
