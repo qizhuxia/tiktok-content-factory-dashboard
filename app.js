@@ -1033,12 +1033,16 @@ function renderDetail(type, id, options = {}) {
   const snapshot = type === "library" ? getSnapshotLibrary(item) : {};
   const detail = getSnapshotDetail(type, id) || buildFallbackDetail(type, item);
   const status = snapshot.status || item.status || "流程步骤";
-  const fields = detail.requiredFields?.length ? detail.requiredFields : item.fields || [];
   const gap = snapshot.gap || item.gap || "暂无明确缺口。";
   const next = item.next || "按当前步骤执行后，把结果回到对应表或库。";
-  const connectionNote = dashboardData?.connection?.note || "当前页面提供静态快照和飞书入口；实时数据需要后端读取飞书。";
   const dailyItems = getDailyProgress(type, id);
   const weeklyItems = getWeeklyProgress(type, id);
+  const fields = detail.requiredFields?.length ? detail.requiredFields : item.fields || [];
+  const advancedItems = [
+    fields.length ? `字段/口径：${fields.join("、")}` : "",
+    detail.acceptance?.length ? `完成判定：${detail.acceptance.join("；")}` : "",
+    detail.mistakes?.length ? `注意事项：${detail.mistakes.join("；")}` : "",
+  ].filter(Boolean);
 
   overviewView.hidden = true;
   detailView.hidden = false;
@@ -1062,56 +1066,41 @@ function renderDetail(type, id, options = {}) {
         <span class="status-pill ${statusMeta[status]?.className || "status-todo"}">${escapeHtml(status)}</span>
       </header>
 
-      <section class="detail-live-note">
-        <strong>最终方向：网页要连飞书</strong>
-        <p>${escapeHtml(connectionNote)}</p>
+      <section class="detail-live-note operator-note">
+        <strong>这个页面只看进度，不在这里编辑</strong>
+        <p>要新增、修改或补数据，直接点下面的飞书入口；网页只负责汇总今日/本周进展和卡点。</p>
       </section>
 
       <section class="detail-grid workbench-grid">
-        <article class="detail-card wide">
+        <article class="detail-card">
           <span>每日推进进度</span>
           ${progressMarkup(dailyItems, "暂无每日推进项；等待飞书实时数据回流。")}
         </article>
 
-        <article class="detail-card wide">
+        <article class="detail-card">
           <span>每周推进进度</span>
           ${progressMarkup(weeklyItems, "暂无每周推进项；等待飞书实时数据回流。")}
         </article>
 
         <article class="detail-card wide resource-card">
-          <span>对应飞书入口</span>
+          <span>要编辑就打开这里</span>
           ${resourceMarkup(detail.resources || [])}
         </article>
 
-        <article class="detail-card guide-card">
-          <span>本周要推进什么</span>
-          ${numberedMarkup(detail.tutorial || [])}
-        </article>
-
-        <article class="detail-card guide-card">
-          <span>完成判定</span>
-          ${listMarkup(detail.acceptance || [])}
-        </article>
-
-        <article class="detail-card">
-          <span>进度字段 / 数据口径</span>
-          ${listMarkup(fields)}
-        </article>
-
-        <article class="detail-card warning">
-          <span>风险项</span>
-          ${listMarkup(detail.mistakes || [])}
-        </article>
-
-        <article class="detail-card warning">
-          <span>当前状态 / 缺口</span>
+        <article class="detail-card compact warning">
+          <span>当前卡点</span>
           <p>${escapeHtml(gap)}</p>
         </article>
 
-        <article class="detail-card next">
+        <article class="detail-card compact next">
           <span>下一步动作</span>
           <p>${escapeHtml(next)}</p>
         </article>
+
+        <details class="detail-card wide detail-more">
+          <summary>展开查看字段口径和旧说明</summary>
+          ${advancedItems.length ? listMarkup(advancedItems) : "<p>暂无更多说明。</p>"}
+        </details>
       </section>
     </div>
   `;

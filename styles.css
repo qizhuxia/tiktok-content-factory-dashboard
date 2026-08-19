@@ -1076,6 +1076,19 @@ button {
   line-height: 1.6;
 }
 
+.operator-note {
+  background: #f7fbff;
+  border-color: #c9daf0;
+}
+
+.operator-note strong {
+  color: #174578;
+}
+
+.operator-note p {
+  color: #40566f;
+}
+
 .detail-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1091,9 +1104,39 @@ button {
   padding: 18px;
 }
 
+.detail-card.compact {
+  min-height: 126px;
+}
+
 .detail-card.wide {
   grid-column: 1 / -1;
   min-height: auto;
+}
+
+.detail-more {
+  display: block;
+  min-height: auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.detail-more summary {
+  padding: 16px 18px;
+  color: #40566f;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.detail-more summary:hover,
+.detail-more summary:focus-visible {
+  color: #2255b9;
+  outline: none;
+}
+
+.detail-more ul,
+.detail-more p {
+  margin: 0 18px 18px;
 }
 
 .detail-card span {
