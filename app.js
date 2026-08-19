@@ -476,6 +476,167 @@ function progressMarkup(items, emptyText = "暂无推进项；等待飞书实时
   `;
 }
 
+function getDailyReports() {
+  if (dashboardData?.dailyReports?.length) return dashboardData.dailyReports;
+  return (dashboardData?.dailyProgress || dailyProgress).map((item) => ({
+    segment: item.segment || item.title,
+    todayAdded: Number((item.status || "").match(/今日\s*(\d+)/)?.[1] || 0),
+    todayDone: 0,
+    weekTotal: Number((item.status || "").match(/本周\s*(\d+)/)?.[1] || 0),
+    sourceTable: item.evidence || "静态默认数据",
+    rule: item.rule || "等待快照脚本回填统计口径。",
+    blocker: item.blocker === "暂无明确卡点。" ? "" : item.blocker,
+    target: item.target || ""
+  }));
+}
+
+function getStatsConfig(id) {
+  const configs = {
+    today: {
+      title: "今日新增明细",
+      eyebrow: "Daily Evidence",
+      valueLabel: "今日新增",
+      valueKey: "todayAdded",
+      routeLabel: "stats / today",
+      summary: "这里拆开看今天每个环节新增了多少。当前是环节级统计；具体新增了哪条脚本、哪首音乐，下一步要在快照里继续加入脱敏条目摘要。"
+    },
+    week: {
+      title: "本周累计明细",
+      eyebrow: "Weekly Evidence",
+      valueLabel: "本周累计",
+      valueKey: "weekTotal",
+      routeLabel: "stats / week",
+      summary: "这里把本周累计按生产环节拆开，避免 80 这种总数看起来很大但不知道来自哪里。"
+    },
+    segments: {
+      title: "统计环节与口径",
+      eyebrow: "Tracking Scope",
+      valueLabel: "统计环节",
+      valueKey: "weekTotal",
+      routeLabel: "stats / segments",
+      summary: "这里说明总控台现在追踪哪些环节、每个环节从哪张表或文档统计、用什么日期口径。"
+    },
+    blockers: {
+      title: "卡点环节明细",
+      eyebrow: "Blocked Evidence",
+      valueLabel: "卡点",
+      valueKey: "weekTotal",
+      routeLabel: "stats / blockers",
+      summary: "这里只看无法稳定自动统计的环节。主要原因通常是缺日期字段、缺完成状态或缺可回读证据。"
+    }
+  };
+  return configs[id] || configs.today;
+}
+
+function statsRowsFor(id) {
+  const rows = getDailyReports();
+  if (id === "blockers") return rows.filter((row) => row.blocker);
+  if (id === "today") return [...rows].sort((a, b) => Number(b.todayAdded || 0) - Number(a.todayAdded || 0));
+  if (id === "week") return [...rows].sort((a, b) => Number(b.weekTotal || 0) - Number(a.weekTotal || 0));
+  return rows;
+}
+
+function statsTotal(rows, config, id) {
+  if (id === "segments") return rows.length;
+  if (id === "blockers") return rows.length;
+  return rows.reduce((sum, row) => sum + Number(row[config.valueKey] || 0), 0);
+}
+
+function statsRowMarkup(rows, config, id) {
+  if (!rows.length) return `<p>当前没有匹配的统计明细。</p>`;
+  return `
+    <div class="stats-evidence-list">
+      ${rows.map((row) => {
+        const primaryValue = id === "segments"
+          ? `今日 ${Number(row.todayAdded || 0)} / 本周 ${Number(row.weekTotal || 0)}`
+          : id === "blockers"
+            ? "待补"
+            : Number(row[config.valueKey] || 0);
+        const blocker = row.blocker ? `<p class="stats-blocker">${escapeHtml(row.blocker)}</p>` : "";
+        return `
+          <article class="stats-evidence-row">
+            <div class="stats-row-main">
+              <div>
+                <span>${escapeHtml(row.week || "当前快照")}</span>
+                <h4>${escapeHtml(row.segment || row.title || "未命名环节")}</h4>
+              </div>
+              <strong>${escapeHtml(primaryValue)}</strong>
+            </div>
+            <dl>
+              <div><dt>今日新增</dt><dd>${Number(row.todayAdded || 0)}</dd></div>
+              <div><dt>今日完成</dt><dd>${Number(row.todayDone || 0)}</dd></div>
+              <div><dt>本周累计</dt><dd>${Number(row.weekTotal || 0)}</dd></div>
+              <div><dt>来源</dt><dd>${escapeHtml(row.sourceTable || "未绑定来源")}</dd></div>
+            </dl>
+            <p>${escapeHtml(row.rule || "暂无统计口径。")}</p>
+            ${blocker}
+            ${row.target ? `<button class="text-link-button" type="button" data-target="${escapeHtml(row.target)}">进入对应环节</button>` : ""}
+          </article>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
+function renderStatsDetail(id) {
+  const config = getStatsConfig(id);
+  const rows = statsRowsFor(id);
+  const total = statsTotal(rows, config, id);
+  const generatedAt = formatGeneratedAt(dashboardData?.generatedAt);
+  const snapshotLabel = generatedAt ? `快照 ${generatedAt}` : "静态默认数据";
+
+  overviewView.hidden = true;
+  detailView.hidden = false;
+  detailView.innerHTML = `
+    <div class="detail-shell">
+      <div class="detail-toolbar">
+        <button class="icon-button back-button" type="button" id="backToOverview">
+          <span aria-hidden="true">←</span>
+          <span>总览</span>
+        </button>
+        <span class="detail-route">${escapeHtml(config.routeLabel)}</span>
+      </div>
+
+      <header class="detail-hero stats-hero">
+        <div class="detail-icon" style="background:#2f68d8">#</div>
+        <div>
+          <p class="eyebrow">${escapeHtml(config.eyebrow)}</p>
+          <h3>${escapeHtml(config.title)}</h3>
+          <p>${escapeHtml(config.summary)}</p>
+        </div>
+        <span class="stats-total"><b>${escapeHtml(total)}</b><em>${escapeHtml(config.valueLabel)}</em></span>
+      </header>
+
+      <section class="stats-summary-grid">
+        <article class="detail-card">
+          <span>数据来源</span>
+          <p>${escapeHtml(dashboardData?.source?.name || "Tiktok内容工厂")} / ${escapeHtml(snapshotLabel)}</p>
+        </article>
+        <article class="detail-card">
+          <span>当前粒度</span>
+          <p>环节级日报：能看到每个环节今天和本周的数量、来源表、统计口径；还不是 record 级清单。</p>
+        </article>
+      </section>
+
+      <section class="detail-card wide">
+        <span>数字拆解</span>
+        ${statsRowMarkup(rows, config, id)}
+      </section>
+    </div>
+  `;
+
+  document.querySelector("#backToOverview").addEventListener("click", () => {
+    history.pushState("", document.title, window.location.pathname + window.location.search);
+    routeFromHash();
+  });
+  detailView.querySelectorAll(".text-link-button[data-target]").forEach((button) => {
+    button.addEventListener("click", () => {
+      window.location.hash = `module/${button.dataset.target}`;
+    });
+  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function resourceMarkup(resources) {
   if (!resources.length) return `<p>暂无可跳转入口。</p>`;
   return `
@@ -588,6 +749,23 @@ function renderMetrics() {
       snapshotStatus.classList.remove("locked");
     }
   }
+}
+
+function attachMetricRoutes() {
+  document.querySelectorAll(".stats-card[data-stats-id]").forEach((card) => {
+    if (card.dataset.routeReady === "true") return;
+    card.dataset.routeReady = "true";
+    const openStats = () => {
+      window.location.hash = `stats/${card.dataset.statsId}`;
+    };
+    card.addEventListener("click", openStats);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openStats();
+      }
+    });
+  });
 }
 
 function renderAuthControls() {
@@ -800,6 +978,7 @@ function renderWeeklyProgressSummary() {
 function renderOverview() {
   renderAuthControls();
   renderMetrics();
+  attachMetricRoutes();
   renderFilters();
   renderNav();
   renderWorkflow();
@@ -942,6 +1121,11 @@ function routeFromHash() {
     overviewView.hidden = false;
     detailView.hidden = true;
     renderOverview();
+    return;
+  }
+  if (type === "stats") {
+    renderOverview();
+    renderStatsDetail(id);
     return;
   }
   renderOverview();
