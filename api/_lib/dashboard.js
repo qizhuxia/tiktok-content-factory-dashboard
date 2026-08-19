@@ -128,6 +128,52 @@ function buildWeeklyProgress(resources) {
   ];
 }
 
+function buildDailyProgress(resources) {
+  const dataReturn = countResources(resources, DATA_TABLES);
+  const weeklyPlans = countResources(resources, PLAN_TABLES);
+  const reviews = countResources(resources, REVIEW_TABLES);
+  const libraryAssets = countResources(resources, LIBRARY_TABLES);
+
+  return [
+    {
+      target: "publish",
+      title: "今日发布推进",
+      status: weeklyPlans ? "待核对" : "待建立计划",
+      progress: weeklyPlans ? 35 : 10,
+      evidence: `可读周测计划 ${weeklyPlans} 条；需要按发布状态继续细分今日项。`,
+      blocker: "当前只读聚合先按记录量判断，下一版要读取生产状态、发布状态和计划发布时间。",
+      next: "先检查今天应发布但未发布的计划。"
+    },
+    {
+      target: "data",
+      title: "昨日/今日数据回填",
+      status: dataReturn ? "待核对" : "待回填",
+      progress: dataReturn ? 40 : 10,
+      evidence: `可读发布后数据记录 ${dataReturn} 条。`,
+      blocker: "视频数据、达人精灵、商品点击需要绑定同一条周测计划。",
+      next: "每天优先补前一日发布内容的数据。"
+    },
+    {
+      target: "review",
+      title: "今日复盘动作",
+      status: reviews ? "待补结论" : "待建立",
+      progress: reviews ? 25 : 10,
+      evidence: `可读复盘记录 ${reviews} 条。`,
+      blocker: "到观察期但没有结论时，本周无法判断放大、调整或停止。",
+      next: "每天清一条到期复盘。"
+    },
+    {
+      target: "libraries",
+      title: "今日补库动作",
+      status: libraryAssets ? "待补表现" : "待补库",
+      progress: libraryAssets ? 30 : 10,
+      evidence: `可读六库资产 ${libraryAssets} 条。`,
+      blocker: "库资产缺使用记录时，无法判断本周沉淀是否有效。",
+      next: "把当天拆解或复盘出的有效表达补进对应库。"
+    }
+  ];
+}
+
 function buildLiveDashboard(userAccessToken) {
   return getTableSnapshots(userAccessToken).then((resources) => {
     const snapshot = readSnapshot();
@@ -176,6 +222,7 @@ function buildLiveDashboard(userAccessToken) {
       resources: sanitizedResources,
       libraries: buildLibraries(snapshot, sanitizedResources),
       todayActions: buildTodayActions(sanitizedResources),
+      dailyProgress: buildDailyProgress(sanitizedResources),
       weeklyProgress: buildWeeklyProgress(sanitizedResources),
       detailPages
     };

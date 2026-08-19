@@ -248,9 +248,9 @@ const workflowSteps = [
 ];
 
 const todayActions = [
-  { title: "检查本周周测发布进度", detail: "看内容周测试计划表里每条计划的脚本数、已发布数、观察状态和数据回流状态。" },
-  { title: "补发布后数据回流", detail: "视频数据、达人精灵、商品点击数据要回到同一条周测计划，不再混进爆款收集。" },
-  { title: "把复盘结论回到六库", detail: "本周有效钩子、卖点、场景和痛点要能沉淀成下一周可继续使用的库资产。" }
+  { title: "今天先看待发布", detail: "打开内容周测试计划表，确认今天哪些脚本/成片还没发布，先把发布链路推完。" },
+  { title: "今天补昨天数据", detail: "把昨天已发布视频的数据、达人精灵和商品点击回填到数据回流表。" },
+  { title: "今天清一个复盘卡点", detail: "如果数据已到观察期，至少补一条复盘结论或下周调整动作。" }
 ];
 
 const gaps = [
@@ -259,6 +259,45 @@ const gaps = [
   { title: "选题/可视化/高光帧库", detail: "字段还薄，暂时更像草稿库。" },
   { title: "BGM 来源不明项", detail: "Original Sound 一类没有作者、来源视频或音频样本时不能标完成。" },
   { title: "公开网页实时数据", detail: "GitHub Pages 不能安全直连飞书，需要后端或静态快照。" }
+];
+
+const dailyProgress = [
+  {
+    target: "publish",
+    title: "今日发布推进",
+    status: "待核对",
+    progress: 35,
+    evidence: "需要从内容周测试计划表读取今日待发布和已发布数量。",
+    blocker: "未接实时字段前，无法确认今天具体哪条视频卡住。",
+    next: "飞书接通后按生产状态、发布状态、计划发布时间推导今日发布清单。"
+  },
+  {
+    target: "data",
+    title: "昨日/今日数据回填",
+    status: "待核对",
+    progress: 30,
+    evidence: "视频数据、达人精灵、商品点击数据已独立成数据回流板块。",
+    blocker: "需要确认已发布视频是否都绑定到对应周测计划。",
+    next: "每天先补前一日发布内容的数据回流。"
+  },
+  {
+    target: "review",
+    title: "今日复盘动作",
+    status: "待推进",
+    progress: 20,
+    evidence: "内容周复盘表已有结构。",
+    blocker: "数据到期但复盘结论为空时，六库不能反哺。",
+    next: "每天至少清一条到观察期的复盘记录。"
+  },
+  {
+    target: "libraries",
+    title: "今日补库动作",
+    status: "待推进",
+    progress: 25,
+    evidence: "钩子库、卖点库、痛点库已有库存。",
+    blocker: "有效资产还缺使用记录和数据表现。",
+    next: "每天把当天拆解或复盘出的有效表达补进对应库。"
+  }
 ];
 
 const weeklyProgress = [
@@ -413,8 +452,8 @@ function numberedMarkup(items) {
   return `<ol>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>`;
 }
 
-function progressMarkup(items) {
-  if (!items.length) return `<p>暂无本周推进项；等待飞书实时数据回流。</p>`;
+function progressMarkup(items, emptyText = "暂无推进项；等待飞书实时数据回流。") {
+  if (!items.length) return `<p>${escapeHtml(emptyText)}</p>`;
   return `
     <div class="progress-list">
       ${items.map((item) => `
@@ -501,15 +540,22 @@ function buildFallbackDetail(type, item) {
   };
 }
 
-function getWeeklyProgress(type, id) {
-  const liveItems = dashboardData?.weeklyProgress || weeklyProgress;
+function getScopedProgress(items, type, id) {
   if (type === "module" || type === "workflow") {
-    return liveItems.filter((item) => item.target === id || (id === "libraries" && ["libraries", "hook", "selling", "audience-pain", "scene", "material", "bgm"].includes(item.target)));
+    return items.filter((item) => item.target === id || (id === "libraries" && ["libraries", "hook", "selling", "audience-pain", "scene", "material", "bgm"].includes(item.target)));
   }
   if (type === "library") {
-    return liveItems.filter((item) => ["libraries", id].includes(item.target));
+    return items.filter((item) => ["libraries", id].includes(item.target));
   }
-  return liveItems.slice(0, 3);
+  return items.slice(0, 3);
+}
+
+function getDailyProgress(type, id) {
+  return getScopedProgress(dashboardData?.dailyProgress || dailyProgress, type, id);
+}
+
+function getWeeklyProgress(type, id) {
+  return getScopedProgress(dashboardData?.weeklyProgress || weeklyProgress, type, id);
 }
 
 function renderMetrics() {
@@ -728,6 +774,24 @@ function renderGaps() {
   });
 }
 
+function renderWeeklyProgressSummary() {
+  const list = document.querySelector("#weeklyProgressList");
+  if (!list) return;
+  const items = (dashboardData?.weeklyProgress || weeklyProgress).slice(0, 4);
+  list.innerHTML = items.map((item) => `
+    <button class="rail-progress-item" type="button" data-target="${escapeHtml(item.target)}">
+      <span>${escapeHtml(item.title)}</span>
+      <b>${escapeHtml(item.status)} / ${Number(item.progress || 0)}%</b>
+      <i><em style="width:${Math.max(0, Math.min(100, Number(item.progress || 0)))}%"></em></i>
+    </button>
+  `).join("");
+  list.querySelectorAll(".rail-progress-item").forEach((button) => {
+    button.addEventListener("click", () => {
+      window.location.hash = `module/${button.dataset.target}`;
+    });
+  });
+}
+
 function renderOverview() {
   renderAuthControls();
   renderMetrics();
@@ -737,6 +801,7 @@ function renderOverview() {
   renderSnapshot();
   renderCards();
   renderTodayActions();
+  renderWeeklyProgressSummary();
   renderGaps();
 }
 
@@ -754,7 +819,8 @@ function renderDetail(type, id, options = {}) {
   const gap = snapshot.gap || item.gap || "暂无明确缺口。";
   const next = item.next || "按当前步骤执行后，把结果回到对应表或库。";
   const connectionNote = dashboardData?.connection?.note || "当前页面提供静态快照和飞书入口；实时数据需要后端读取飞书。";
-  const progressItems = getWeeklyProgress(type, id);
+  const dailyItems = getDailyProgress(type, id);
+  const weeklyItems = getWeeklyProgress(type, id);
 
   overviewView.hidden = true;
   detailView.hidden = false;
@@ -785,8 +851,13 @@ function renderDetail(type, id, options = {}) {
 
       <section class="detail-grid workbench-grid">
         <article class="detail-card wide">
-          <span>本周推进进度</span>
-          ${progressMarkup(progressItems)}
+          <span>每日推进进度</span>
+          ${progressMarkup(dailyItems, "暂无每日推进项；等待飞书实时数据回流。")}
+        </article>
+
+        <article class="detail-card wide">
+          <span>每周推进进度</span>
+          ${progressMarkup(weeklyItems, "暂无每周推进项；等待飞书实时数据回流。")}
         </article>
 
         <article class="detail-card wide resource-card">
