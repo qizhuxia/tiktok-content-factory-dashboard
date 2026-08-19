@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T03:38:53.268Z",
+  "generatedAt": "2026-08-19T03:49:28.219Z",
   "source": {
     "name": "Tiktok内容工厂",
     "mode": "sanitized-static-snapshot",
@@ -10,7 +10,7 @@
     "blocks": 37,
     "viralSamples": 55,
     "libraryAssets": 690,
-    "workflowSteps": 8,
+    "workflowSteps": 9,
     "weakOrBlocked": 6,
     "weeklyPlans": 2,
     "pendingPublish": 2,
@@ -107,7 +107,7 @@
   ],
   "detailPages": {
     "module/source": {
-      "task": "把外部爆款和账号数据收进内容工厂，保证后续拆解有来源。",
+      "task": "把外部可参考、可拆解、可复刻的爆款样本收进内容工厂，保证后续拆解有来源。",
       "resources": [
         {
           "name": "爆款视频脚本收集表",
@@ -116,28 +116,16 @@
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
         },
         {
-          "name": "视频数据-英区",
+          "name": "开头钩子收集",
           "type": "table",
-          "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "count": 54,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
         },
         {
-          "name": "视频数据-美区",
+          "name": "中间叙事逻辑收集",
           "type": "table",
-          "count": 34,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
-        },
-        {
-          "name": "达人精灵数据下载-英区",
-          "type": "table",
-          "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
-        },
-        {
-          "name": "达人精灵数据下载-美区",
-          "type": "table",
-          "count": 40,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+          "count": 56,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
         }
       ],
       "tutorial": [
@@ -162,7 +150,7 @@
       ],
       "mistakes": [
         "只粘链接不写为什么值得拆。",
-        "把账号数据和爆款脚本混在一起不分类。",
+        "把发布后视频数据混进爆款样本入口。",
         "没有来源证据就写结论。"
       ]
     },
@@ -355,7 +343,34 @@
           "type": "table",
           "count": 2,
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
-        },
+        }
+      ],
+      "tutorial": [
+        "先在周测试计划表确认计划发布数和发布账号。",
+        "发布后回填已发布视频数和生产状态。",
+        "把已发布视频交给数据回流步骤，不在爆款收集里处理。"
+      ],
+      "requiredFields": [
+        "发布账号",
+        "计划发布视频数",
+        "已发布视频数",
+        "生产状态",
+        "观察状态"
+      ],
+      "acceptance": [
+        "已发布视频数不为 0。",
+        "发布账号、站点和周测计划一致。",
+        "发布后明确进入数据回流。"
+      ],
+      "mistakes": [
+        "视频发了但周测计划仍是待发布。",
+        "把发布后数据当成爆款收集。",
+        "账号、站点和计划不一致。"
+      ]
+    },
+    "module/data": {
+      "task": "把视频发布后的表现数据回收到内容工厂，作为复盘和六库有效性判断的依据。",
+      "resources": [
         {
           "name": "视频数据-英区",
           "type": "table",
@@ -369,6 +384,18 @@
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
         },
         {
+          "name": "达人精灵数据下载-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
+        },
+        {
+          "name": "达人精灵数据下载-美区",
+          "type": "table",
+          "count": 40,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+        },
+        {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
@@ -379,30 +406,39 @@
           "type": "table",
           "count": 11,
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+        },
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         }
       ],
       "tutorial": [
-        "先在周测试计划表确认计划发布数和发布账号。",
-        "发布后把对应视频数据回填到英区或美区视频数据表。",
-        "达到观察周期后把状态推进到可复盘。"
+        "视频发布后进入对应站点的视频数据表。",
+        "同步达人精灵数据和商品点击数据。",
+        "把视频数据、点击数据关联回内容周测试计划，达到观察周期后进入复盘。"
       ],
       "requiredFields": [
-        "发布账号",
-        "计划发布视频数",
-        "已发布视频数",
-        "关联视频数据",
-        "生产状态",
-        "观察状态"
+        "视频链接/ID",
+        "发布时间",
+        "站点",
+        "播放",
+        "3秒/5秒留存",
+        "完播",
+        "点击",
+        "GMV",
+        "关联周测计划"
       ],
       "acceptance": [
-        "已发布视频数不为 0。",
-        "视频数据能关联回周测计划。",
-        "发布后有明确观察状态。"
+        "每条发布后视频都能在数据表找到。",
+        "视频数据和商品点击数据能回到同一周测计划。",
+        "数据回流后复盘表能拿到依据。"
       ],
       "mistakes": [
-        "视频发了但没有回填数据。",
-        "只看播放，不绑定商品点击。",
-        "账号、站点和计划不一致。"
+        "把视频数据放进爆款收集。",
+        "只同步播放，不同步商品点击。",
+        "数据没有关联周测计划。"
       ]
     },
     "module/review": {
@@ -719,7 +755,7 @@
       ]
     },
     "workflow/source": {
-      "task": "按流程执行：把外部爆款和账号数据收进内容工厂，保证后续拆解有来源。",
+      "task": "按流程执行：把外部可参考、可拆解、可复刻的爆款样本收进内容工厂，保证后续拆解有来源。",
       "resources": [
         {
           "name": "爆款视频脚本收集表",
@@ -728,28 +764,16 @@
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
         },
         {
-          "name": "视频数据-英区",
+          "name": "开头钩子收集",
           "type": "table",
-          "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "count": 54,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
         },
         {
-          "name": "视频数据-美区",
+          "name": "中间叙事逻辑收集",
           "type": "table",
-          "count": 34,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
-        },
-        {
-          "name": "达人精灵数据下载-英区",
-          "type": "table",
-          "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
-        },
-        {
-          "name": "达人精灵数据下载-美区",
-          "type": "table",
-          "count": 40,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+          "count": 56,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
         }
       ],
       "tutorial": [
@@ -774,7 +798,7 @@
       ],
       "mistakes": [
         "只粘链接不写为什么值得拆。",
-        "把账号数据和爆款脚本混在一起不分类。",
+        "把发布后视频数据混进爆款样本入口。",
         "没有来源证据就写结论。"
       ]
     },
@@ -1077,7 +1101,34 @@
           "type": "table",
           "count": 2,
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
-        },
+        }
+      ],
+      "tutorial": [
+        "先在周测试计划表确认计划发布数和发布账号。",
+        "发布后回填已发布视频数和生产状态。",
+        "把已发布视频交给数据回流步骤，不在爆款收集里处理。"
+      ],
+      "requiredFields": [
+        "发布账号",
+        "计划发布视频数",
+        "已发布视频数",
+        "生产状态",
+        "观察状态"
+      ],
+      "acceptance": [
+        "已发布视频数不为 0。",
+        "发布账号、站点和周测计划一致。",
+        "发布后明确进入数据回流。"
+      ],
+      "mistakes": [
+        "视频发了但周测计划仍是待发布。",
+        "把发布后数据当成爆款收集。",
+        "账号、站点和计划不一致。"
+      ]
+    },
+    "workflow/data": {
+      "task": "按流程执行：把视频发布后的表现数据回收到内容工厂，作为复盘和六库有效性判断的依据。",
+      "resources": [
         {
           "name": "视频数据-英区",
           "type": "table",
@@ -1091,6 +1142,18 @@
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
         },
         {
+          "name": "达人精灵数据下载-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
+        },
+        {
+          "name": "达人精灵数据下载-美区",
+          "type": "table",
+          "count": 40,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+        },
+        {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
@@ -1101,30 +1164,39 @@
           "type": "table",
           "count": 11,
           "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+        },
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
         }
       ],
       "tutorial": [
-        "先在周测试计划表确认计划发布数和发布账号。",
-        "发布后把对应视频数据回填到英区或美区视频数据表。",
-        "达到观察周期后把状态推进到可复盘。"
+        "视频发布后进入对应站点的视频数据表。",
+        "同步达人精灵数据和商品点击数据。",
+        "把视频数据、点击数据关联回内容周测试计划，达到观察周期后进入复盘。"
       ],
       "requiredFields": [
-        "发布账号",
-        "计划发布视频数",
-        "已发布视频数",
-        "关联视频数据",
-        "生产状态",
-        "观察状态"
+        "视频链接/ID",
+        "发布时间",
+        "站点",
+        "播放",
+        "3秒/5秒留存",
+        "完播",
+        "点击",
+        "GMV",
+        "关联周测计划"
       ],
       "acceptance": [
-        "已发布视频数不为 0。",
-        "视频数据能关联回周测计划。",
-        "发布后有明确观察状态。"
+        "每条发布后视频都能在数据表找到。",
+        "视频数据和商品点击数据能回到同一周测计划。",
+        "数据回流后复盘表能拿到依据。"
       ],
       "mistakes": [
-        "视频发了但没有回填数据。",
-        "只看播放，不绑定商品点击。",
-        "账号、站点和计划不一致。"
+        "把视频数据放进爆款收集。",
+        "只同步播放，不同步商品点击。",
+        "数据没有关联周测计划。"
       ]
     },
     "workflow/review": {
