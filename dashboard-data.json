@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-08-19T03:18:01.904Z",
+  "source": {
+    "name": "Tiktok内容工厂",
+    "mode": "sanitized-static-snapshot",
+    "note": "本快照由本地只读脚本生成，只包含脱敏统计和状态。"
+  },
+  "metrics": {
+    "tables": 22,
+    "blocks": 37,
+    "viralSamples": 55,
+    "libraryAssets": 690,
+    "workflowSteps": 8,
+    "weakOrBlocked": 6,
+    "weeklyPlans": 2,
+    "pendingPublish": 2,
+    "pendingReview": 2
+  },
+  "inventory": {
+    "hookBreakdowns": 54,
+    "narrativeBreakdowns": 56,
+    "hookLibrary": 600,
+    "sellingPoints": 44,
+    "painPoints": 31,
+    "topics": 5,
+    "sellingVisuals": 5,
+    "highlightFrames": 5
+  },
+  "libraries": {
+    "audience-pain": {
+      "count": "31 条痛点",
+      "status": "需要补数据",
+      "use": "先定人群和痛点，再进入周测",
+      "gap": "痛点库已有结构，人群画像和数据表现字段还需要补齐。"
+    },
+    "hook": {
+      "count": "600 条表达 / 54 条拆解",
+      "status": "需要补数据",
+      "use": "决定前 3 秒",
+      "gap": "库存量充足，但缺使用次数、平均 CTR、适用人群和成品回流字段。"
+    },
+    "selling": {
+      "count": "44 条卖点",
+      "status": "部分可用",
+      "use": "决定中段说法",
+      "gap": "卖点字段较完整，但还需要绑定脚本、视频数据和可视化素材。"
+    },
+    "scene": {
+      "count": "5 条高光帧 / 5 条可视化",
+      "status": "需要补素材",
+      "use": "决定画面证明",
+      "gap": "高光帧库样本少且字段薄，需要补场景类型、适用卖点和使用记录。"
+    },
+    "material": {
+      "count": "待迁移底座",
+      "status": "需要补素材",
+      "use": "决定能不能拍剪",
+      "gap": "旧素材底座还没有完全映射到内容工厂结构。"
+    },
+    "bgm": {
+      "count": "文档资产",
+      "status": "部分可用",
+      "use": "决定剪辑情绪",
+      "gap": "音乐库当前仍是文档型资产，后续可转为结构化表。"
+    }
+  },
+  "todayActions": [
+    {
+      "title": "先补发布链路",
+      "detail": "2 条周测计划仍处于待发布或未发布状态，优先补脚本、素材、账号和发布时间。"
+    },
+    {
+      "title": "补内容周复盘",
+      "detail": "2 条复盘记录缺少复盘结论，先补做得好/不好和下周动作。"
+    },
+    {
+      "title": "补弱库字段和样本",
+      "detail": "选题库样本少；卖点可视化库样本少；高光帧库字段薄；钩子库缺使用次数/表现字段"
+    }
+  ],
+  "gaps": [
+    {
+      "title": "发布后未闭环",
+      "detail": "2 条周测计划还没有形成已发布数据，首页优先推发布链路。"
+    },
+    {
+      "title": "复盘结论为空",
+      "detail": "2 条复盘记录缺结论，无法把表现反哺到六库。"
+    },
+    {
+      "title": "库字段薄",
+      "detail": "选题库样本少；卖点可视化库样本少；高光帧库字段薄；钩子库缺使用次数/表现字段"
+    },
+    {
+      "title": "缺少成品回查链",
+      "detail": "六库资产需要绑定到脚本、发布记录和复盘表现，才能判断哪些表达真正有效。"
+    }
+  ]
+}

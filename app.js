@@ -258,13 +258,15 @@ const statusMeta = {
   "进行中": { className: "status-active", dot: "#2f68d8" },
   "需要补库": { className: "status-gap", dot: "#b57914" },
   "需要补数据": { className: "status-data", dot: "#b57914" },
+  "需要补素材": { className: "status-material", dot: "#2f68d8" },
   "部分可用": { className: "status-partial", dot: "#168463" },
   "需要补证据": { className: "status-blocked", dot: "#ba3f3f" },
   "待建立": { className: "status-todo", dot: "#687586" }
 };
 
-const filters = ["全部", "进行中", "部分可用", "需要补库", "需要补数据", "待建立"];
+const filters = ["全部", "进行中", "部分可用", "需要补库", "需要补数据", "需要补素材", "待建立"];
 let currentFilter = "全部";
+let dashboardData = null;
 
 const overviewView = document.querySelector("#overviewView");
 const detailView = document.querySelector("#detailView");
@@ -273,6 +275,7 @@ const moduleGrid = document.querySelector("#moduleGrid");
 const snapshotGrid = document.querySelector("#snapshotGrid");
 const workflowStepsEl = document.querySelector("#workflowSteps");
 const statusFilters = document.querySelector("#statusFilters");
+const snapshotStatus = document.querySelector("#snapshotStatus");
 const template = document.querySelector("#moduleCardTemplate");
 
 function escapeHtml(value) {
@@ -295,6 +298,23 @@ function findDetail(type, id) {
   return null;
 }
 
+function getSnapshotLibrary(item) {
+  return dashboardData?.libraries?.[item.id] || {};
+}
+
+function formatGeneratedAt(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return new Intl.DateTimeFormat("zh-CN", {
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  }).format(date);
+}
+
 function getDetailSummary(type, item) {
   if (type === "module") return item.role;
   if (type === "library") return `这个库用于${item.use}，当前状态是${item.status}。`;
@@ -302,10 +322,23 @@ function getDetailSummary(type, item) {
 }
 
 function renderMetrics() {
-  document.querySelector("#tableAssetCount").textContent = "22";
-  document.querySelector("#materialCount").textContent = "待映射";
-  document.querySelector("#stepCount").textContent = workflowSteps.length;
-  document.querySelector("#gapCount").textContent = gaps.length;
+  const metrics = dashboardData?.metrics;
+  document.querySelector("#tableAssetCount").textContent = metrics?.tables ?? "22";
+  document.querySelector("#materialCount").textContent = metrics?.libraryAssets ?? "待映射";
+  document.querySelector("#stepCount").textContent = metrics?.workflowSteps ?? workflowSteps.length;
+  document.querySelector("#gapCount").textContent = metrics?.weakOrBlocked ?? gaps.length;
+
+  if (snapshotStatus) {
+    if (dashboardData) {
+      const generatedAt = formatGeneratedAt(dashboardData.generatedAt);
+      const extra = generatedAt ? ` / 快照 ${generatedAt}` : "";
+      snapshotStatus.textContent = `${dashboardData.source?.name || "TikTok 内容工厂"} / ${dashboardData.source?.mode || "静态快照"}${extra}`;
+      snapshotStatus.classList.add("loaded");
+    } else {
+      snapshotStatus.textContent = "静态默认数据，等待快照加载";
+      snapshotStatus.classList.remove("loaded");
+    }
+  }
 }
 
 function renderFilters() {
@@ -333,7 +366,7 @@ function renderNav() {
     button.innerHTML = `
       <span class="nav-icon" aria-hidden="true">${nav.icon}</span>
       <span>${nav.label}</span>
-      <span class="nav-status" style="background:${statusMeta[module.status].dot}"></span>
+      <span class="nav-status" style="background:${(statusMeta[module.status] || statusMeta["待建立"]).dot}"></span>
     `;
     button.addEventListener("click", () => {
       window.location.hash = `module/${nav.id}`;
@@ -366,6 +399,9 @@ function renderWorkflow() {
 function renderSnapshot() {
   snapshotGrid.innerHTML = "";
   libraries.forEach((item) => {
+    const snapshot = getSnapshotLibrary(item);
+    const status = snapshot.status || item.status;
+    const meta = statusMeta[status] || statusMeta["待建立"];
     const card = document.createElement("button");
     card.type = "button";
     card.className = "snapshot-card clickable-card";
@@ -373,9 +409,9 @@ function renderSnapshot() {
       <div class="snapshot-icon" style="background:${item.color}">${escapeHtml(item.title.slice(0, 1))}</div>
       <div>
         <h4>${escapeHtml(item.title)}</h4>
-        <p>${escapeHtml(item.use)} / ${escapeHtml(item.count)}</p>
+        <p>${escapeHtml(snapshot.use || item.use)} / ${escapeHtml(snapshot.count || item.count)}</p>
       </div>
-      <span class="${statusMeta[item.status].className}">${escapeHtml(item.status)}</span>
+      <span class="${meta.className}">${escapeHtml(status)}</span>
     `;
     card.addEventListener("click", () => {
       window.location.hash = `library/${item.id}`;
@@ -406,7 +442,7 @@ function renderCards() {
 
     const statusPill = node.querySelector(".status-pill");
     statusPill.textContent = item.status;
-    statusPill.classList.add(statusMeta[item.status].className);
+    statusPill.classList.add((statusMeta[item.status] || statusMeta["待建立"]).className);
 
     node.querySelector(".role").textContent = item.role;
     node.querySelector(".evidence").textContent = item.evidence;
@@ -436,7 +472,8 @@ function renderCards() {
 function renderTodayActions() {
   const list = document.querySelector("#todayActions");
   list.innerHTML = "";
-  todayActions.forEach((item, index) => {
+  const items = dashboardData?.todayActions?.length ? dashboardData.todayActions : todayActions;
+  items.forEach((item, index) => {
     const li = document.createElement("li");
     li.innerHTML = `<b>${index + 1}</b><p>${escapeHtml(item.title)}<span>${escapeHtml(item.detail)}</span></p>`;
     list.appendChild(li);
@@ -446,7 +483,8 @@ function renderTodayActions() {
 function renderGaps() {
   const list = document.querySelector("#gapList");
   list.innerHTML = "";
-  gaps.forEach((item) => {
+  const items = dashboardData?.gaps?.length ? dashboardData.gaps : gaps;
+  items.forEach((item) => {
     const div = document.createElement("div");
     div.className = "decision-item";
     div.innerHTML = `<strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.detail)}</p>`;
@@ -472,11 +510,12 @@ function renderDetail(type, id) {
     return;
   }
 
-  const status = item.status || "流程步骤";
+  const snapshot = type === "library" ? getSnapshotLibrary(item) : {};
+  const status = snapshot.status || item.status || "流程步骤";
   const tables = item.links || item.tables || [];
   const fields = item.fields || [];
   const usage = item.usage || [];
-  const gap = item.gap || "暂无明确缺口。";
+  const gap = snapshot.gap || item.gap || "暂无明确缺口。";
   const next = item.next || "按当前步骤执行后，把结果回到对应表或库。";
 
   overviewView.hidden = true;
@@ -496,7 +535,7 @@ function renderDetail(type, id) {
         <div>
           <p class="eyebrow">${type === "module" ? "Command SOP" : type === "library" ? "Library SOP" : "Workflow SOP"}</p>
           <h3>${escapeHtml(item.title)}</h3>
-          <p>${escapeHtml(getDetailSummary(type, item))}</p>
+          <p>${escapeHtml(type === "library" && snapshot.use ? `这个库用于${snapshot.use}，当前状态是${status}。` : getDetailSummary(type, item))}</p>
         </div>
         <span class="status-pill ${statusMeta[status]?.className || "status-todo"}">${escapeHtml(status)}</span>
       </header>
@@ -562,5 +601,18 @@ document.querySelector("#showAll").addEventListener("click", () => {
   renderOverview();
 });
 
+async function loadDashboardData() {
+  try {
+    const response = await fetch("dashboard-data.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`snapshot ${response.status}`);
+    dashboardData = await response.json();
+  } catch (error) {
+    dashboardData = null;
+    console.warn("dashboard-data.json unavailable, using static defaults.", error);
+  }
+  routeFromHash();
+}
+
 window.addEventListener("hashchange", routeFromHash);
 routeFromHash();
+loadDashboardData();
