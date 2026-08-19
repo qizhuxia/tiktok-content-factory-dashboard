@@ -291,11 +291,38 @@ function listMarkup(items) {
   return `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 }
 
+function numberedMarkup(items) {
+  return `<ol>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>`;
+}
+
+function resourceMarkup(resources) {
+  if (!resources.length) return `<p>暂无可跳转入口。</p>`;
+  return `
+    <div class="resource-grid">
+      ${resources.map((resource) => `
+        <a class="resource-link" href="${escapeHtml(resource.url)}" target="_blank" rel="noopener noreferrer">
+          <span class="resource-meta">${escapeHtml(resource.type)}${resource.count == null ? "" : ` / ${resource.count} 条`}</span>
+          <strong>${escapeHtml(resource.name)}</strong>
+          <em>打开飞书</em>
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
 function findDetail(type, id) {
   if (type === "module") return factoryModules.find((item) => item.id === id);
   if (type === "library") return libraries.find((item) => item.id === id);
   if (type === "workflow") return workflowSteps.find((item) => item.id === id);
   return null;
+}
+
+function getDetailKey(type, id) {
+  return `${type}/${id}`;
+}
+
+function getSnapshotDetail(type, id) {
+  return dashboardData?.detailPages?.[getDetailKey(type, id)] || null;
 }
 
 function getSnapshotLibrary(item) {
@@ -319,6 +346,17 @@ function getDetailSummary(type, item) {
   if (type === "module") return item.role;
   if (type === "library") return `这个库用于${item.use}，当前状态是${item.status}。`;
   return item.detail;
+}
+
+function buildFallbackDetail(type, item) {
+  return {
+    task: getDetailSummary(type, item),
+    resources: [],
+    tutorial: item.usage || [],
+    requiredFields: item.fields || [],
+    acceptance: ["能按当前步骤完成一次真实处理。", "关键字段不为空。", "处理结果能回到对应表或库。"],
+    mistakes: ["只写结论不留证据。", "处理后不回填状态。", "多个测试目标混在一条记录里。"]
+  };
 }
 
 function renderMetrics() {
@@ -452,7 +490,7 @@ function renderCards() {
 
     const priority = document.createElement("div");
     priority.className = "card-footer";
-    priority.innerHTML = `<span class="priority-chip">${escapeHtml(item.priority)}</span><span class="open-hint">查看 SOP</span>`;
+    priority.innerHTML = `<span class="priority-chip">${escapeHtml(item.priority)}</span><span class="open-hint">进入工作页</span>`;
     node.appendChild(priority);
 
     node.addEventListener("click", () => {
@@ -511,12 +549,12 @@ function renderDetail(type, id) {
   }
 
   const snapshot = type === "library" ? getSnapshotLibrary(item) : {};
+  const detail = getSnapshotDetail(type, id) || buildFallbackDetail(type, item);
   const status = snapshot.status || item.status || "流程步骤";
-  const tables = item.links || item.tables || [];
-  const fields = item.fields || [];
-  const usage = item.usage || [];
+  const fields = detail.requiredFields?.length ? detail.requiredFields : item.fields || [];
   const gap = snapshot.gap || item.gap || "暂无明确缺口。";
   const next = item.next || "按当前步骤执行后，把结果回到对应表或库。";
+  const connectionNote = dashboardData?.connection?.note || "当前页面提供静态快照和飞书入口；实时数据需要后端读取飞书。";
 
   overviewView.hidden = true;
   detailView.hidden = false;
@@ -533,30 +571,49 @@ function renderDetail(type, id) {
       <header class="detail-hero">
         <div class="detail-icon" style="background:${item.color || "#2f68d8"}">${escapeHtml(item.icon || item.title.slice(0, 1))}</div>
         <div>
-          <p class="eyebrow">${type === "module" ? "Command SOP" : type === "library" ? "Library SOP" : "Workflow SOP"}</p>
+          <p class="eyebrow">${type === "module" ? "Command Workbench" : type === "library" ? "Library Workbench" : "Workflow Workbench"}</p>
           <h3>${escapeHtml(item.title)}</h3>
-          <p>${escapeHtml(type === "library" && snapshot.use ? `这个库用于${snapshot.use}，当前状态是${status}。` : getDetailSummary(type, item))}</p>
+          <p>${escapeHtml(detail.task || (type === "library" && snapshot.use ? `这个库用于${snapshot.use}，当前状态是${status}。` : getDetailSummary(type, item)))}</p>
         </div>
         <span class="status-pill ${statusMeta[status]?.className || "status-todo"}">${escapeHtml(status)}</span>
       </header>
 
-      <section class="detail-grid">
-        <article class="detail-card wide">
-          <span>对应 TikTok 内容工厂表/文档</span>
-          ${listMarkup(tables)}
+      <section class="detail-live-note">
+        <strong>最终方向：网页要连飞书</strong>
+        <p>${escapeHtml(connectionNote)}</p>
+      </section>
+
+      <section class="detail-grid workbench-grid">
+        <article class="detail-card wide resource-card">
+          <span>对应飞书入口</span>
+          ${resourceMarkup(detail.resources || [])}
         </article>
+
+        <article class="detail-card guide-card">
+          <span>新人照着做</span>
+          ${numberedMarkup(detail.tutorial || [])}
+        </article>
+
+        <article class="detail-card guide-card">
+          <span>合格标准</span>
+          ${listMarkup(detail.acceptance || [])}
+        </article>
+
         <article class="detail-card">
-          <span>核心字段</span>
+          <span>要填哪些字段</span>
           ${listMarkup(fields)}
         </article>
-        <article class="detail-card">
-          <span>新人怎么操作</span>
-          ${listMarkup(usage)}
-        </article>
+
         <article class="detail-card warning">
-          <span>主要缺口</span>
+          <span>常见低级错误</span>
+          ${listMarkup(detail.mistakes || [])}
+        </article>
+
+        <article class="detail-card warning">
+          <span>当前状态 / 缺口</span>
           <p>${escapeHtml(gap)}</p>
         </article>
+
         <article class="detail-card next">
           <span>下一步动作</span>
           <p>${escapeHtml(next)}</p>

@@ -731,10 +731,35 @@ button {
   line-height: 1.7;
 }
 
+.detail-live-note {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  background: #eef8f4;
+  border: 1px solid #bde9d8;
+  border-radius: var(--radius);
+}
+
+.detail-live-note strong {
+  color: #0e6049;
+  font-size: 14px;
+}
+
+.detail-live-note p {
+  margin: 0;
+  color: #315546;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 .detail-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+
+.workbench-grid {
+  align-items: stretch;
 }
 
 .detail-card {
@@ -765,6 +790,44 @@ button {
   list-style: none;
 }
 
+.detail-card ol {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.detail-card ol li {
+  position: relative;
+  min-height: 42px;
+  padding: 10px 12px 10px 44px;
+  color: #263342;
+  background: #f8fafc;
+  border: 1px solid #edf1f5;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  counter-increment: step;
+}
+
+.detail-card ol li::before {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: #ffffff;
+  background: var(--blue);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  content: counter(step);
+}
+
 .detail-card li {
   padding: 8px 10px;
   color: #263342;
@@ -789,6 +852,60 @@ button {
 .detail-card.next {
   background: #f7fbff;
   border-color: #c9daf0;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.resource-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 10px;
+  min-height: 78px;
+  padding: 12px;
+  color: #17202a;
+  background: #f8fafc;
+  border: 1px solid #dbe5f0;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+.resource-link:hover,
+.resource-link:focus-visible {
+  border-color: #8fb0d7;
+  box-shadow: 0 10px 24px rgba(34, 48, 72, 0.1);
+  outline: none;
+}
+
+.resource-link strong {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.resource-link .resource-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: none;
+}
+
+.resource-link em {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  min-height: 24px;
+  padding: 0 8px;
+  color: #2255b9;
+  background: #e3ecff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
 }
 
 .status-ready {
@@ -910,5 +1027,13 @@ button {
 
   .detail-card ul {
     display: grid;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-link {
+    grid-template-columns: 1fr auto;
   }
 }

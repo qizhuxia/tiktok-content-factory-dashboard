@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T03:18:01.904Z",
+  "generatedAt": "2026-08-19T03:38:53.268Z",
   "source": {
     "name": "Tiktok内容工厂",
     "mode": "sanitized-static-snapshot",
@@ -25,6 +25,1172 @@
     "topics": 5,
     "sellingVisuals": 5,
     "highlightFrames": 5
+  },
+  "connection": {
+    "currentMode": "staticSnapshotWithFeishuLinks",
+    "nextMode": "serverSideFeishuApi",
+    "note": "当前 GitHub Pages 版本用静态快照展示状态，并提供飞书入口；后续要在网页内直接看数据，需要后端代前端安全读取飞书。"
+  },
+  "resources": [
+    {
+      "name": "爆款视频脚本收集表",
+      "type": "table",
+      "count": 55,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+    },
+    {
+      "name": "开头钩子收集",
+      "type": "table",
+      "count": 54,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+    },
+    {
+      "name": "中间叙事逻辑收集",
+      "type": "table",
+      "count": 56,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+    },
+    {
+      "name": "内容周测试计划表",
+      "type": "table",
+      "count": 2,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+    },
+    {
+      "name": "内容周复盘表",
+      "type": "table",
+      "count": 2,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+    },
+    {
+      "name": "钩子库",
+      "type": "table",
+      "count": 600,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+    },
+    {
+      "name": "卖点库",
+      "type": "table",
+      "count": 44,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+    },
+    {
+      "name": "痛点库",
+      "type": "table",
+      "count": 31,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+    },
+    {
+      "name": "选题库",
+      "type": "table",
+      "count": 5,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+    },
+    {
+      "name": "卖点可视化库",
+      "type": "table",
+      "count": 5,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+    },
+    {
+      "name": "高光帧库",
+      "type": "table",
+      "count": 5,
+      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+    },
+    {
+      "name": "音乐库收集文档",
+      "type": "docx",
+      "count": null,
+      "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+    }
+  ],
+  "detailPages": {
+    "module/source": {
+      "task": "把外部爆款和账号数据收进内容工厂，保证后续拆解有来源。",
+      "resources": [
+        {
+          "name": "爆款视频脚本收集表",
+          "type": "table",
+          "count": 55,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+        },
+        {
+          "name": "视频数据-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+        },
+        {
+          "name": "视频数据-美区",
+          "type": "table",
+          "count": 34,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+        },
+        {
+          "name": "达人精灵数据下载-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
+        },
+        {
+          "name": "达人精灵数据下载-美区",
+          "type": "table",
+          "count": 40,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+        }
+      ],
+      "tutorial": [
+        "打开爆款视频脚本收集表，先新增或检查来源视频。",
+        "补齐类目、内容载体、视频目的、痛点、卖点、钩子和叙事逻辑。",
+        "值得复用的视频再进入开头钩子收集或中间叙事逻辑收集。"
+      ],
+      "requiredFields": [
+        "视频链接",
+        "内容载体",
+        "脚本类型",
+        "视频目的",
+        "痛点",
+        "卖点",
+        "钩子",
+        "叙事逻辑"
+      ],
+      "acceptance": [
+        "每条样本能回到来源。",
+        "至少能判断它适合拆钩子、叙事、卖点还是选题。",
+        "不把未确认来源的视频当作可复用结论。"
+      ],
+      "mistakes": [
+        "只粘链接不写为什么值得拆。",
+        "把账号数据和爆款脚本混在一起不分类。",
+        "没有来源证据就写结论。"
+      ]
+    },
+    "module/deconstruct": {
+      "task": "把爆款拆成可复用的钩子、痛点、卖点、叙事和画面零件。",
+      "resources": [
+        {
+          "name": "开头钩子收集",
+          "type": "table",
+          "count": 54,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+        },
+        {
+          "name": "中间叙事逻辑收集",
+          "type": "table",
+          "count": 56,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+        },
+        {
+          "name": "爆款视频脚本收集表",
+          "type": "table",
+          "count": 55,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+        }
+      ],
+      "tutorial": [
+        "先打开爆款主表确认来源。",
+        "拆前 3 秒，写清钩子类型、画面和停留理由。",
+        "拆中段，写清产品如何进入、证据如何推进。"
+      ],
+      "requiredFields": [
+        "关联爆款视频",
+        "钩子类型",
+        "钩子描述分析",
+        "视频画面分析",
+        "视频切片",
+        "中间叙事类型"
+      ],
+      "acceptance": [
+        "每条拆解都能关联回爆款。",
+        "钩子和叙事不是摘抄，而是可复用模板。",
+        "能明确推荐进入哪一个库。"
+      ],
+      "mistakes": [
+        "只翻译文案，不分析为什么有效。",
+        "没有视频切片或画面证据。",
+        "拆完不回流到六库。"
+      ]
+    },
+    "module/libraries": {
+      "task": "把灵感沉淀成六库弹药，让新人写脚本时能直接选。",
+      "resources": [
+        {
+          "name": "钩子库",
+          "type": "table",
+          "count": 600,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+        },
+        {
+          "name": "卖点库",
+          "type": "table",
+          "count": 44,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+        },
+        {
+          "name": "痛点库",
+          "type": "table",
+          "count": 31,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+        },
+        {
+          "name": "选题库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+        },
+        {
+          "name": "卖点可视化库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+        },
+        {
+          "name": "高光帧库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+        },
+        {
+          "name": "音乐库收集文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+        }
+      ],
+      "tutorial": [
+        "先确定要补的是人群、钩子、卖点、场景、素材还是 BGM。",
+        "新增内容必须标来源、适用条件和可使用方式。",
+        "被脚本或成品使用后，补回使用记录和表现。"
+      ],
+      "requiredFields": [
+        "分类",
+        "表达",
+        "来源",
+        "适用条件",
+        "使用记录",
+        "数据反馈"
+      ],
+      "acceptance": [
+        "库项能被新人直接拿去写脚本或找素材。",
+        "能说明适合什么人群、场景或段落。",
+        "后续能追踪是否被使用过。"
+      ],
+      "mistakes": [
+        "把灵感当库存，没有来源和适用条件。",
+        "同类表达重复堆积。",
+        "只补数量，不补能否使用。"
+      ]
+    },
+    "module/script": {
+      "task": "把人群、钩子、卖点、场景组合成可拍脚本，并进入周测计划。",
+      "resources": [
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        },
+        {
+          "name": "选题库｜文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/LfyGdHsJMoklKvx9elRcouCin4c"
+        },
+        {
+          "name": "美式UGC｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+        },
+        {
+          "name": "英式UGC｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+        },
+        {
+          "name": "美式品牌｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+        },
+        {
+          "name": "英式品牌｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+        }
+      ],
+      "tutorial": [
+        "打开内容周测试计划表，确认本周只测一个核心变量。",
+        "从人群/痛点库选痛点，再从钩子库选前 3 秒。",
+        "用卖点库和场景库补中段证据，写到对应脚本文档。"
+      ],
+      "requiredFields": [
+        "测试计划",
+        "测试目的",
+        "核心测试变量",
+        "测试产品",
+        "测试站点",
+        "计划脚本数量",
+        "生产状态"
+      ],
+      "acceptance": [
+        "一条计划只对应一个核心假设。",
+        "脚本能说明测什么、发哪里、用什么素材。",
+        "写完后能进入发布排期。"
+      ],
+      "mistakes": [
+        "一条记录塞多个测试想法。",
+        "脚本没有绑定周测计划。",
+        "开头测钩子，中段却讲另一个卖点。"
+      ]
+    },
+    "module/publish": {
+      "task": "把脚本、素材、账号、发布时间和视频数据连接起来。",
+      "resources": [
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        },
+        {
+          "name": "视频数据-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+        },
+        {
+          "name": "视频数据-美区",
+          "type": "table",
+          "count": 34,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+        },
+        {
+          "name": "商品点击数据-英区",
+          "type": "table",
+          "count": 6,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+        },
+        {
+          "name": "商品点击数据-美区",
+          "type": "table",
+          "count": 11,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+        }
+      ],
+      "tutorial": [
+        "先在周测试计划表确认计划发布数和发布账号。",
+        "发布后把对应视频数据回填到英区或美区视频数据表。",
+        "达到观察周期后把状态推进到可复盘。"
+      ],
+      "requiredFields": [
+        "发布账号",
+        "计划发布视频数",
+        "已发布视频数",
+        "关联视频数据",
+        "生产状态",
+        "观察状态"
+      ],
+      "acceptance": [
+        "已发布视频数不为 0。",
+        "视频数据能关联回周测计划。",
+        "发布后有明确观察状态。"
+      ],
+      "mistakes": [
+        "视频发了但没有回填数据。",
+        "只看播放，不绑定商品点击。",
+        "账号、站点和计划不一致。"
+      ]
+    },
+    "module/review": {
+      "task": "把发布后的数据复盘成下一轮能用的结论，并回流六库。",
+      "resources": [
+        {
+          "name": "内容周复盘表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+        },
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        },
+        {
+          "name": "视频数据-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+        },
+        {
+          "name": "视频数据-美区",
+          "type": "table",
+          "count": 34,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+        },
+        {
+          "name": "商品点击数据-英区",
+          "type": "table",
+          "count": 6,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+        },
+        {
+          "name": "商品点击数据-美区",
+          "type": "table",
+          "count": 11,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+        }
+      ],
+      "tutorial": [
+        "打开内容周复盘表，先找到对应周测计划。",
+        "按 3 秒/5 秒、完播、点击和 GMV 判断钩子、结构和卖点。",
+        "写清做得好、做得不好、下周动作，并把有效表达回流到库。"
+      ],
+      "requiredFields": [
+        "本周测试计划",
+        "复盘状态",
+        "本周复盘结论",
+        "做得好的地方",
+        "做得不好的地方",
+        "下周优化动作"
+      ],
+      "acceptance": [
+        "复盘结论不是空话，能指向下一步动作。",
+        "结论能对应数据指标。",
+        "有效钩子、卖点或场景能回流到库。"
+      ],
+      "mistakes": [
+        "只写感觉，不写数据依据。",
+        "复盘后没有下周动作。",
+        "不把有效表达沉淀回库。"
+      ]
+    },
+    "library/audience-pain": {
+      "task": "用痛点和人群判断本周脚本到底写给谁。",
+      "resources": [
+        {
+          "name": "痛点库",
+          "type": "table",
+          "count": 31,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+        },
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        }
+      ],
+      "tutorial": [
+        "先选痛点分类和具体痛点标题。",
+        "补用户场景、情绪后果和可拍画面。",
+        "把选中的痛点写回周测计划。"
+      ],
+      "requiredFields": [
+        "痛点分类",
+        "痛点标题",
+        "用户场景",
+        "具体表现",
+        "情绪与后果",
+        "可拍画面",
+        "优先级"
+      ],
+      "acceptance": [
+        "新人能看出这个痛点适合哪个人群。",
+        "痛点能变成镜头或口播。",
+        "优先级清楚。"
+      ],
+      "mistakes": [
+        "痛点写得太泛。",
+        "只有产品功能，没有用户情绪。",
+        "没有可拍画面。"
+      ]
+    },
+    "library/hook": {
+      "task": "为视频前 3 秒选择有来源、有类型的开头表达。",
+      "resources": [
+        {
+          "name": "钩子库",
+          "type": "table",
+          "count": 600,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+        },
+        {
+          "name": "开头钩子收集",
+          "type": "table",
+          "count": 54,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+        }
+      ],
+      "tutorial": [
+        "先从钩子库按类型找表达。",
+        "再打开开头钩子收集，找有爆款证据的样本。",
+        "选中后记录到脚本或周测计划，后续回填表现。"
+      ],
+      "requiredFields": [
+        "钩子类型",
+        "原文",
+        "翻译",
+        "关联爆款视频",
+        "钩子描述分析",
+        "视频切片"
+      ],
+      "acceptance": [
+        "钩子能在 3 秒内说清冲突或利益。",
+        "能说明适合什么人群或场景。",
+        "不是孤立灵感，有来源或使用记录。"
+      ],
+      "mistakes": [
+        "只堆金句，不标类型。",
+        "钩子和产品中段接不上。",
+        "没有使用次数和 CTR 回流。"
+      ]
+    },
+    "library/selling": {
+      "task": "把产品事实转成用户听得懂、能拍出来的卖点表达。",
+      "resources": [
+        {
+          "name": "卖点库",
+          "type": "table",
+          "count": 44,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+        },
+        {
+          "name": "卖点可视化库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+        }
+      ],
+      "tutorial": [
+        "先选一级/二级卖点。",
+        "确认产品事实，再写用户收益。",
+        "给卖点绑定证明方式和可拍画面。"
+      ],
+      "requiredFields": [
+        "一级卖点",
+        "二级卖点",
+        "卖点标题",
+        "产品事实",
+        "用户收益",
+        "证明方式与可拍画面",
+        "适用型号"
+      ],
+      "acceptance": [
+        "卖点有产品事实支撑。",
+        "用户收益具体。",
+        "能转成镜头或对比画面。"
+      ],
+      "mistakes": [
+        "只写参数，不写收益。",
+        "夸大产品能力。",
+        "没有证明方式。"
+      ]
+    },
+    "library/scene": {
+      "task": "用场景和高光帧决定脚本里的画面证据。",
+      "resources": [
+        {
+          "name": "高光帧库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+        },
+        {
+          "name": "卖点可视化库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+        },
+        {
+          "name": "爆款视频脚本收集表",
+          "type": "table",
+          "count": 55,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+        }
+      ],
+      "tutorial": [
+        "先打开高光帧库找可直接参考的画面。",
+        "再用卖点可视化库确认这个画面证明哪个卖点。",
+        "没有合适画面就写入拍摄缺口。"
+      ],
+      "requiredFields": [
+        "文本",
+        "附件",
+        "场景类型",
+        "适用卖点",
+        "可拍画面",
+        "使用记录"
+      ],
+      "acceptance": [
+        "画面服务钩子或卖点。",
+        "能判断适合脚本哪个段落。",
+        "缺素材时能形成拍摄清单。"
+      ],
+      "mistakes": [
+        "只选好看的画面，不服务卖点。",
+        "场景没有类型。",
+        "拍完不回填。"
+      ]
+    },
+    "library/material": {
+      "task": "判断脚本能不能用现有素材完成，缺什么镜头。",
+      "resources": [
+        {
+          "name": "高光帧库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+        },
+        {
+          "name": "卖点可视化库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+        },
+        {
+          "name": "文案-青木｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/Drtidv9pHoAYxyxVwi0cJRCgnie"
+        }
+      ],
+      "tutorial": [
+        "脚本写完后逐段查素材。",
+        "能用的镜头绑定到脚本段落。",
+        "找不到的镜头写进待拍清单。"
+      ],
+      "requiredFields": [
+        "素材用途",
+        "对应脚本段落",
+        "对应卖点",
+        "可直接使用",
+        "待补镜头"
+      ],
+      "acceptance": [
+        "每个脚本段落都有素材或缺口。",
+        "素材用途明确。",
+        "拍摄/剪辑能直接接手。"
+      ],
+      "mistakes": [
+        "写完脚本才临时找素材。",
+        "用不匹配镜头硬凑。",
+        "缺口没有沉淀。"
+      ]
+    },
+    "library/bgm": {
+      "task": "为剪辑选择有来源、有适用段落的音乐资产。",
+      "resources": [
+        {
+          "name": "音乐库收集文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+        }
+      ],
+      "tutorial": [
+        "打开音乐库收集文档，按情绪和节奏找候选。",
+        "确认来源、版本和适合画面。",
+        "使用后记录在哪条视频或哪类段落使用过。"
+      ],
+      "requiredFields": [
+        "曲名",
+        "来源",
+        "节奏",
+        "情绪",
+        "适合画面",
+        "适合段落",
+        "不可用场景",
+        "使用记录"
+      ],
+      "acceptance": [
+        "音乐来源清楚。",
+        "能说明适合哪类画面。",
+        "Original Sound 不清楚时不标完成。"
+      ],
+      "mistakes": [
+        "只凭歌名判断版本。",
+        "技术分析当成人工听审。",
+        "没有记录使用场景。"
+      ]
+    },
+    "workflow/source": {
+      "task": "按流程执行：把外部爆款和账号数据收进内容工厂，保证后续拆解有来源。",
+      "resources": [
+        {
+          "name": "爆款视频脚本收集表",
+          "type": "table",
+          "count": 55,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+        },
+        {
+          "name": "视频数据-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+        },
+        {
+          "name": "视频数据-美区",
+          "type": "table",
+          "count": 34,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+        },
+        {
+          "name": "达人精灵数据下载-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
+        },
+        {
+          "name": "达人精灵数据下载-美区",
+          "type": "table",
+          "count": 40,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+        }
+      ],
+      "tutorial": [
+        "打开爆款视频脚本收集表，先新增或检查来源视频。",
+        "补齐类目、内容载体、视频目的、痛点、卖点、钩子和叙事逻辑。",
+        "值得复用的视频再进入开头钩子收集或中间叙事逻辑收集。"
+      ],
+      "requiredFields": [
+        "视频链接",
+        "内容载体",
+        "脚本类型",
+        "视频目的",
+        "痛点",
+        "卖点",
+        "钩子",
+        "叙事逻辑"
+      ],
+      "acceptance": [
+        "每条样本能回到来源。",
+        "至少能判断它适合拆钩子、叙事、卖点还是选题。",
+        "不把未确认来源的视频当作可复用结论。"
+      ],
+      "mistakes": [
+        "只粘链接不写为什么值得拆。",
+        "把账号数据和爆款脚本混在一起不分类。",
+        "没有来源证据就写结论。"
+      ]
+    },
+    "workflow/deconstruct": {
+      "task": "按流程执行：把爆款拆成可复用的钩子、痛点、卖点、叙事和画面零件。",
+      "resources": [
+        {
+          "name": "开头钩子收集",
+          "type": "table",
+          "count": 54,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+        },
+        {
+          "name": "中间叙事逻辑收集",
+          "type": "table",
+          "count": 56,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+        },
+        {
+          "name": "爆款视频脚本收集表",
+          "type": "table",
+          "count": 55,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+        }
+      ],
+      "tutorial": [
+        "先打开爆款主表确认来源。",
+        "拆前 3 秒，写清钩子类型、画面和停留理由。",
+        "拆中段，写清产品如何进入、证据如何推进。"
+      ],
+      "requiredFields": [
+        "关联爆款视频",
+        "钩子类型",
+        "钩子描述分析",
+        "视频画面分析",
+        "视频切片",
+        "中间叙事类型"
+      ],
+      "acceptance": [
+        "每条拆解都能关联回爆款。",
+        "钩子和叙事不是摘抄，而是可复用模板。",
+        "能明确推荐进入哪一个库。"
+      ],
+      "mistakes": [
+        "只翻译文案，不分析为什么有效。",
+        "没有视频切片或画面证据。",
+        "拆完不回流到六库。"
+      ]
+    },
+    "workflow/library": {
+      "task": "按流程执行：把灵感沉淀成六库弹药，让新人写脚本时能直接选。",
+      "resources": [
+        {
+          "name": "钩子库",
+          "type": "table",
+          "count": 600,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+        },
+        {
+          "name": "卖点库",
+          "type": "table",
+          "count": 44,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+        },
+        {
+          "name": "痛点库",
+          "type": "table",
+          "count": 31,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+        },
+        {
+          "name": "选题库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+        },
+        {
+          "name": "卖点可视化库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+        },
+        {
+          "name": "高光帧库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+        },
+        {
+          "name": "音乐库收集文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+        }
+      ],
+      "tutorial": [
+        "先确定要补的是人群、钩子、卖点、场景、素材还是 BGM。",
+        "新增内容必须标来源、适用条件和可使用方式。",
+        "被脚本或成品使用后，补回使用记录和表现。"
+      ],
+      "requiredFields": [
+        "分类",
+        "表达",
+        "来源",
+        "适用条件",
+        "使用记录",
+        "数据反馈"
+      ],
+      "acceptance": [
+        "库项能被新人直接拿去写脚本或找素材。",
+        "能说明适合什么人群、场景或段落。",
+        "后续能追踪是否被使用过。"
+      ],
+      "mistakes": [
+        "把灵感当库存，没有来源和适用条件。",
+        "同类表达重复堆积。",
+        "只补数量，不补能否使用。"
+      ]
+    },
+    "workflow/plan": {
+      "task": "按流程执行：把人群、钩子、卖点、场景组合成可拍脚本，并进入周测计划。",
+      "resources": [
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        },
+        {
+          "name": "选题库｜文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/LfyGdHsJMoklKvx9elRcouCin4c"
+        },
+        {
+          "name": "美式UGC｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+        },
+        {
+          "name": "英式UGC｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+        },
+        {
+          "name": "美式品牌｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+        },
+        {
+          "name": "英式品牌｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+        }
+      ],
+      "tutorial": [
+        "打开内容周测试计划表，确认本周只测一个核心变量。",
+        "从人群/痛点库选痛点，再从钩子库选前 3 秒。",
+        "用卖点库和场景库补中段证据，写到对应脚本文档。"
+      ],
+      "requiredFields": [
+        "测试计划",
+        "测试目的",
+        "核心测试变量",
+        "测试产品",
+        "测试站点",
+        "计划脚本数量",
+        "生产状态"
+      ],
+      "acceptance": [
+        "一条计划只对应一个核心假设。",
+        "脚本能说明测什么、发哪里、用什么素材。",
+        "写完后能进入发布排期。"
+      ],
+      "mistakes": [
+        "一条记录塞多个测试想法。",
+        "脚本没有绑定周测计划。",
+        "开头测钩子，中段却讲另一个卖点。"
+      ]
+    },
+    "workflow/script": {
+      "task": "按流程执行：把人群、钩子、卖点、场景组合成可拍脚本，并进入周测计划。",
+      "resources": [
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        },
+        {
+          "name": "选题库｜文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/LfyGdHsJMoklKvx9elRcouCin4c"
+        },
+        {
+          "name": "美式UGC｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+        },
+        {
+          "name": "英式UGC｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+        },
+        {
+          "name": "美式品牌｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+        },
+        {
+          "name": "英式品牌｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+        }
+      ],
+      "tutorial": [
+        "打开内容周测试计划表，确认本周只测一个核心变量。",
+        "从人群/痛点库选痛点，再从钩子库选前 3 秒。",
+        "用卖点库和场景库补中段证据，写到对应脚本文档。"
+      ],
+      "requiredFields": [
+        "测试计划",
+        "测试目的",
+        "核心测试变量",
+        "测试产品",
+        "测试站点",
+        "计划脚本数量",
+        "生产状态"
+      ],
+      "acceptance": [
+        "一条计划只对应一个核心假设。",
+        "脚本能说明测什么、发哪里、用什么素材。",
+        "写完后能进入发布排期。"
+      ],
+      "mistakes": [
+        "一条记录塞多个测试想法。",
+        "脚本没有绑定周测计划。",
+        "开头测钩子，中段却讲另一个卖点。"
+      ]
+    },
+    "workflow/material": {
+      "task": "按流程执行：判断脚本能不能用现有素材完成，缺什么镜头。",
+      "resources": [
+        {
+          "name": "高光帧库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+        },
+        {
+          "name": "卖点可视化库",
+          "type": "table",
+          "count": 5,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+        },
+        {
+          "name": "文案-青木｜脚本文档",
+          "type": "docx",
+          "count": null,
+          "url": "https://ocndiw7o2tko.feishu.cn/docx/Drtidv9pHoAYxyxVwi0cJRCgnie"
+        }
+      ],
+      "tutorial": [
+        "脚本写完后逐段查素材。",
+        "能用的镜头绑定到脚本段落。",
+        "找不到的镜头写进待拍清单。"
+      ],
+      "requiredFields": [
+        "素材用途",
+        "对应脚本段落",
+        "对应卖点",
+        "可直接使用",
+        "待补镜头"
+      ],
+      "acceptance": [
+        "每个脚本段落都有素材或缺口。",
+        "素材用途明确。",
+        "拍摄/剪辑能直接接手。"
+      ],
+      "mistakes": [
+        "写完脚本才临时找素材。",
+        "用不匹配镜头硬凑。",
+        "缺口没有沉淀。"
+      ]
+    },
+    "workflow/publish": {
+      "task": "按流程执行：把脚本、素材、账号、发布时间和视频数据连接起来。",
+      "resources": [
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        },
+        {
+          "name": "视频数据-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+        },
+        {
+          "name": "视频数据-美区",
+          "type": "table",
+          "count": 34,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+        },
+        {
+          "name": "商品点击数据-英区",
+          "type": "table",
+          "count": 6,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+        },
+        {
+          "name": "商品点击数据-美区",
+          "type": "table",
+          "count": 11,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+        }
+      ],
+      "tutorial": [
+        "先在周测试计划表确认计划发布数和发布账号。",
+        "发布后把对应视频数据回填到英区或美区视频数据表。",
+        "达到观察周期后把状态推进到可复盘。"
+      ],
+      "requiredFields": [
+        "发布账号",
+        "计划发布视频数",
+        "已发布视频数",
+        "关联视频数据",
+        "生产状态",
+        "观察状态"
+      ],
+      "acceptance": [
+        "已发布视频数不为 0。",
+        "视频数据能关联回周测计划。",
+        "发布后有明确观察状态。"
+      ],
+      "mistakes": [
+        "视频发了但没有回填数据。",
+        "只看播放，不绑定商品点击。",
+        "账号、站点和计划不一致。"
+      ]
+    },
+    "workflow/review": {
+      "task": "按流程执行：把发布后的数据复盘成下一轮能用的结论，并回流六库。",
+      "resources": [
+        {
+          "name": "内容周复盘表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+        },
+        {
+          "name": "内容周测试计划表",
+          "type": "table",
+          "count": 2,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+        },
+        {
+          "name": "视频数据-英区",
+          "type": "table",
+          "count": 33,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+        },
+        {
+          "name": "视频数据-美区",
+          "type": "table",
+          "count": 34,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+        },
+        {
+          "name": "商品点击数据-英区",
+          "type": "table",
+          "count": 6,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+        },
+        {
+          "name": "商品点击数据-美区",
+          "type": "table",
+          "count": 11,
+          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+        }
+      ],
+      "tutorial": [
+        "打开内容周复盘表，先找到对应周测计划。",
+        "按 3 秒/5 秒、完播、点击和 GMV 判断钩子、结构和卖点。",
+        "写清做得好、做得不好、下周动作，并把有效表达回流到库。"
+      ],
+      "requiredFields": [
+        "本周测试计划",
+        "复盘状态",
+        "本周复盘结论",
+        "做得好的地方",
+        "做得不好的地方",
+        "下周优化动作"
+      ],
+      "acceptance": [
+        "复盘结论不是空话，能指向下一步动作。",
+        "结论能对应数据指标。",
+        "有效钩子、卖点或场景能回流到库。"
+      ],
+      "mistakes": [
+        "只写感觉，不写数据依据。",
+        "复盘后没有下周动作。",
+        "不把有效表达沉淀回库。"
+      ]
+    }
   },
   "libraries": {
     "audience-pain": {
