@@ -683,7 +683,7 @@ function resourceMarkup(resources) {
         <${tag} class="resource-link${hasUrl ? "" : " is-disabled"}"${attrs}>
           <span class="resource-meta">${escapeHtml(resource.type)}${resource.count == null ? "" : ` / ${resource.count} 条`}</span>
           <strong>${escapeHtml(resource.name)}</strong>
-          <em>${hasUrl ? "打开飞书" : "登录后显示"}</em>
+          <em>${hasUrl ? "打开飞书" : "暂无入口"}</em>
         </${tag}>
       `;
       }).join("")}

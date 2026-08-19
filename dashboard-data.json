@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T15:48:38+08:00",
+  "generatedAt": "2026-08-19T16:02:00+08:00",
   "source": {
     "name": "Tiktok内容工厂",
     "mode": "sanitized-static-snapshot",
@@ -15,8 +15,8 @@
     "weeklyPlans": 2,
     "pendingPublish": 2,
     "pendingReview": 2,
-    "todayAdded": 2,
-    "weekTotal": 81,
+    "todayAdded": 4,
+    "weekTotal": 83,
     "trackedSegments": 9,
     "blockedSegments": 2
   },
@@ -287,31 +287,31 @@
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
         }
       ],
       "tutorial": [
@@ -935,31 +935,31 @@
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
         }
       ],
       "tutorial": [
@@ -1000,31 +1000,31 @@
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": ""
+          "url": "https://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
         }
       ],
       "tutorial": [
@@ -1333,9 +1333,9 @@
       "date": "2026-08-19 00:00:00",
       "week": "2026-W34",
       "segment": "爆款样本新增",
-      "todayAdded": 1,
-      "todayDone": 1,
-      "weekTotal": 4,
+      "todayAdded": 3,
+      "todayDone": 3,
+      "weekTotal": 6,
       "sourceTable": "爆款视频脚本收集表",
       "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c",
       "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。",
@@ -1485,9 +1485,9 @@
       "target": "source",
       "segment": "爆款样本新增",
       "title": "爆款样本新增",
-      "status": "今日 1 / 本周 4",
-      "progress": 51,
-      "evidence": "爆款视频脚本收集表：今日新增 1，今日完成 1，本周累计 4。",
+      "status": "今日 3 / 本周 6",
+      "progress": 59,
+      "evidence": "爆款视频脚本收集表：今日新增 3，今日完成 3，本周累计 6。",
       "blocker": "暂无明确卡点。",
       "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
       "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。"
@@ -1586,9 +1586,9 @@
       "target": "source",
       "segment": "爆款样本新增",
       "title": "爆款样本新增",
-      "status": "今日 1 / 本周 4",
-      "progress": 51,
-      "evidence": "爆款视频脚本收集表：今日新增 1，今日完成 1，本周累计 4。",
+      "status": "今日 3 / 本周 6",
+      "progress": 59,
+      "evidence": "爆款视频脚本收集表：今日新增 3，今日完成 3，本周累计 6。",
       "blocker": "暂无明确卡点。",
       "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
       "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。"
