@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>内容工厂总控台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="内容工厂导航">
+      <div class="brand-block">
+        <div class="brand-mark">C</div>
+        <div>
+          <p class="eyebrow">CONTROL</p>
+          <h1>内容工厂总控台</h1>
+        </div>
+      </div>
+
+      <nav id="controlNav" class="module-nav"></nav>
+    </aside>
+
+    <main class="workspace">
+      <section class="topbar" aria-label="工作台总览">
+        <div>
+          <p class="eyebrow">2026-08-19 / 流程化原型</p>
+          <h2>把 Codex 记录和飞书表格变成可推进的内容生产闭环</h2>
+          <p class="top-summary">保留总控台视角：上面看本周战况，中间推流程，右边告诉今天先做什么。当前主数据源统一放在 TikTok 内容工厂；旧表只作为历史资产或待迁移底座。</p>
+        </div>
+        <div class="top-actions">
+          <button id="focusGaps" class="icon-button" type="button" title="只看阻塞和待补">
+            <span aria-hidden="true">!</span>
+            <span>阻塞</span>
+          </button>
+          <button id="showAll" class="icon-button" type="button" title="显示全部板块">
+            <span aria-hidden="true">#</span>
+            <span>全部</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="overview-grid" aria-label="内容工厂指标">
+        <article class="metric-card">
+          <span class="metric-label">TikTok 内容工厂</span>
+          <strong id="tableAssetCount">0</strong>
+          <small>当前主工作台，不再以青木工作台为主源</small>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">可用素材底座</span>
+          <strong id="materialCount">0</strong>
+          <small>素材分类、镜头片段、默认镜头索引</small>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">生产闭环步骤</span>
+          <strong id="stepCount">8</strong>
+          <small>从收集到复盘回流</small>
+        </article>
+        <article class="metric-card attention">
+          <span class="metric-label">待补/阻塞</span>
+          <strong id="gapCount">0</strong>
+          <small>空表、缺关联、缺来源线索</small>
+        </article>
+      </section>
+
+      <section class="hero-grid" aria-label="生产流程与六库概览">
+        <section class="flow-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Production Flow</p>
+              <h3>内容从哪里来，到哪里闭环</h3>
+            </div>
+          </div>
+          <div id="workflowSteps" class="workflow-steps"></div>
+        </section>
+
+        <section class="library-snapshot">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Library Ammo</p>
+              <h3>六库弹药状态</h3>
+            </div>
+          </div>
+          <div id="snapshotGrid" class="snapshot-grid"></div>
+        </section>
+      </section>
+
+      <section class="layout-grid">
+        <div class="module-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Command Board</p>
+              <h3>内容工厂核心板块</h3>
+            </div>
+            <div id="statusFilters" class="segmented-control" aria-label="板块状态筛选"></div>
+          </div>
+          <div id="moduleGrid" class="module-grid"></div>
+        </div>
+
+        <aside class="right-rail" aria-label="今日动作和补库缺口">
+          <section class="rail-section">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">Today</p>
+                <h3>今天先推 3 件事</h3>
+              </div>
+            </div>
+            <ol id="todayActions" class="priority-list"></ol>
+          </section>
+
+          <section class="rail-section">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">Gaps</p>
+                <h3>待补库 / 待补证据</h3>
+              </div>
+            </div>
+            <div id="gapList" class="decision-list"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <template id="moduleCardTemplate">
+    <article class="command-card">
+      <header>
+        <div class="module-icon" aria-hidden="true"></div>
+        <div>
+          <p class="module-label"></p>
+          <h4></h4>
+        </div>
+        <span class="status-pill"></span>
+      </header>
+      <div class="card-body">
+        <div class="field-block">
+          <span>职责</span>
+          <p class="role"></p>
+        </div>
+        <div class="field-block">
+          <span>当前证据</span>
+          <p class="evidence"></p>
+        </div>
+        <div class="field-block split">
+          <div>
+            <span>下一步动作</span>
+            <p class="next"></p>
+          </div>
+          <div>
+            <span>连接到哪些库/表</span>
+            <p class="links"></p>
+          </div>
+        </div>
+        <div class="field-block warning">
+          <span>主要缺口</span>
+          <p class="gap"></p>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
