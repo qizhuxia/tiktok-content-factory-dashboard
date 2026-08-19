@@ -286,9 +286,19 @@ const statusMeta = {
 const filters = ["全部", "进行中", "部分可用", "需要补库", "需要补数据", "需要补素材", "待建立"];
 let currentFilter = "全部";
 let dashboardData = null;
+let authState = {
+  configured: false,
+  authenticated: false,
+  user: null,
+  mode: "snapshot"
+};
+let detailCache = {};
 
 const overviewView = document.querySelector("#overviewView");
 const detailView = document.querySelector("#detailView");
+const authGate = document.querySelector("#authGate");
+const authButton = document.querySelector("#authButton");
+const authGateButton = document.querySelector("#authGateButton");
 const controlNav = document.querySelector("#controlNav");
 const moduleGrid = document.querySelector("#moduleGrid");
 const snapshotGrid = document.querySelector("#snapshotGrid");
@@ -296,6 +306,38 @@ const workflowStepsEl = document.querySelector("#workflowSteps");
 const statusFilters = document.querySelector("#statusFilters");
 const snapshotStatus = document.querySelector("#snapshotStatus");
 const template = document.querySelector("#moduleCardTemplate");
+
+const runtimeConfig = window.CONTENT_FACTORY_CONFIG || {};
+const configuredApiBase = runtimeConfig.apiBaseUrl === "same-origin"
+  ? window.location.origin
+  : String(runtimeConfig.apiBaseUrl || "");
+const apiBaseUrl = (configuredApiBase || (window.location.hostname.endsWith(".vercel.app") ? window.location.origin : "")).replace(/\/$/, "");
+authState.configured = Boolean(apiBaseUrl);
+
+function apiUrl(path) {
+  return `${apiBaseUrl}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+async function fetchJson(path, options = {}) {
+  const response = await fetch(apiUrl(path), {
+    credentials: "include",
+    cache: "no-store",
+    ...options
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload.ok === false) {
+    const error = new Error(payload.error || `request ${response.status}`);
+    error.status = response.status;
+    error.payload = payload;
+    throw error;
+  }
+  return payload;
+}
+
+function setSnapshotMode(reason) {
+  authState.mode = "snapshot";
+  if (reason) console.warn("Realtime API unavailable, using snapshot mode.", reason);
+}
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -341,7 +383,7 @@ function getDetailKey(type, id) {
 }
 
 function getSnapshotDetail(type, id) {
-  return dashboardData?.detailPages?.[getDetailKey(type, id)] || null;
+  return detailCache[getDetailKey(type, id)] || dashboardData?.detailPages?.[getDetailKey(type, id)] || null;
 }
 
 function getSnapshotLibrary(item) {
@@ -386,16 +428,61 @@ function renderMetrics() {
   document.querySelector("#gapCount").textContent = metrics?.weakOrBlocked ?? gaps.length;
 
   if (snapshotStatus) {
-    if (dashboardData) {
+    if (authState.configured && !authState.authenticated) {
+      snapshotStatus.textContent = "已配置实时后端 / 等待飞书登录";
+      snapshotStatus.classList.remove("loaded");
+      snapshotStatus.classList.add("locked");
+    } else if (dashboardData) {
       const generatedAt = formatGeneratedAt(dashboardData.generatedAt);
       const extra = generatedAt ? ` / 快照 ${generatedAt}` : "";
-      snapshotStatus.textContent = `${dashboardData.source?.name || "TikTok 内容工厂"} / ${dashboardData.source?.mode || "静态快照"}${extra}`;
+      const modeLabel = authState.mode === "live" ? "实时只读" : "快照模式";
+      snapshotStatus.textContent = `${dashboardData.source?.name || "TikTok 内容工厂"} / ${modeLabel}${extra}`;
       snapshotStatus.classList.add("loaded");
+      snapshotStatus.classList.remove("locked");
     } else {
       snapshotStatus.textContent = "静态默认数据，等待快照加载";
       snapshotStatus.classList.remove("loaded");
+      snapshotStatus.classList.remove("locked");
     }
   }
+}
+
+function renderAuthControls() {
+  if (!authButton || !authGate || !authGateButton) return;
+
+  const loginUrl = apiUrl(runtimeConfig.loginPath || "/api/auth/login");
+  const logoutUrl = apiUrl(runtimeConfig.logoutPath || "/api/auth/logout");
+
+  if (!authState.configured) {
+    authButton.hidden = true;
+    authGate.hidden = true;
+    return;
+  }
+
+  authButton.hidden = false;
+  authButton.querySelector("span:last-child").textContent = authState.authenticated
+    ? `${authState.user?.name || "已登录"} / 退出`
+    : "飞书登录";
+  authButton.onclick = async () => {
+    if (!authState.authenticated) {
+      window.location.href = loginUrl;
+      return;
+    }
+    try {
+      await fetchJson(runtimeConfig.logoutPath || "/api/auth/logout");
+    } catch (error) {
+      console.warn("logout request failed", error);
+    }
+    authState.authenticated = false;
+    authState.user = null;
+    dashboardData = null;
+    await loadSnapshotData("logout");
+    routeFromHash();
+  };
+
+  authGateButton.onclick = () => {
+    window.location.href = loginUrl;
+  };
 }
 
 function renderFilters() {
@@ -550,6 +637,7 @@ function renderGaps() {
 }
 
 function renderOverview() {
+  renderAuthControls();
   renderMetrics();
   renderFilters();
   renderNav();
@@ -560,7 +648,7 @@ function renderOverview() {
   renderGaps();
 }
 
-function renderDetail(type, id) {
+function renderDetail(type, id, options = {}) {
   const item = findDetail(type, id);
   if (!item) {
     window.location.hash = "";
@@ -646,9 +734,34 @@ function renderDetail(type, id) {
     routeFromHash();
   });
   window.scrollTo({ top: 0, behavior: "smooth" });
+  if (!options.skipRefresh) refreshLiveDetail(type, id);
+}
+
+async function refreshLiveDetail(type, id) {
+  if (!authState.configured || !authState.authenticated || authState.mode !== "live") return;
+  const key = getDetailKey(type, id);
+  try {
+    const payload = await fetchJson(`/api/detail?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`);
+    if (!payload.detail) return;
+    detailCache[key] = payload.detail;
+    const hash = window.location.hash.replace(/^#/, "");
+    if (hash === key) renderDetail(type, id, { skipRefresh: true });
+  } catch (error) {
+    console.warn("live detail unavailable", error);
+  }
 }
 
 function routeFromHash() {
+  renderAuthControls();
+  if (authState.configured && !authState.authenticated) {
+    authGate.hidden = false;
+    overviewView.hidden = true;
+    detailView.hidden = true;
+    renderMetrics();
+    return;
+  }
+  authGate.hidden = true;
+
   const hash = window.location.hash.replace(/^#/, "");
   const [type, id] = hash.split("/");
   if (!type || !id) {
@@ -677,14 +790,51 @@ document.querySelector("#showAll").addEventListener("click", () => {
   renderOverview();
 });
 
-async function loadDashboardData() {
+async function checkSession() {
+  if (!authState.configured) return;
+  try {
+    const payload = await fetchJson("/api/session");
+    authState.authenticated = Boolean(payload.authenticated);
+    authState.user = payload.user || null;
+  } catch (error) {
+    authState.authenticated = false;
+    authState.user = null;
+    setSnapshotMode(error);
+  }
+}
+
+async function loadRealtimeDashboard() {
+  if (!authState.configured || !authState.authenticated) return false;
+  try {
+    const payload = await fetchJson("/api/dashboard");
+    if (!payload.dashboard) throw new Error("dashboard payload missing");
+    dashboardData = payload.dashboard;
+    authState.mode = "live";
+    detailCache = {};
+    return true;
+  } catch (error) {
+    setSnapshotMode(error);
+    return false;
+  }
+}
+
+async function loadSnapshotData(reason) {
   try {
     const response = await fetch("dashboard-data.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`snapshot ${response.status}`);
     dashboardData = await response.json();
+    if (authState.mode !== "live") authState.mode = "snapshot";
   } catch (error) {
     dashboardData = null;
-    console.warn("dashboard-data.json unavailable, using static defaults.", error);
+    console.warn("dashboard-data.json unavailable, using static defaults.", reason || error);
+  }
+}
+
+async function loadDashboardData() {
+  await checkSession();
+  const hasLiveData = await loadRealtimeDashboard();
+  if (!hasLiveData && !(authState.configured && !authState.authenticated)) {
+    await loadSnapshotData("realtime unavailable");
   }
   routeFromHash();
 }

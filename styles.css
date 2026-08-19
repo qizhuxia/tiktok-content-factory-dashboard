@@ -191,6 +191,12 @@ button {
   border-color: #bde9d8;
 }
 
+.snapshot-status.locked {
+  color: #875612;
+  background: #fff7e8;
+  border-color: #f1d9a6;
+}
+
 .top-actions {
   display: flex;
   gap: 10px;
@@ -221,6 +227,56 @@ button {
   border-radius: 6px;
   background: var(--soft);
   font-weight: 800;
+}
+
+.auth-button {
+  min-width: 128px;
+}
+
+.primary-button {
+  min-height: 46px;
+  padding: 0 18px;
+  color: #fff;
+  background: #1c5fd0;
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: 0 14px 30px rgba(28, 95, 208, 0.18);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.primary-button:hover {
+  background: #174fae;
+}
+
+.auth-gate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+  padding: 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.auth-gate h3 {
+  margin: 4px 0 8px;
+  font-size: 24px;
+}
+
+.auth-gate p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.auth-gate[hidden] {
+  display: none;
 }
 
 .overview-grid {
@@ -975,9 +1031,14 @@ button {
   }
 
   .topbar,
-  .section-heading {
+  .section-heading,
+  .auth-gate {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .auth-gate .primary-button {
+    width: 100%;
   }
 
   .overview-grid,

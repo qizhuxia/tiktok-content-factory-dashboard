@@ -29,6 +29,10 @@
           <p id="snapshotStatus" class="snapshot-status">静态默认数据，等待快照加载</p>
         </div>
         <div class="top-actions">
+          <button id="authButton" class="icon-button auth-button" type="button" title="飞书登录">
+            <span aria-hidden="true">↗</span>
+            <span>飞书登录</span>
+          </button>
           <button id="focusGaps" class="icon-button" type="button" title="只看阻塞和待补">
             <span aria-hidden="true">!</span>
             <span>阻塞</span>
@@ -38,6 +42,15 @@
             <span>全部</span>
           </button>
         </div>
+      </section>
+
+      <section id="authGate" class="auth-gate" hidden aria-label="飞书登录">
+        <div>
+          <p class="eyebrow">Feishu Login</p>
+          <h3>登录后读取 TikTok 内容工厂实时数据</h3>
+          <p>未登录时不展示实时数据。登录后，后端只读飞书多维表格并返回脱敏统计；前端不会接触飞书 token。</p>
+        </div>
+        <button id="authGateButton" class="primary-button" type="button">用飞书登录</button>
       </section>
 
       <div id="overviewView">
@@ -163,6 +176,7 @@
     </article>
   </template>
 
+  <script src="config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

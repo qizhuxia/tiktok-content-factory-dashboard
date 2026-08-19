@@ -2,5 +2,8 @@
 Thumbs.db
 *.log
 node_modules/
+.env
+.env.local
+.vercel/
 local-*.png
 deployed-*.png
