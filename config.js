@@ -1,5 +1,5 @@
 window.CONTENT_FACTORY_CONFIG = {
-  apiBaseUrl: "https://tiktok-content-factory-dashboard-si.vercel.app",
+  apiBaseUrl: "",
   loginPath: "/api/auth/login",
   logoutPath: "/api/auth/logout"
 };
