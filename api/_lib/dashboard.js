@@ -72,6 +72,62 @@ function buildTodayActions(resources) {
   ];
 }
 
+function buildWeeklyProgress(resources) {
+  const viral = countResources(resources, SOURCE_TABLES);
+  const dataReturn = countResources(resources, DATA_TABLES);
+  const weeklyPlans = countResources(resources, PLAN_TABLES);
+  const reviews = countResources(resources, REVIEW_TABLES);
+  const libraryAssets = countResources(resources, LIBRARY_TABLES);
+
+  return [
+    {
+      target: "source",
+      title: "爆款样本与拆解入口",
+      status: viral ? "推进中" : "待补样本",
+      progress: viral ? 60 : 10,
+      evidence: `可读爆款/拆解记录合计 ${viral} 条。`,
+      blocker: "新增样本必须保留来源，并稳定拆到钩子、叙事和卖点。",
+      next: "本周优先补新增爆款样本的拆解完整度。"
+    },
+    {
+      target: "script",
+      title: "周测计划到脚本生产",
+      status: weeklyPlans ? "推进中" : "待建立",
+      progress: weeklyPlans ? 45 : 10,
+      evidence: `可读周测计划 ${weeklyPlans} 条。`,
+      blocker: "脚本、素材、账号、发布时间要回到同一条周测计划。",
+      next: "逐条检查本周计划的生产状态和发布状态。"
+    },
+    {
+      target: "data",
+      title: "发布后数据回流",
+      status: dataReturn ? "推进中" : "待回流",
+      progress: dataReturn ? 50 : 10,
+      evidence: `可读视频数据/达人精灵/商品点击记录合计 ${dataReturn} 条。`,
+      blocker: "数据回流必须绑定周测计划，不能混进爆款收集。",
+      next: "统一检查英区/美区数据回流是否关联到本周计划。"
+    },
+    {
+      target: "review",
+      title: "复盘结论与六库反哺",
+      status: reviews ? "待补结论" : "待建立",
+      progress: reviews ? 30 : 10,
+      evidence: `可读复盘记录 ${reviews} 条。`,
+      blocker: "没有复盘结论时，六库无法判断哪类资产有效。",
+      next: "按观察周期补本周结论和下周动作。"
+    },
+    {
+      target: "libraries",
+      title: "六库有效性回查",
+      status: libraryAssets ? "需要补数据" : "待补库",
+      progress: libraryAssets ? 40 : 10,
+      evidence: `可读六库资产 ${libraryAssets} 条。`,
+      blocker: "库资产需要关联来源、周测计划、使用记录和发布后表现。",
+      next: "先补使用记录和表现字段，再做库资产优先级。"
+    }
+  ];
+}
+
 function buildLiveDashboard(userAccessToken) {
   return getTableSnapshots(userAccessToken).then((resources) => {
     const snapshot = readSnapshot();
@@ -120,6 +176,7 @@ function buildLiveDashboard(userAccessToken) {
       resources: sanitizedResources,
       libraries: buildLibraries(snapshot, sanitizedResources),
       todayActions: buildTodayActions(sanitizedResources),
+      weeklyProgress: buildWeeklyProgress(sanitizedResources),
       detailPages
     };
   });

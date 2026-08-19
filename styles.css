@@ -900,6 +900,83 @@ button {
   line-height: 1.7;
 }
 
+.progress-list {
+  display: grid;
+  gap: 12px;
+}
+
+.progress-item {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e4ebf2;
+  border-radius: var(--radius);
+}
+
+.progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.progress-head strong {
+  min-width: 0;
+  font-size: 15px;
+}
+
+.progress-head span {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 4px 8px;
+  color: #2255b9;
+  background: #e3ecff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: none;
+}
+
+.progress-track {
+  height: 8px;
+  overflow: hidden;
+  background: #e8eef5;
+  border-radius: 999px;
+}
+
+.progress-track i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #2f68d8, #168463);
+  border-radius: inherit;
+}
+
+.progress-item dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.progress-item dl div {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.progress-item dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.progress-item dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 .detail-card.warning {
   background: #fffaf1;
   border-color: #f1d9a6;

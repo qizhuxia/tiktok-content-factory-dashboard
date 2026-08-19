@@ -41,7 +41,7 @@ const factoryModules = [
     color: "#7550c8",
     title: "六库弹药系统",
     status: "需要补数据",
-    role: "把灵感变成库存，让新人写脚本时从库里选答案，而不是从零想。",
+    role: "把灵感变成库存，让脚本、素材、发布和复盘都能从库里拿可复用依据。",
     evidence: "钩子库、卖点库、痛点库已有可用内容；选题库、卖点可视化库、高光帧库仍偏轻。",
     next: "优先补关联字段和使用记录，让库资产能被周测、脚本和复盘证明有效。",
     links: ["人群/痛点库", "钩子库", "卖点库", "场景/高光帧库", "素材/镜头库", "BGM库"],
@@ -248,9 +248,9 @@ const workflowSteps = [
 ];
 
 const todayActions = [
-  { title: "先拆第一批爆款样本", detail: "从爆款视频脚本收集表开始，把父记录拆到钩子、痛点、卖点和叙事逻辑。" },
-  { title: "把本周周测绑定到一个人群", detail: "先不要多变量，把人群、脚本、素材、账号、发布时间连成一条线。" },
-  { title: "从素材库反查可拍镜头", detail: "先用库选，不够再标拍摄缺口。" }
+  { title: "检查本周周测发布进度", detail: "看内容周测试计划表里每条计划的脚本数、已发布数、观察状态和数据回流状态。" },
+  { title: "补发布后数据回流", detail: "视频数据、达人精灵、商品点击数据要回到同一条周测计划，不再混进爆款收集。" },
+  { title: "把复盘结论回到六库", detail: "本周有效钩子、卖点、场景和痛点要能沉淀成下一周可继续使用的库资产。" }
 ];
 
 const gaps = [
@@ -259,6 +259,63 @@ const gaps = [
   { title: "选题/可视化/高光帧库", detail: "字段还薄，暂时更像草稿库。" },
   { title: "BGM 来源不明项", detail: "Original Sound 一类没有作者、来源视频或音频样本时不能标完成。" },
   { title: "公开网页实时数据", detail: "GitHub Pages 不能安全直连飞书，需要后端或静态快照。" }
+];
+
+const weeklyProgress = [
+  {
+    target: "source",
+    title: "爆款样本与拆解入口",
+    status: "推进中",
+    progress: 60,
+    evidence: "已有爆款视频脚本收集、开头钩子收集、中间叙事逻辑收集三个入口。",
+    blocker: "新增样本还需要稳定补齐类目、人群、目的和父子关联。",
+    next: "本周优先补新增爆款样本的拆解完整度。"
+  },
+  {
+    target: "script",
+    title: "周测计划到脚本生产",
+    status: "待推进",
+    progress: 35,
+    evidence: "内容周测试计划表已有测试产品、站点、计划脚本数、生产状态字段。",
+    blocker: "部分计划仍停在待发布，脚本、素材、账号和发布时间没有完全连起来。",
+    next: "逐条检查本周计划：脚本是否完成、成片是否交付、发布时间是否明确。"
+  },
+  {
+    target: "publish",
+    title: "发布交付链路",
+    status: "需要补证据",
+    progress: 30,
+    evidence: "周测试计划已有发布账号、计划发布视频数、已发布视频数、关联视频数据字段。",
+    blocker: "发布记录和数据回流记录之间的关联还不够稳。",
+    next: "每条已发布内容必须回填到对应视频数据表。"
+  },
+  {
+    target: "data",
+    title: "发布后数据回流",
+    status: "推进中",
+    progress: 45,
+    evidence: "视频数据、达人精灵、商品点击数据已从爆款收集中拆出来，作为独立回流板块。",
+    blocker: "数据表和周测计划之间还缺更稳定的关联字段与回填节奏。",
+    next: "把英区/美区视频数据、达人精灵和商品点击数据统一绑定到周测计划。"
+  },
+  {
+    target: "review",
+    title: "复盘结论与六库反哺",
+    status: "待建立",
+    progress: 20,
+    evidence: "内容周复盘表已有复盘结论、做得好/不好、下周动作字段。",
+    blocker: "复盘内容偏空，暂时还不能反推哪类钩子、卖点、场景有效。",
+    next: "先按 T+1/T+3/T+7 或固定观察周期补复盘结论。"
+  },
+  {
+    target: "libraries",
+    title: "六库有效性回查",
+    status: "需要补数据",
+    progress: 40,
+    evidence: "钩子库、卖点库、痛点库已有库存，选题/可视化/高光帧库仍偏轻。",
+    blocker: "缺少从发布后数据回查库资产表现的闭环。",
+    next: "给库资产补使用记录、来源、关联周测计划和表现字段。"
+  }
 ];
 
 const navItems = [
@@ -356,6 +413,30 @@ function numberedMarkup(items) {
   return `<ol>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>`;
 }
 
+function progressMarkup(items) {
+  if (!items.length) return `<p>暂无本周推进项；等待飞书实时数据回流。</p>`;
+  return `
+    <div class="progress-list">
+      ${items.map((item) => `
+        <div class="progress-item">
+          <div class="progress-head">
+            <strong>${escapeHtml(item.title)}</strong>
+            <span>${escapeHtml(item.status)} / ${Number(item.progress || 0)}%</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <i style="width:${Math.max(0, Math.min(100, Number(item.progress || 0)))}%"></i>
+          </div>
+          <dl>
+            <div><dt>当前证据</dt><dd>${escapeHtml(item.evidence)}</dd></div>
+            <div><dt>卡点</dt><dd>${escapeHtml(item.blocker)}</dd></div>
+            <div><dt>下一步</dt><dd>${escapeHtml(item.next)}</dd></div>
+          </dl>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function resourceMarkup(resources) {
   if (!resources.length) return `<p>暂无可跳转入口。</p>`;
   return `
@@ -418,6 +499,17 @@ function buildFallbackDetail(type, item) {
     acceptance: ["能按当前步骤完成一次真实处理。", "关键字段不为空。", "处理结果能回到对应表或库。"],
     mistakes: ["只写结论不留证据。", "处理后不回填状态。", "多个测试目标混在一条记录里。"]
   };
+}
+
+function getWeeklyProgress(type, id) {
+  const liveItems = dashboardData?.weeklyProgress || weeklyProgress;
+  if (type === "module" || type === "workflow") {
+    return liveItems.filter((item) => item.target === id || (id === "libraries" && ["libraries", "hook", "selling", "audience-pain", "scene", "material", "bgm"].includes(item.target)));
+  }
+  if (type === "library") {
+    return liveItems.filter((item) => ["libraries", id].includes(item.target));
+  }
+  return liveItems.slice(0, 3);
 }
 
 function renderMetrics() {
@@ -662,6 +754,7 @@ function renderDetail(type, id, options = {}) {
   const gap = snapshot.gap || item.gap || "暂无明确缺口。";
   const next = item.next || "按当前步骤执行后，把结果回到对应表或库。";
   const connectionNote = dashboardData?.connection?.note || "当前页面提供静态快照和飞书入口；实时数据需要后端读取飞书。";
+  const progressItems = getWeeklyProgress(type, id);
 
   overviewView.hidden = true;
   detailView.hidden = false;
@@ -691,28 +784,33 @@ function renderDetail(type, id, options = {}) {
       </section>
 
       <section class="detail-grid workbench-grid">
+        <article class="detail-card wide">
+          <span>本周推进进度</span>
+          ${progressMarkup(progressItems)}
+        </article>
+
         <article class="detail-card wide resource-card">
           <span>对应飞书入口</span>
           ${resourceMarkup(detail.resources || [])}
         </article>
 
         <article class="detail-card guide-card">
-          <span>新人照着做</span>
+          <span>本周要推进什么</span>
           ${numberedMarkup(detail.tutorial || [])}
         </article>
 
         <article class="detail-card guide-card">
-          <span>合格标准</span>
+          <span>完成判定</span>
           ${listMarkup(detail.acceptance || [])}
         </article>
 
         <article class="detail-card">
-          <span>要填哪些字段</span>
+          <span>进度字段 / 数据口径</span>
           ${listMarkup(fields)}
         </article>
 
         <article class="detail-card warning">
-          <span>常见低级错误</span>
+          <span>风险项</span>
           ${listMarkup(detail.mistakes || [])}
         </article>
 
