@@ -77,72 +77,120 @@
           </article>
         </section>
 
-        <section class="hero-grid" aria-label="生产流程与六库概览">
-          <section class="flow-panel">
-            <div class="section-heading">
-              <div>
-                <p class="eyebrow">Production Flow</p>
-                <h3>内容从哪里来，到哪里闭环</h3>
-              </div>
+        <section class="daily-brief" aria-label="今日生产简报">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Daily Brief</p>
+              <h3>今天发生了什么</h3>
             </div>
-            <div id="workflowSteps" class="workflow-steps"></div>
-          </section>
-
-          <section class="library-snapshot">
-            <div class="section-heading">
-              <div>
-                <p class="eyebrow">Library Ammo</p>
-                <h3>六库弹药状态</h3>
-              </div>
-            </div>
-            <div id="snapshotGrid" class="snapshot-grid"></div>
-          </section>
+          </div>
+          <div id="briefLine" class="brief-line">等待快照加载。</div>
+          <div id="briefChips" class="brief-chips"></div>
         </section>
 
-        <section class="layout-grid">
-          <div class="module-panel">
-            <div class="section-heading">
+        <section class="operator-grid" aria-label="日常操作区">
+          <section class="operator-panel progress-board">
+            <div class="section-heading compact">
               <div>
-                <p class="eyebrow">Command Board</p>
-                <h3>内容工厂核心板块</h3>
+                <p class="eyebrow">Progress</p>
+                <h3>环节进度表</h3>
               </div>
-              <div id="statusFilters" class="segmented-control" aria-label="板块状态筛选"></div>
             </div>
-            <div id="moduleGrid" class="module-grid"></div>
-          </div>
+            <div id="progressTable" class="progress-table"></div>
+          </section>
 
-          <aside class="right-rail" aria-label="今日动作和补库缺口">
-            <section class="rail-section">
+          <aside class="operator-side">
+            <section class="operator-panel">
               <div class="section-heading compact">
                 <div>
-                  <p class="eyebrow">Daily</p>
-                  <h3>今日推进</h3>
+                  <p class="eyebrow">Blocked</p>
+                  <h3>卡点清单</h3>
                 </div>
               </div>
-              <ol id="todayActions" class="priority-list"></ol>
+              <div id="blockerBoard" class="blocker-board"></div>
             </section>
 
-            <section class="rail-section">
+            <section class="operator-panel">
               <div class="section-heading compact">
                 <div>
-                  <p class="eyebrow">Weekly</p>
-                  <h3>本周推进快照</h3>
+                  <p class="eyebrow">Open</p>
+                  <h3>快捷入口</h3>
                 </div>
               </div>
-              <div id="weeklyProgressList" class="rail-progress-list"></div>
-            </section>
-
-            <section class="rail-section">
-              <div class="section-heading compact">
-                <div>
-                  <p class="eyebrow">Gaps</p>
-                  <h3>待补库 / 待补证据</h3>
-                </div>
-              </div>
-              <div id="gapList" class="decision-list"></div>
+              <div id="quickLinks" class="quick-links"></div>
             </section>
           </aside>
         </section>
+
+        <details class="management-details">
+          <summary>管理视图：流程、六库和全部板块</summary>
+          <section class="hero-grid" aria-label="生产流程与六库概览">
+            <section class="flow-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Production Flow</p>
+                  <h3>内容从哪里来，到哪里闭环</h3>
+                </div>
+              </div>
+              <div id="workflowSteps" class="workflow-steps"></div>
+            </section>
+
+            <section class="library-snapshot">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Library Ammo</p>
+                  <h3>六库弹药状态</h3>
+                </div>
+              </div>
+              <div id="snapshotGrid" class="snapshot-grid"></div>
+            </section>
+          </section>
+
+          <section class="layout-grid">
+            <div class="module-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Command Board</p>
+                  <h3>内容工厂核心板块</h3>
+                </div>
+                <div id="statusFilters" class="segmented-control" aria-label="板块状态筛选"></div>
+              </div>
+              <div id="moduleGrid" class="module-grid"></div>
+            </div>
+
+            <aside class="right-rail" aria-label="今日动作和补库缺口">
+              <section class="rail-section">
+                <div class="section-heading compact">
+                  <div>
+                    <p class="eyebrow">Daily</p>
+                    <h3>今日推进</h3>
+                  </div>
+                </div>
+                <ol id="todayActions" class="priority-list"></ol>
+              </section>
+
+              <section class="rail-section">
+                <div class="section-heading compact">
+                  <div>
+                    <p class="eyebrow">Weekly</p>
+                    <h3>本周推进快照</h3>
+                  </div>
+                </div>
+                <div id="weeklyProgressList" class="rail-progress-list"></div>
+              </section>
+
+              <section class="rail-section">
+                <div class="section-heading compact">
+                  <div>
+                    <p class="eyebrow">Gaps</p>
+                    <h3>待补库 / 待补证据</h3>
+                  </div>
+                </div>
+                <div id="gapList" class="decision-list"></div>
+              </section>
+            </aside>
+          </section>
+        </details>
       </div>
 
       <section id="detailView" class="detail-view" hidden aria-label="板块详情"></section>

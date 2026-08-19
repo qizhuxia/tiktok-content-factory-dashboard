@@ -991,6 +991,115 @@ function renderGaps() {
   });
 }
 
+function firstSourceUrl(row) {
+  return String(row.sourceUrl || "").split(/\s+/).find(Boolean) || "";
+}
+
+function rowStatus(row) {
+  if (row.blocker) return "卡点";
+  if (Number(row.todayAdded || 0) > 0) return "今日有推进";
+  if (Number(row.weekTotal || 0) > 0) return "本周有推进";
+  return "今日为 0";
+}
+
+function renderDailyBrief() {
+  const line = document.querySelector("#briefLine");
+  const chips = document.querySelector("#briefChips");
+  if (!line || !chips) return;
+
+  const rows = getDailyReports();
+  const todayRows = rows.filter((row) => Number(row.todayAdded || 0) > 0);
+  const zeroRows = rows.filter((row) => Number(row.todayAdded || 0) === 0);
+  const blockers = rows.filter((row) => row.blocker);
+  const totalToday = rows.reduce((sum, row) => sum + Number(row.todayAdded || 0), 0);
+  const totalWeek = rows.reduce((sum, row) => sum + Number(row.weekTotal || 0), 0);
+  const sourceText = todayRows.length
+    ? todayRows.map((row) => `${row.segment} ${row.todayAdded}`).join(" + ")
+    : "暂无新增";
+
+  line.textContent = `今天新增 ${totalToday} = ${sourceText}；本周累计 ${totalWeek}。`;
+  chips.innerHTML = [
+    { label: "今日有推进", value: todayRows.length, route: "stats/today" },
+    { label: "今日 0 推进", value: zeroRows.length, route: "stats/segments" },
+    { label: "卡点", value: blockers.length, route: "stats/blockers" },
+  ].map((chip) => `
+    <button class="brief-chip" type="button" data-route="${chip.route}">
+      <strong>${chip.value}</strong>
+      <span>${chip.label}</span>
+    </button>
+  `).join("");
+
+  chips.querySelectorAll(".brief-chip").forEach((button) => {
+    button.addEventListener("click", () => {
+      window.location.hash = button.dataset.route;
+    });
+  });
+}
+
+function renderProgressBoard() {
+  const table = document.querySelector("#progressTable");
+  if (!table) return;
+  const rows = getDailyReports();
+  table.innerHTML = `
+    <div class="progress-row progress-head-row">
+      <span>环节</span>
+      <span>今日</span>
+      <span>本周</span>
+      <span>状态</span>
+      <span>入口</span>
+    </div>
+    ${rows.map((row) => {
+      const url = firstSourceUrl(row);
+      const status = rowStatus(row);
+      return `
+        <div class="progress-row">
+          <strong>${escapeHtml(row.segment)}</strong>
+          <b>${Number(row.todayAdded || 0)}</b>
+          <b>${Number(row.weekTotal || 0)}</b>
+          <span class="progress-state ${row.blocker ? "is-blocked" : Number(row.todayAdded || 0) > 0 ? "is-active" : "is-quiet"}">${escapeHtml(status)}</span>
+          ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">打开飞书</a>` : `<span class="muted-cell">暂无</span>`}
+        </div>
+      `;
+    }).join("")}
+  `;
+}
+
+function renderBlockerBoard() {
+  const board = document.querySelector("#blockerBoard");
+  if (!board) return;
+  const blockers = getDailyReports().filter((row) => row.blocker);
+  if (!blockers.length) {
+    board.innerHTML = `<p class="empty-note">当前没有明确卡点。</p>`;
+    return;
+  }
+  board.innerHTML = blockers.map((row) => {
+    const url = firstSourceUrl(row);
+    return `
+      <article class="blocker-item">
+        <strong>${escapeHtml(row.segment)}</strong>
+        <p>${escapeHtml(row.blocker)}</p>
+        ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">去补这张表</a>` : ""}
+      </article>
+    `;
+  }).join("");
+}
+
+function renderQuickLinks() {
+  const box = document.querySelector("#quickLinks");
+  if (!box) return;
+  const wanted = ["爆款视频脚本收集表", "开头钩子收集", "内容周测试计划表", "内容周复盘表", "音乐库收集文档", "钩子库"];
+  const resources = dashboardData?.resources || [];
+  const links = wanted
+    .map((name) => resources.find((item) => item.name === name))
+    .filter((item) => item?.url);
+  box.innerHTML = links.length ? links.map((item) => `
+    <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
+      <span>${escapeHtml(item.type || "入口")}</span>
+      <strong>${escapeHtml(item.name)}</strong>
+    </a>
+  `).join("") : `<p class="empty-note">快照还没有入口链接。</p>`;
+}
+
 function renderWeeklyProgressSummary() {
   const list = document.querySelector("#weeklyProgressList");
   if (!list) return;
@@ -1013,6 +1122,10 @@ function renderOverview() {
   renderAuthControls();
   renderMetrics();
   attachMetricRoutes();
+  renderDailyBrief();
+  renderProgressBoard();
+  renderBlockerBoard();
+  renderQuickLinks();
   renderFilters();
   renderNav();
   renderWorkflow();
