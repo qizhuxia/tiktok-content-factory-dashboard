@@ -146,6 +146,28 @@ async function getTableSnapshots(userAccessToken) {
   return snapshots;
 }
 
+async function findTableByName(userAccessToken, tableName) {
+  const tables = await listTables(userAccessToken);
+  return tables.find((table) => table.name === tableName) || null;
+}
+
+async function listTableRecords(userAccessToken, tableId, fieldNames = []) {
+  const appToken = getEnv("CONTENT_FACTORY_APP_TOKEN");
+  const records = [];
+  let pageToken = "";
+  do {
+    const query = {
+      page_size: 100,
+      page_token: pageToken
+    };
+    if (fieldNames.length) query.field_names = JSON.stringify(fieldNames);
+    const data = await feishuGet(`bitable/v1/apps/${encodeURIComponent(appToken)}/tables/${encodeURIComponent(tableId)}/records`, userAccessToken, query);
+    records.push(...(data.items || []));
+    pageToken = data.page_token || "";
+  } while (pageToken);
+  return records;
+}
+
 function buildTableUrl(tableId) {
   const baseUrl = (process.env.CONTENT_FACTORY_BASE_URL || "").trim();
   if (!baseUrl) return "";
@@ -166,5 +188,8 @@ module.exports = {
   getFrontendUrl,
   buildAuthUrl,
   exchangeCodeForUserToken,
-  getTableSnapshots
+  getTableSnapshots,
+  findTableByName,
+  listTableRecords,
+  buildTableUrl
 };

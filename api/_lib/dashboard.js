@@ -1,12 +1,26 @@
 const fs = require("fs");
 const path = require("path");
-const { getTableSnapshots } = require("./feishu");
+const { buildTableUrl, findTableByName, getTableSnapshots, listTableRecords } = require("./feishu");
 
 const SOURCE_TABLES = ["爆款视频脚本收集表", "开头钩子收集", "中间叙事逻辑收集"];
 const DATA_TABLES = ["视频数据-英区", "视频数据-美区", "达人精灵数据下载-英区", "达人精灵数据下载-美区", "商品点击数据-英区", "商品点击数据-美区"];
 const LIBRARY_TABLES = ["钩子库", "卖点库", "痛点库", "选题库", "卖点可视化库", "高光帧库"];
 const PLAN_TABLES = ["内容周测试计划表"];
 const REVIEW_TABLES = ["内容周复盘表"];
+const DAILY_TABLE = "内容生产环节日报";
+const DAILY_FIELDS = ["日报标题", "日期", "所属周", "环节", "今日新增数", "今日完成数", "本周累计数", "数据来源表", "统计口径", "卡点", "证据入口"];
+const SEGMENT_ORDER = ["爆款样本新增", "开头钩子拆解", "中间叙事拆解", "音乐新增", "脚本新增", "视频发布", "数据回流", "复盘完成", "六库新增"];
+const SEGMENT_TARGETS = {
+  "爆款样本新增": "source",
+  "开头钩子拆解": "deconstruct",
+  "中间叙事拆解": "deconstruct",
+  "音乐新增": "bgm",
+  "脚本新增": "script",
+  "视频发布": "publish",
+  "数据回流": "data",
+  "复盘完成": "review",
+  "六库新增": "libraries"
+};
 
 function readSnapshot() {
   const file = path.join(process.cwd(), "dashboard-data.json");
@@ -23,6 +37,143 @@ function groupResources(resources, names) {
 
 function countResources(resources, names) {
   return groupResources(resources, names).reduce((sum, resource) => sum + Number(resource.count || 0), 0);
+}
+
+function scalarCell(value) {
+  if (value == null) return "";
+  if (Array.isArray(value)) {
+    if (!value.length) return "";
+    if (value.every((item) => typeof item === "string")) return value.join("、");
+    return value.map(scalarCell).filter(Boolean).join("、");
+  }
+  if (typeof value === "object") {
+    if (value.text != null) return scalarCell(value.text);
+    if (value.name != null) return scalarCell(value.name);
+    if (value.link != null && value.text != null) return `[${value.text}](${value.link})`;
+    return Object.values(value).map(scalarCell).filter(Boolean).join("、");
+  }
+  return value;
+}
+
+function textCell(fields, name) {
+  return safeText(scalarCell(fields?.[name]));
+}
+
+function numberCell(fields, name) {
+  const value = Number(scalarCell(fields?.[name]) || 0);
+  return Number.isFinite(value) ? value : 0;
+}
+
+function dateCell(fields, name) {
+  const value = scalarCell(fields?.[name]);
+  if (!value) return "";
+  if (typeof value === "number" || /^\d{10,13}$/.test(String(value))) {
+    const timestamp = Number(value);
+    const date = new Date(timestamp < 1e12 ? timestamp * 1000 : timestamp);
+    if (!Number.isNaN(date.getTime())) return date.toISOString().slice(0, 10);
+  }
+  return safeText(value);
+}
+
+function normalizeDailyReports(records) {
+  return records
+    .map((record) => {
+      const fields = record.fields || {};
+      const segment = textCell(fields, "环节");
+      const date = dateCell(fields, "日期");
+      return {
+        id: `${date || "unknown"}-${segment || "segment"}`,
+        title: textCell(fields, "日报标题"),
+        date,
+        week: textCell(fields, "所属周"),
+        segment,
+        todayAdded: numberCell(fields, "今日新增数"),
+        todayDone: numberCell(fields, "今日完成数"),
+        weekTotal: numberCell(fields, "本周累计数"),
+        sourceTable: textCell(fields, "数据来源表"),
+        rule: textCell(fields, "统计口径"),
+        blocker: textCell(fields, "卡点"),
+        evidenceUrl: textCell(fields, "证据入口"),
+        target: SEGMENT_TARGETS[segment] || "automation"
+      };
+    })
+    .filter((item) => item.segment)
+    .sort((a, b) => {
+      const dateCompare = String(b.date || "").localeCompare(String(a.date || ""));
+      if (dateCompare) return dateCompare;
+      return SEGMENT_ORDER.indexOf(a.segment) - SEGMENT_ORDER.indexOf(b.segment);
+    });
+}
+
+function latestDailyReports(reports) {
+  const latestDate = reports[0]?.date || "";
+  return reports.filter((report) => report.date === latestDate);
+}
+
+function progressPercent(report, mode) {
+  if (report.blocker) return report.weekTotal || report.todayAdded ? 30 : 15;
+  if (mode === "daily") return report.todayAdded ? Math.min(100, 60 + report.todayAdded * 5) : report.weekTotal ? 35 : 10;
+  return report.weekTotal ? Math.min(100, 35 + report.weekTotal * 4) : 10;
+}
+
+function buildProgressFromDaily(reports, mode = "daily") {
+  return reports.map((report) => ({
+    target: report.target,
+    segment: report.segment,
+    title: report.segment,
+    status: `今日 ${report.todayAdded} / 本周 ${report.weekTotal}${report.blocker ? " / 卡点" : ""}`,
+    progress: progressPercent(report, mode),
+    evidence: `${report.sourceTable}：今日新增 ${report.todayAdded}，今日完成 ${report.todayDone}，本周累计 ${report.weekTotal}。`,
+    blocker: report.blocker || "暂无明确卡点。",
+    next: report.blocker || "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+    rule: report.rule,
+    evidenceUrl: report.evidenceUrl
+  }));
+}
+
+function buildMetricsFromDaily(metrics, reports) {
+  return {
+    ...metrics,
+    todayAdded: reports.reduce((sum, report) => sum + report.todayAdded, 0),
+    weekTotal: reports.reduce((sum, report) => sum + report.weekTotal, 0),
+    trackedSegments: reports.length,
+    blockedSegments: reports.filter((report) => report.blocker).length
+  };
+}
+
+function buildActionsFromDaily(reports) {
+  const blockers = reports.filter((report) => report.blocker);
+  const active = [...reports].sort((a, b) => b.weekTotal - a.weekTotal).filter((report) => report.weekTotal || report.todayAdded);
+  const items = blockers.length ? blockers : active;
+  return items.slice(0, 5).map((report) => ({
+    title: blockers.length ? `${report.segment}：先处理卡点` : `${report.segment}：继续推进`,
+    detail: report.blocker || `${report.sourceTable} 本周累计 ${report.weekTotal}，今天新增 ${report.todayAdded}。`
+  }));
+}
+
+function buildGapsFromDaily(reports, fallbackGaps) {
+  const blockers = reports.filter((report) => report.blocker);
+  if (!blockers.length) return fallbackGaps || [];
+  return blockers.map((report) => ({
+    title: report.segment,
+    detail: report.blocker
+  }));
+}
+
+async function getDailyReports(userAccessToken) {
+  const table = await findTableByName(userAccessToken, DAILY_TABLE);
+  if (!table) return { table: null, reports: [] };
+  const records = await listTableRecords(userAccessToken, table.table_id, DAILY_FIELDS);
+  return {
+    table: {
+      name: table.name,
+      type: "table",
+      count: records.length,
+      fields: DAILY_FIELDS,
+      url: buildTableUrl(table.table_id)
+    },
+    reports: normalizeDailyReports(records)
+  };
 }
 
 function buildLibraries(snapshot, resources) {
@@ -175,7 +326,7 @@ function buildDailyProgress(resources) {
 }
 
 function buildLiveDashboard(userAccessToken) {
-  return getTableSnapshots(userAccessToken).then((resources) => {
+  return Promise.all([getTableSnapshots(userAccessToken), getDailyReports(userAccessToken)]).then(([resources, daily]) => {
     const snapshot = readSnapshot();
     const sanitizedResources = resources.map((resource) => ({
       name: safeText(resource.name),
@@ -197,6 +348,12 @@ function buildLiveDashboard(userAccessToken) {
       weakOrBlocked: snapshot.metrics?.weakOrBlocked || 0,
       dataReturnRecords: countResources(sanitizedResources, DATA_TABLES)
     };
+    const latestReports = latestDailyReports(daily.reports);
+    const dailyProgress = latestReports.length ? buildProgressFromDaily(latestReports, "daily") : buildDailyProgress(sanitizedResources);
+    const weeklyProgress = latestReports.length ? buildProgressFromDaily(latestReports, "weekly") : buildWeeklyProgress(sanitizedResources);
+    const patchedMetrics = latestReports.length ? buildMetricsFromDaily(metrics, latestReports) : metrics;
+    const todayActions = latestReports.length ? buildActionsFromDaily(latestReports) : buildTodayActions(sanitizedResources);
+    const gaps = latestReports.length ? buildGapsFromDaily(latestReports, snapshot.gaps) : snapshot.gaps;
 
     const detailPages = {
       ...snapshot.detailPages,
@@ -218,12 +375,14 @@ function buildLiveDashboard(userAccessToken) {
         nextMode: "readOnlyDrilldown",
         note: "已切到飞书登录后的后端只读模式；接口失败时前端会回退静态快照。"
       },
-      metrics,
-      resources: sanitizedResources,
+      metrics: patchedMetrics,
+      resources: daily.table ? [...sanitizedResources, daily.table] : sanitizedResources,
+      dailyReports: daily.reports,
       libraries: buildLibraries(snapshot, sanitizedResources),
-      todayActions: buildTodayActions(sanitizedResources),
-      dailyProgress: buildDailyProgress(sanitizedResources),
-      weeklyProgress: buildWeeklyProgress(sanitizedResources),
+      todayActions,
+      dailyProgress,
+      weeklyProgress,
+      gaps,
       detailPages
     };
   });

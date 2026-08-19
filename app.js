@@ -480,13 +480,18 @@ function resourceMarkup(resources) {
   if (!resources.length) return `<p>暂无可跳转入口。</p>`;
   return `
     <div class="resource-grid">
-      ${resources.map((resource) => `
-        <a class="resource-link" href="${escapeHtml(resource.url)}" target="_blank" rel="noopener noreferrer">
+      ${resources.map((resource) => {
+        const hasUrl = Boolean(resource.url);
+        const tag = hasUrl ? "a" : "div";
+        const attrs = hasUrl ? ` href="${escapeHtml(resource.url)}" target="_blank" rel="noopener noreferrer"` : ` aria-disabled="true"`;
+        return `
+        <${tag} class="resource-link${hasUrl ? "" : " is-disabled"}"${attrs}>
           <span class="resource-meta">${escapeHtml(resource.type)}${resource.count == null ? "" : ` / ${resource.count} 条`}</span>
           <strong>${escapeHtml(resource.name)}</strong>
-          <em>打开飞书</em>
-        </a>
-      `).join("")}
+          <em>${hasUrl ? "打开飞书" : "登录后显示"}</em>
+        </${tag}>
+      `;
+      }).join("")}
     </div>
   `;
 }
@@ -560,10 +565,10 @@ function getWeeklyProgress(type, id) {
 
 function renderMetrics() {
   const metrics = dashboardData?.metrics;
-  document.querySelector("#tableAssetCount").textContent = metrics?.tables ?? "22";
-  document.querySelector("#materialCount").textContent = metrics?.libraryAssets ?? "待映射";
-  document.querySelector("#stepCount").textContent = metrics?.workflowSteps ?? workflowSteps.length;
-  document.querySelector("#gapCount").textContent = metrics?.weakOrBlocked ?? gaps.length;
+  document.querySelector("#tableAssetCount").textContent = metrics?.todayAdded ?? metrics?.tables ?? "0";
+  document.querySelector("#materialCount").textContent = metrics?.weekTotal ?? metrics?.libraryAssets ?? "0";
+  document.querySelector("#stepCount").textContent = metrics?.trackedSegments ?? metrics?.workflowSteps ?? workflowSteps.length;
+  document.querySelector("#gapCount").textContent = metrics?.blockedSegments ?? metrics?.weakOrBlocked ?? gaps.length;
 
   if (snapshotStatus) {
     if (authState.configured && !authState.authenticated) {
@@ -777,7 +782,7 @@ function renderGaps() {
 function renderWeeklyProgressSummary() {
   const list = document.querySelector("#weeklyProgressList");
   if (!list) return;
-  const items = (dashboardData?.weeklyProgress || weeklyProgress).slice(0, 4);
+  const items = (dashboardData?.weeklyProgress || weeklyProgress);
   list.innerHTML = items.map((item) => `
     <button class="rail-progress-item" type="button" data-target="${escapeHtml(item.target)}">
       <span>${escapeHtml(item.title)}</span>

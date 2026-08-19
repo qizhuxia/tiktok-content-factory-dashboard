@@ -1059,6 +1059,17 @@ button {
   outline: none;
 }
 
+.resource-link.is-disabled {
+  color: #52616f;
+  background: #f3f6f9;
+  cursor: default;
+}
+
+.resource-link.is-disabled:hover {
+  border-color: #dbe5f0;
+  box-shadow: none;
+}
+
 .resource-link strong {
   grid-column: 1 / -1;
   font-size: 14px;
@@ -1085,6 +1096,11 @@ button {
   font-size: 12px;
   font-style: normal;
   font-weight: 900;
+}
+
+.resource-link.is-disabled em {
+  color: #5d6b7b;
+  background: #e8edf3;
 }
 
 .status-ready {

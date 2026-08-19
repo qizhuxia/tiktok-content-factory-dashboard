@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T03:49:28.219Z",
+  "generatedAt": "2026-08-19T14:25:00+08:00",
   "source": {
     "name": "Tiktok内容工厂",
     "mode": "sanitized-static-snapshot",
@@ -11,10 +11,14 @@
     "viralSamples": 55,
     "libraryAssets": 690,
     "workflowSteps": 9,
-    "weakOrBlocked": 6,
+    "weakOrBlocked": 2,
     "weeklyPlans": 2,
     "pendingPublish": 2,
-    "pendingReview": 2
+    "pendingReview": 2,
+    "todayAdded": 0,
+    "weekTotal": 79,
+    "trackedSegments": 9,
+    "blockedSegments": 2
   },
   "inventory": {
     "hookBreakdowns": 54,
@@ -27,82 +31,82 @@
     "highlightFrames": 5
   },
   "connection": {
-    "currentMode": "staticSnapshotWithFeishuLinks",
-    "nextMode": "serverSideFeishuApi",
-    "note": "当前 GitHub Pages 版本用静态快照展示状态，并提供飞书入口；后续要在网页内直接看数据，需要后端代前端安全读取飞书。"
+    "currentMode": "staticSnapshotNoFeishuLinks",
+    "nextMode": "loginRealtimeFeishuApi",
+    "note": "公开 GitHub Pages 快照只展示脱敏统计；飞书入口和实时数据由登录后的后端 API 返回。"
   },
   "resources": [
     {
       "name": "爆款视频脚本收集表",
       "type": "table",
       "count": 55,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+      "url": ""
     },
     {
       "name": "开头钩子收集",
       "type": "table",
       "count": 54,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+      "url": ""
     },
     {
       "name": "中间叙事逻辑收集",
       "type": "table",
       "count": 56,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+      "url": ""
     },
     {
       "name": "内容周测试计划表",
       "type": "table",
       "count": 2,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+      "url": ""
     },
     {
       "name": "内容周复盘表",
       "type": "table",
       "count": 2,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+      "url": ""
     },
     {
       "name": "钩子库",
       "type": "table",
       "count": 600,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+      "url": ""
     },
     {
       "name": "卖点库",
       "type": "table",
       "count": 44,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+      "url": ""
     },
     {
       "name": "痛点库",
       "type": "table",
       "count": 31,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+      "url": ""
     },
     {
       "name": "选题库",
       "type": "table",
       "count": 5,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+      "url": ""
     },
     {
       "name": "卖点可视化库",
       "type": "table",
       "count": 5,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+      "url": ""
     },
     {
       "name": "高光帧库",
       "type": "table",
       "count": 5,
-      "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+      "url": ""
     },
     {
       "name": "音乐库收集文档",
       "type": "docx",
       "count": null,
-      "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+      "url": ""
     }
   ],
   "detailPages": {
@@ -113,19 +117,19 @@
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -161,19 +165,19 @@
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -207,43 +211,43 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+          "url": ""
         },
         {
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+          "url": ""
         },
         {
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+          "url": ""
         },
         {
           "name": "选题库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -277,37 +281,37 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/LfyGdHsJMoklKvx9elRcouCin4c"
+          "url": ""
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+          "url": ""
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+          "url": ""
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+          "url": ""
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -342,7 +346,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -375,43 +379,43 @@
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "达人精灵数据下载-英区",
           "type": "table",
           "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
+          "url": ""
         },
         {
           "name": "达人精灵数据下载-美区",
           "type": "table",
           "count": 40,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+          "url": ""
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -448,37 +452,37 @@
           "name": "内容周复盘表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -512,13 +516,13 @@
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -553,13 +557,13 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+          "url": ""
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -593,13 +597,13 @@
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -634,19 +638,19 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -680,19 +684,19 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "文案-青木｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/Drtidv9pHoAYxyxVwi0cJRCgnie"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -725,7 +729,7 @@
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -761,19 +765,19 @@
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -809,19 +813,19 @@
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -855,43 +859,43 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+          "url": ""
         },
         {
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+          "url": ""
         },
         {
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+          "url": ""
         },
         {
           "name": "选题库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -925,37 +929,37 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/LfyGdHsJMoklKvx9elRcouCin4c"
+          "url": ""
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+          "url": ""
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+          "url": ""
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+          "url": ""
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -990,37 +994,37 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/LfyGdHsJMoklKvx9elRcouCin4c"
+          "url": ""
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+          "url": ""
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+          "url": ""
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+          "url": ""
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1055,19 +1059,19 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "文案-青木｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://ocndiw7o2tko.feishu.cn/docx/Drtidv9pHoAYxyxVwi0cJRCgnie"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1100,7 +1104,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1133,43 +1137,43 @@
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "达人精灵数据下载-英区",
           "type": "table",
           "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmdc942sZHGwtn"
+          "url": ""
         },
         {
           "name": "达人精灵数据下载-美区",
           "type": "table",
           "count": 40,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl3382WNIs1skw2"
+          "url": ""
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1206,37 +1210,37 @@
           "name": "内容周复盘表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://ocndiw7o2tko.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1304,34 +1308,343 @@
   },
   "todayActions": [
     {
-      "title": "先补发布链路",
-      "detail": "2 条周测计划仍处于待发布或未发布状态，优先补脚本、素材、账号和发布时间。"
+      "title": "视频发布：先处理卡点",
+      "detail": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。"
     },
     {
-      "title": "补内容周复盘",
-      "detail": "2 条复盘记录缺少复盘结论，先补做得好/不好和下周动作。"
-    },
-    {
-      "title": "补弱库字段和样本",
-      "detail": "选题库样本少；卖点可视化库样本少；高光帧库字段薄；钩子库缺使用次数/表现字段"
+      "title": "复盘完成：先处理卡点",
+      "detail": "当前复盘表未发现本周“已完成+复盘时间”的记录。"
     }
   ],
   "gaps": [
     {
-      "title": "发布后未闭环",
-      "detail": "2 条周测计划还没有形成已发布数据，首页优先推发布链路。"
+      "title": "视频发布",
+      "detail": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。"
     },
     {
-      "title": "复盘结论为空",
-      "detail": "2 条复盘记录缺结论，无法把表现反哺到六库。"
+      "title": "复盘完成",
+      "detail": "当前复盘表未发现本周“已完成+复盘时间”的记录。"
+    }
+  ],
+  "dailyReports": [
+    {
+      "title": "2026-08-19｜爆款样本新增",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "爆款样本新增",
+      "target": "source",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 3,
+      "blocker": ""
     },
     {
-      "title": "库字段薄",
-      "detail": "选题库样本少；卖点可视化库样本少；高光帧库字段薄；钩子库缺使用次数/表现字段"
+      "title": "2026-08-19｜开头钩子拆解",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "开头钩子拆解",
+      "target": "deconstruct",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 10,
+      "blocker": ""
     },
     {
-      "title": "缺少成品回查链",
-      "detail": "六库资产需要绑定到脚本、发布记录和复盘表现，才能判断哪些表达真正有效。"
+      "title": "2026-08-19｜中间叙事拆解",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "中间叙事拆解",
+      "target": "deconstruct",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 10,
+      "blocker": ""
+    },
+    {
+      "title": "2026-08-19｜音乐新增",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "音乐新增",
+      "target": "bgm",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 0,
+      "blocker": ""
+    },
+    {
+      "title": "2026-08-19｜脚本新增",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "脚本新增",
+      "target": "script",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 0,
+      "blocker": ""
+    },
+    {
+      "title": "2026-08-19｜视频发布",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "视频发布",
+      "target": "publish",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 0,
+      "blocker": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。"
+    },
+    {
+      "title": "2026-08-19｜数据回流",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "数据回流",
+      "target": "data",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 56,
+      "blocker": ""
+    },
+    {
+      "title": "2026-08-19｜复盘完成",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "复盘完成",
+      "target": "review",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 0,
+      "blocker": "当前复盘表未发现本周“已完成+复盘时间”的记录。"
+    },
+    {
+      "title": "2026-08-19｜六库新增",
+      "date": "2026-08-19",
+      "week": "2026-W34",
+      "segment": "六库新增",
+      "target": "libraries",
+      "todayAdded": 0,
+      "todayDone": 0,
+      "weekTotal": 0,
+      "blocker": ""
+    }
+  ],
+  "dailyProgress": [
+    {
+      "id": "2026-08-19｜爆款样本新增",
+      "title": "爆款样本新增",
+      "segment": "爆款样本新增",
+      "target": "source",
+      "status": "今日 0 / 本周 3",
+      "progress": 47,
+      "evidence": "爆款视频脚本收集表：今日新增 0，今日完成 0，本周累计 3。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。"
+    },
+    {
+      "id": "2026-08-19｜开头钩子拆解",
+      "title": "开头钩子拆解",
+      "segment": "开头钩子拆解",
+      "target": "deconstruct",
+      "status": "今日 0 / 本周 10",
+      "progress": 75,
+      "evidence": "开头钩子收集：今日新增 0，今日完成 0，本周累计 10。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。"
+    },
+    {
+      "id": "2026-08-19｜中间叙事拆解",
+      "title": "中间叙事拆解",
+      "segment": "中间叙事拆解",
+      "target": "deconstruct",
+      "status": "今日 0 / 本周 10",
+      "progress": 75,
+      "evidence": "中间叙事逻辑收集：今日新增 0，今日完成 0，本周累计 10。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。"
+    },
+    {
+      "id": "2026-08-19｜音乐新增",
+      "title": "音乐新增",
+      "segment": "音乐新增",
+      "target": "bgm",
+      "status": "今日 0 / 本周 0",
+      "progress": 10,
+      "evidence": "音乐库收集文档 -> 音乐库统计索引：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "以音乐库收集文档中的 BGM 表格曲名为业务键；首次运行建基线，之后新增曲名自动同步到统计索引并按运行日期计数。"
+    },
+    {
+      "id": "2026-08-19｜脚本新增",
+      "title": "脚本新增",
+      "segment": "脚本新增",
+      "target": "script",
+      "status": "今日 0 / 本周 0",
+      "progress": 10,
+      "evidence": "4 个脚本文档 -> 脚本生产统计索引：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "以脚本文档三级标题为业务键；首次运行建基线，之后新增标题自动同步到统计索引并按运行日期计数。"
+    },
+    {
+      "id": "2026-08-19｜视频发布",
+      "title": "视频发布",
+      "segment": "视频发布",
+      "target": "publish",
+      "status": "今日 0 / 本周 0 / 卡点",
+      "progress": 15,
+      "evidence": "内容周测试计划表：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。",
+      "next": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。",
+      "rule": "第一版按本周计划里的“已发布视频数”汇总；当前源表缺少逐条发布日期，无法可靠拆成每日新增。"
+    },
+    {
+      "id": "2026-08-19｜数据回流",
+      "title": "数据回流",
+      "segment": "数据回流",
+      "target": "data",
+      "status": "今日 0 / 本周 56",
+      "progress": 100,
+      "evidence": "视频数据-英区/美区 + 商品点击数据-英区/美区：今日新增 0，今日完成 0，本周累计 56。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "视频数据按“手机截图日期 UTC+8”统计，商品点击数据按“日期 UTC-8”统计；只统计发布后的数据回流，不混入爆款收集。"
+    },
+    {
+      "id": "2026-08-19｜复盘完成",
+      "title": "复盘完成",
+      "segment": "复盘完成",
+      "target": "review",
+      "status": "今日 0 / 本周 0 / 卡点",
+      "progress": 15,
+      "evidence": "内容周复盘表：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "当前复盘表未发现本周“已完成+复盘时间”的记录。",
+      "next": "当前复盘表未发现本周“已完成+复盘时间”的记录。",
+      "rule": "按复盘状态=已完成且复盘时间落在对应日期/周内统计。"
+    },
+    {
+      "id": "2026-08-19｜六库新增",
+      "title": "六库新增",
+      "segment": "六库新增",
+      "target": "libraries",
+      "status": "今日 0 / 本周 0",
+      "progress": 10,
+      "evidence": "钩子库、卖点库、痛点库、选题库、卖点可视化库、高光帧库：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按六个库表的系统创建时间汇总：今日新增=今日创建记录总数；本周累计=本周一至今日创建记录总数。"
+    }
+  ],
+  "weeklyProgress": [
+    {
+      "id": "2026-08-19｜爆款样本新增",
+      "title": "爆款样本新增",
+      "segment": "爆款样本新增",
+      "target": "source",
+      "status": "今日 0 / 本周 3",
+      "progress": 47,
+      "evidence": "爆款视频脚本收集表：今日新增 0，今日完成 0，本周累计 3。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。"
+    },
+    {
+      "id": "2026-08-19｜开头钩子拆解",
+      "title": "开头钩子拆解",
+      "segment": "开头钩子拆解",
+      "target": "deconstruct",
+      "status": "今日 0 / 本周 10",
+      "progress": 75,
+      "evidence": "开头钩子收集：今日新增 0，今日完成 0，本周累计 10。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。"
+    },
+    {
+      "id": "2026-08-19｜中间叙事拆解",
+      "title": "中间叙事拆解",
+      "segment": "中间叙事拆解",
+      "target": "deconstruct",
+      "status": "今日 0 / 本周 10",
+      "progress": 75,
+      "evidence": "中间叙事逻辑收集：今日新增 0，今日完成 0，本周累计 10。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。"
+    },
+    {
+      "id": "2026-08-19｜音乐新增",
+      "title": "音乐新增",
+      "segment": "音乐新增",
+      "target": "bgm",
+      "status": "今日 0 / 本周 0",
+      "progress": 10,
+      "evidence": "音乐库收集文档 -> 音乐库统计索引：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "以音乐库收集文档中的 BGM 表格曲名为业务键；首次运行建基线，之后新增曲名自动同步到统计索引并按运行日期计数。"
+    },
+    {
+      "id": "2026-08-19｜脚本新增",
+      "title": "脚本新增",
+      "segment": "脚本新增",
+      "target": "script",
+      "status": "今日 0 / 本周 0",
+      "progress": 10,
+      "evidence": "4 个脚本文档 -> 脚本生产统计索引：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "以脚本文档三级标题为业务键；首次运行建基线，之后新增标题自动同步到统计索引并按运行日期计数。"
+    },
+    {
+      "id": "2026-08-19｜视频发布",
+      "title": "视频发布",
+      "segment": "视频发布",
+      "target": "publish",
+      "status": "今日 0 / 本周 0 / 卡点",
+      "progress": 15,
+      "evidence": "内容周测试计划表：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。",
+      "next": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。",
+      "rule": "第一版按本周计划里的“已发布视频数”汇总；当前源表缺少逐条发布日期，无法可靠拆成每日新增。"
+    },
+    {
+      "id": "2026-08-19｜数据回流",
+      "title": "数据回流",
+      "segment": "数据回流",
+      "target": "data",
+      "status": "今日 0 / 本周 56",
+      "progress": 100,
+      "evidence": "视频数据-英区/美区 + 商品点击数据-英区/美区：今日新增 0，今日完成 0，本周累计 56。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "视频数据按“手机截图日期 UTC+8”统计，商品点击数据按“日期 UTC-8”统计；只统计发布后的数据回流，不混入爆款收集。"
+    },
+    {
+      "id": "2026-08-19｜复盘完成",
+      "title": "复盘完成",
+      "segment": "复盘完成",
+      "target": "review",
+      "status": "今日 0 / 本周 0 / 卡点",
+      "progress": 15,
+      "evidence": "内容周复盘表：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "当前复盘表未发现本周“已完成+复盘时间”的记录。",
+      "next": "当前复盘表未发现本周“已完成+复盘时间”的记录。",
+      "rule": "按复盘状态=已完成且复盘时间落在对应日期/周内统计。"
+    },
+    {
+      "id": "2026-08-19｜六库新增",
+      "title": "六库新增",
+      "segment": "六库新增",
+      "target": "libraries",
+      "status": "今日 0 / 本周 0",
+      "progress": 10,
+      "evidence": "钩子库、卖点库、痛点库、选题库、卖点可视化库、高光帧库：今日新增 0，今日完成 0，本周累计 0。",
+      "blocker": "暂无明确卡点。",
+      "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
+      "rule": "按六个库表的系统创建时间汇总：今日新增=今日创建记录总数；本周累计=本周一至今日创建记录总数。"
     }
   ]
 }
