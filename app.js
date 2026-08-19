@@ -542,6 +542,21 @@ function statsTotal(rows, config, id) {
   return rows.reduce((sum, row) => sum + Number(row[config.valueKey] || 0), 0);
 }
 
+function statsItemsMarkup(items = []) {
+  if (!items.length) return `<p class="stats-empty-items">当前快照未输出条目级明细；只能看到环节数量、来源和口径。</p>`;
+  return `
+    <div class="stats-items">
+      <span>新增条目</span>
+      ${items.map((item) => `
+        <div>
+          <strong>${escapeHtml(item.title)}</strong>
+          <em>${escapeHtml([item.type, item.site, item.source].filter(Boolean).join(" / ") || "条目摘要")}</em>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function statsRowMarkup(rows, config, id) {
   if (!rows.length) return `<p>当前没有匹配的统计明细。</p>`;
   return `
@@ -569,6 +584,7 @@ function statsRowMarkup(rows, config, id) {
               <div><dt>来源</dt><dd>${escapeHtml(row.sourceTable || "未绑定来源")}</dd></div>
             </dl>
             <p>${escapeHtml(row.rule || "暂无统计口径。")}</p>
+            ${statsItemsMarkup(row.items || [])}
             ${blocker}
             ${row.target ? `<button class="text-link-button" type="button" data-target="${escapeHtml(row.target)}">进入对应环节</button>` : ""}
           </article>

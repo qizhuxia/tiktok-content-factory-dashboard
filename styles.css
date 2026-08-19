@@ -966,6 +966,51 @@ button {
   border-color: #efc3b9;
 }
 
+.stats-items {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #eef8f4;
+  border: 1px solid #c9eadb;
+  border-radius: 8px;
+}
+
+.stats-items span {
+  margin: 0;
+  color: #0e6049;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: none;
+}
+
+.stats-items div {
+  display: grid;
+  gap: 4px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1px solid #d9efe6;
+  border-radius: 6px;
+}
+
+.stats-items strong {
+  color: #17202a;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.stats-items em {
+  color: #52616f;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.stats-empty-items {
+  color: #52616f;
+  background: #f3f6f9 !important;
+  border-color: #e0e7ee !important;
+}
+
 .text-link-button {
   justify-self: start;
   padding: 0;
