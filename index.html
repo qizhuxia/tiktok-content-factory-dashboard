@@ -39,85 +39,89 @@
         </div>
       </section>
 
-      <section class="overview-grid" aria-label="内容工厂指标">
-        <article class="metric-card">
-          <span class="metric-label">TikTok 内容工厂</span>
-          <strong id="tableAssetCount">0</strong>
-          <small>当前主工作台，不再以青木工作台为主源</small>
-        </article>
-        <article class="metric-card">
-          <span class="metric-label">可用素材底座</span>
-          <strong id="materialCount">0</strong>
-          <small>素材分类、镜头片段、默认镜头索引</small>
-        </article>
-        <article class="metric-card">
-          <span class="metric-label">生产闭环步骤</span>
-          <strong id="stepCount">8</strong>
-          <small>从收集到复盘回流</small>
-        </article>
-        <article class="metric-card attention">
-          <span class="metric-label">待补/阻塞</span>
-          <strong id="gapCount">0</strong>
-          <small>空表、缺关联、缺来源线索</small>
-        </article>
-      </section>
-
-      <section class="hero-grid" aria-label="生产流程与六库概览">
-        <section class="flow-panel">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Production Flow</p>
-              <h3>内容从哪里来，到哪里闭环</h3>
-            </div>
-          </div>
-          <div id="workflowSteps" class="workflow-steps"></div>
+      <div id="overviewView">
+        <section class="overview-grid" aria-label="内容工厂指标">
+          <article class="metric-card">
+            <span class="metric-label">TikTok 内容工厂</span>
+            <strong id="tableAssetCount">0</strong>
+            <small>当前主工作台，不再以青木工作台为主源</small>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">可用素材底座</span>
+            <strong id="materialCount">0</strong>
+            <small>素材分类、镜头片段、默认镜头索引</small>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">生产闭环步骤</span>
+            <strong id="stepCount">8</strong>
+            <small>从收集到复盘回流</small>
+          </article>
+          <article class="metric-card attention">
+            <span class="metric-label">待补/阻塞</span>
+            <strong id="gapCount">0</strong>
+            <small>空表、缺关联、缺来源线索</small>
+          </article>
         </section>
 
-        <section class="library-snapshot">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Library Ammo</p>
-              <h3>六库弹药状态</h3>
+        <section class="hero-grid" aria-label="生产流程与六库概览">
+          <section class="flow-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Production Flow</p>
+                <h3>内容从哪里来，到哪里闭环</h3>
+              </div>
             </div>
-          </div>
-          <div id="snapshotGrid" class="snapshot-grid"></div>
+            <div id="workflowSteps" class="workflow-steps"></div>
+          </section>
+
+          <section class="library-snapshot">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Library Ammo</p>
+                <h3>六库弹药状态</h3>
+              </div>
+            </div>
+            <div id="snapshotGrid" class="snapshot-grid"></div>
+          </section>
         </section>
-      </section>
 
-      <section class="layout-grid">
-        <div class="module-panel">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Command Board</p>
-              <h3>内容工厂核心板块</h3>
+        <section class="layout-grid">
+          <div class="module-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Command Board</p>
+                <h3>内容工厂核心板块</h3>
+              </div>
+              <div id="statusFilters" class="segmented-control" aria-label="板块状态筛选"></div>
             </div>
-            <div id="statusFilters" class="segmented-control" aria-label="板块状态筛选"></div>
+            <div id="moduleGrid" class="module-grid"></div>
           </div>
-          <div id="moduleGrid" class="module-grid"></div>
-        </div>
 
-        <aside class="right-rail" aria-label="今日动作和补库缺口">
-          <section class="rail-section">
-            <div class="section-heading compact">
-              <div>
-                <p class="eyebrow">Today</p>
-                <h3>今天先推 3 件事</h3>
+          <aside class="right-rail" aria-label="今日动作和补库缺口">
+            <section class="rail-section">
+              <div class="section-heading compact">
+                <div>
+                  <p class="eyebrow">Today</p>
+                  <h3>今天先推 3 件事</h3>
+                </div>
               </div>
-            </div>
-            <ol id="todayActions" class="priority-list"></ol>
-          </section>
+              <ol id="todayActions" class="priority-list"></ol>
+            </section>
 
-          <section class="rail-section">
-            <div class="section-heading compact">
-              <div>
-                <p class="eyebrow">Gaps</p>
-                <h3>待补库 / 待补证据</h3>
+            <section class="rail-section">
+              <div class="section-heading compact">
+                <div>
+                  <p class="eyebrow">Gaps</p>
+                  <h3>待补库 / 待补证据</h3>
+                </div>
               </div>
-            </div>
-            <div id="gapList" class="decision-list"></div>
-          </section>
-        </aside>
-      </section>
+              <div id="gapList" class="decision-list"></div>
+            </section>
+          </aside>
+        </section>
+      </div>
+
+      <section id="detailView" class="detail-view" hidden aria-label="板块详情"></section>
     </main>
   </div>
 
