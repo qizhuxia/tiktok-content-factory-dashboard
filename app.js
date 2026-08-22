@@ -410,7 +410,7 @@ const snapshotStatus = document.querySelector("#snapshotStatus");
 const template = document.querySelector("#moduleCardTemplate");
 
 const runtimeConfig = window.CONTENT_FACTORY_CONFIG || {};
-const appVersion = "week-production-v1";
+const appVersion = "week-date-sync-v2";
 const configuredApiBase = runtimeConfig.apiBaseUrl === "same-origin"
   ? window.location.origin
   : String(runtimeConfig.apiBaseUrl || "");
