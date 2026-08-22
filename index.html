@@ -23,9 +23,9 @@
     <main class="workspace">
       <section class="topbar" aria-label="工作台总览">
         <div>
-          <p class="eyebrow">2026-08-19 / 周推进总控</p>
-          <h2>每天和每周都能看到每一项推进到哪、卡在哪里、下一步推什么</h2>
-          <p class="top-summary">总控台改为每日 + 每周推进视角：每天看今天要推什么、卡在哪里；每周看整条生产链路推进到哪、哪些事项能进入复盘。主数据源统一放在 TikTok 内容工厂。</p>
+          <p class="eyebrow">脚本 / 剪辑 / 发布 / 数据</p>
+          <h2>每周选题从脚本到数据回流，一眼看到剩多少、卡在哪条</h2>
+          <p class="top-summary">当前只聚焦四个生产环节：脚本、剪辑成片、发布、数据回流。主数据源是 TikTok 内容工厂里的内容生产全链路追踪表，其他库和 SOP 暂时收进管理视图。</p>
           <p id="snapshotStatus" class="snapshot-status">静态默认数据，等待快照加载</p>
         </div>
         <div class="top-actions">
@@ -56,24 +56,24 @@
       <div id="overviewView">
         <section class="overview-grid" aria-label="内容工厂指标">
           <article class="metric-card clickable-card stats-card" role="button" tabindex="0" data-stats-id="today">
-            <span class="metric-label">今日新增</span>
+            <span class="metric-label">脚本</span>
             <strong id="tableAssetCount">0</strong>
-            <small>来自内容生产环节日报 · 点开看明细</small>
+            <small>已写 / 全部 · 点开看脚本链路</small>
           </article>
           <article class="metric-card clickable-card stats-card" role="button" tabindex="0" data-stats-id="week">
-            <span class="metric-label">本周累计</span>
+            <span class="metric-label">剪辑</span>
             <strong id="materialCount">0</strong>
-            <small>9 个生产环节合计 · 点开看明细</small>
+            <small>已成片 / 全部 · 点开看未剪</small>
           </article>
           <article class="metric-card clickable-card stats-card" role="button" tabindex="0" data-stats-id="segments">
-            <span class="metric-label">统计环节</span>
+            <span class="metric-label">发布</span>
             <strong id="stepCount">8</strong>
-            <small>每日 / 每周推进颗粒度 · 点开看口径</small>
+            <small>已发布 / 全部 · 点开看待发布</small>
           </article>
           <article class="metric-card attention clickable-card stats-card" role="button" tabindex="0" data-stats-id="blockers">
-            <span class="metric-label">卡点环节</span>
+            <span class="metric-label">数据</span>
             <strong id="gapCount">0</strong>
-            <small>缺字段、缺状态或缺证据 · 点开看原因</small>
+            <small>已回流 / 已发布 · 点开看待回流</small>
           </article>
         </section>
 
@@ -92,8 +92,8 @@
           <section class="operator-panel progress-board">
             <div class="section-heading compact">
               <div>
-                <p class="eyebrow">Progress</p>
-                <h3>环节进度表</h3>
+                <p class="eyebrow">Weekly Funnel</p>
+                <h3>每周四段进度</h3>
               </div>
             </div>
             <div id="progressTable" class="progress-table"></div>
@@ -125,8 +125,8 @@
         <section class="operator-panel chain-quality-panel" aria-label="逐条内容链路质检">
           <div class="section-heading compact">
             <div>
-              <p class="eyebrow">Chain QA</p>
-              <h3>每条内容链路质检</h3>
+              <p class="eyebrow">Content List</p>
+              <h3>点开看每条内容进度</h3>
             </div>
           </div>
           <div id="chainQualityBoard" class="chain-quality-board"></div>

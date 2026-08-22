@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "description": "TikTok 内容工厂总控台，GitHub Pages 前端 + Vercel 只读飞书 API。",
   "scripts": {
-    "check": "node --check api/auth/login.js && node --check api/auth/callback.js && node --check api/auth/logout.js && node --check api/session.js && node --check api/dashboard.js && node --check api/detail.js && node --check api/_lib/http.js && node --check api/_lib/feishu.js && node --check api/_lib/dashboard.js"
+    "check": "node --check api/auth/login.js && node --check api/auth/callback.js && node --check api/auth/logout.js && node --check api/session.js && node --check api/dashboard.js && node --check api/detail.js && node --check api/chain-update.js && node --check api/_lib/http.js && node --check api/_lib/feishu.js && node --check api/_lib/dashboard.js"
   },
   "engines": {
     "node": ">=20"

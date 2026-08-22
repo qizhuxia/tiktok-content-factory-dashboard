@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-19T16:02:00+08:00",
+  "generatedAt": "2026-08-22T03:34:09.586Z",
   "source": {
     "name": "Tiktok内容工厂",
-    "mode": "sanitized-static-snapshot",
-    "note": "本快照由本地只读脚本生成，只包含脱敏统计和状态。"
+    "mode": "sanitized-static-chain-snapshot",
+    "note": "本快照来自内容生产全链路追踪表，只包含脱敏链路摘要，不含内部标识或人员身份。"
   },
   "metrics": {
     "tables": 22,
@@ -17,8 +17,13 @@
     "pendingReview": 2,
     "todayAdded": 4,
     "weekTotal": 83,
-    "trackedSegments": 9,
-    "blockedSegments": 2
+    "trackedSegments": 4,
+    "blockedSegments": 72,
+    "chainTotal": 72,
+    "scriptDone": 72,
+    "cutDone": 23,
+    "publishDone": 3,
+    "dataDone": 1
   },
   "inventory": {
     "hookBreakdowns": 54,
@@ -31,82 +36,82 @@
     "highlightFrames": 5
   },
   "connection": {
-    "currentMode": "staticSnapshotWithFeishuLinks",
-    "nextMode": "manualSnapshotRefresh",
-    "note": "当前 GitHub Pages 版本只读 dashboard-data.json；网页不做飞书登录，入口按钮直接跳飞书，由飞书自身权限控制。"
+    "currentMode": "staticFallback",
+    "nextMode": "feishuLoginRealtime",
+    "note": "飞书登录实时 API 可用时会覆盖本快照；未登录或 API 不可用时展示这里的数据。"
   },
   "resources": [
     {
       "name": "爆款视频脚本收集表",
       "type": "table",
       "count": 55,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+      "url": ""
     },
     {
       "name": "开头钩子收集",
       "type": "table",
       "count": 54,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+      "url": ""
     },
     {
       "name": "中间叙事逻辑收集",
       "type": "table",
       "count": 56,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+      "url": ""
     },
     {
       "name": "内容周测试计划表",
       "type": "table",
       "count": 2,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+      "url": ""
     },
     {
       "name": "内容周复盘表",
       "type": "table",
       "count": 2,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+      "url": ""
     },
     {
       "name": "钩子库",
       "type": "table",
       "count": 600,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+      "url": ""
     },
     {
       "name": "卖点库",
       "type": "table",
       "count": 44,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+      "url": ""
     },
     {
       "name": "痛点库",
       "type": "table",
       "count": 31,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+      "url": ""
     },
     {
       "name": "选题库",
       "type": "table",
       "count": 5,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+      "url": ""
     },
     {
       "name": "卖点可视化库",
       "type": "table",
       "count": 5,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+      "url": ""
     },
     {
       "name": "高光帧库",
       "type": "table",
       "count": 5,
-      "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+      "url": ""
     },
     {
       "name": "音乐库收集文档",
       "type": "docx",
       "count": null,
-      "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+      "url": ""
     }
   ],
   "detailPages": {
@@ -117,19 +122,19 @@
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -165,19 +170,19 @@
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -211,43 +216,43 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+          "url": ""
         },
         {
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+          "url": ""
         },
         {
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+          "url": ""
         },
         {
           "name": "选题库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -281,37 +286,37 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+          "url": ""
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+          "url": ""
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+          "url": ""
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+          "url": ""
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -346,7 +351,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -379,13 +384,13 @@
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "达人精灵数据下载-英区",
@@ -403,19 +408,19 @@
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -452,37 +457,37 @@
           "name": "内容周复盘表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -516,13 +521,13 @@
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -557,13 +562,13 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+          "url": ""
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -597,13 +602,13 @@
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -638,19 +643,19 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -684,13 +689,13 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "文案-青木｜脚本文档",
@@ -729,7 +734,7 @@
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -765,19 +770,19 @@
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         },
         {
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -813,19 +818,19 @@
           "name": "开头钩子收集",
           "type": "table",
           "count": 54,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp"
+          "url": ""
         },
         {
           "name": "中间叙事逻辑收集",
           "type": "table",
           "count": 56,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5"
+          "url": ""
         },
         {
           "name": "爆款视频脚本收集表",
           "type": "table",
           "count": 55,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -859,43 +864,43 @@
           "name": "钩子库",
           "type": "table",
           "count": 600,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj"
+          "url": ""
         },
         {
           "name": "卖点库",
           "type": "table",
           "count": 44,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl9IdmJJyDgXj97"
+          "url": ""
         },
         {
           "name": "痛点库",
           "type": "table",
           "count": 31,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblCpPn7VtKGn406"
+          "url": ""
         },
         {
           "name": "选题库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "音乐库收集文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -929,37 +934,37 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+          "url": ""
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+          "url": ""
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+          "url": ""
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+          "url": ""
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -994,37 +999,37 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "选题库｜文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblSLGAcMU6C1Cpg"
+          "url": ""
         },
         {
           "name": "美式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf"
+          "url": ""
         },
         {
           "name": "英式UGC｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc"
+          "url": ""
         },
         {
           "name": "美式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c"
+          "url": ""
         },
         {
           "name": "英式品牌｜脚本文档",
           "type": "docx",
           "count": null,
-          "url": "https://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1059,13 +1064,13 @@
           "name": "高光帧库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl1Yc89uk0HDtqC"
+          "url": ""
         },
         {
           "name": "卖点可视化库",
           "type": "table",
           "count": 5,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblmYy3UkjTx1teR"
+          "url": ""
         },
         {
           "name": "文案-青木｜脚本文档",
@@ -1104,7 +1109,7 @@
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1137,13 +1142,13 @@
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "达人精灵数据下载-英区",
@@ -1161,19 +1166,19 @@
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1210,37 +1215,37 @@
           "name": "内容周复盘表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb"
+          "url": ""
         },
         {
           "name": "内容周测试计划表",
           "type": "table",
           "count": 2,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV"
+          "url": ""
         },
         {
           "name": "视频数据-英区",
           "type": "table",
           "count": 33,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf"
+          "url": ""
         },
         {
           "name": "视频数据-美区",
           "type": "table",
           "count": 34,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbly9uWaQKseUmxa"
+          "url": ""
         },
         {
           "name": "商品点击数据-英区",
           "type": "table",
           "count": 6,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblucAyj1tg0Httu"
+          "url": ""
         },
         {
           "name": "商品点击数据-美区",
           "type": "table",
           "count": 11,
-          "url": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblzgrcGlOGKif9a"
+          "url": ""
         }
       ],
       "tutorial": [
@@ -1308,12 +1313,16 @@
   },
   "todayActions": [
     {
-      "title": "视频发布：先处理卡点",
-      "detail": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。"
+      "title": "先看待发布",
+      "detail": "已成片但未发布 20 条。"
     },
     {
-      "title": "复盘完成：先处理卡点",
-      "detail": "当前复盘表未发现本周“已完成+复盘时间”的记录。"
+      "title": "再看待回流",
+      "detail": "已发布但未回流 2 条。"
+    },
+    {
+      "title": "最后清异常",
+      "detail": "当前待处理链路 72 条。"
     }
   ],
   "gaps": [
@@ -1337,7 +1346,7 @@
       "todayDone": 3,
       "weekTotal": 6,
       "sourceTable": "爆款视频脚本收集表",
-      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblds8NX5DtIRF4c",
+      "sourceUrl": "",
       "rule": "按系统提交时间统计：今日新增=今日提交记录数；本周累计=本周一至今日提交记录数。只统计爆款样本，不混入发布后视频数据。",
       "blocker": "",
       "target": "source",
@@ -1353,7 +1362,7 @@
       "todayDone": 0,
       "weekTotal": 10,
       "sourceTable": "开头钩子收集",
-      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl4ilWciopsdnkp",
+      "sourceUrl": "",
       "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。",
       "blocker": "",
       "target": "deconstruct",
@@ -1369,7 +1378,7 @@
       "todayDone": 0,
       "weekTotal": 10,
       "sourceTable": "中间叙事逻辑收集",
-      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblchjwEhqhUZgh5",
+      "sourceUrl": "",
       "rule": "按系统创建时间统计：今日新增=今日创建记录数；本周累计=本周一至今日创建记录数。",
       "blocker": "",
       "target": "deconstruct",
@@ -1385,7 +1394,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "音乐库收集文档 -> 音乐库统计索引",
-      "sourceUrl": "https://www.feishu.cn/docx/Tu16d3RosoB7gWxODkucmVe2nic",
+      "sourceUrl": "",
       "rule": "以音乐库收集文档中的 BGM 表格曲名为业务键；首次运行建基线，之后新增曲名自动同步到统计索引并按运行日期计数。",
       "blocker": "",
       "target": "bgm",
@@ -1401,7 +1410,7 @@
       "todayDone": 1,
       "weekTotal": 1,
       "sourceTable": "4 个脚本文档 -> 脚本生产统计索引",
-      "sourceUrl": "https://www.feishu.cn/docx/PV10d35K9oWSJTxmpRzcnobJn7c\nhttps://www.feishu.cn/docx/LL6sdoBscoOtujxE7chcr7LUnwe\nhttps://www.feishu.cn/docx/CTFcd66hCo4TQ2xiYyKc4Y8unUf\nhttps://www.feishu.cn/docx/W90rdOOJ4oSpfjxUaeKcNlwMnKc",
+      "sourceUrl": "",
       "rule": "以脚本文档三级标题为业务键；首次运行建基线，之后新增标题自动同步到统计索引并按运行日期计数。",
       "blocker": "",
       "target": "script",
@@ -1425,7 +1434,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "内容周测试计划表",
-      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblQHjvT685vM0AV",
+      "sourceUrl": "",
       "rule": "第一版按本周计划里的“已发布视频数”汇总；当前源表缺少逐条发布日期，无法可靠拆成每日新增。",
       "blocker": "已发布视频数字段当前为空或为 0；需要补发布记录表或发布日期字段，才能做每日发布进展。",
       "target": "publish",
@@ -1441,7 +1450,7 @@
       "todayDone": 0,
       "weekTotal": 56,
       "sourceTable": "视频数据-英区/美区 + 商品点击数据-英区/美区",
-      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tblJglRnYGoeOfvf",
+      "sourceUrl": "",
       "rule": "视频数据按“手机截图日期 UTC+8”统计，商品点击数据按“日期 UTC-8”统计；只统计发布后的数据回流，不混入爆款收集。",
       "blocker": "",
       "target": "data",
@@ -1457,7 +1466,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "内容周复盘表",
-      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbl5KW5OJuUCgmtb",
+      "sourceUrl": "",
       "rule": "按复盘状态=已完成且复盘时间落在对应日期/周内统计。",
       "blocker": "当前复盘表未发现本周“已完成+复盘时间”的记录。",
       "target": "review",
@@ -1473,7 +1482,7 @@
       "todayDone": 0,
       "weekTotal": 0,
       "sourceTable": "钩子库、卖点库、痛点库、选题库、卖点可视化库、高光帧库",
-      "sourceUrl": "https://www.feishu.cn/base/AJzXbWHHVamHsusPYA4cdHDanBh?table=tbletDN7SrdPnDJj",
+      "sourceUrl": "",
       "rule": "按六个库表的系统创建时间汇总：今日新增=今日创建记录总数；本周累计=本周一至今日创建记录总数。",
       "blocker": "",
       "target": "libraries",
@@ -1680,6 +1689,2690 @@
       "blocker": "暂无明确卡点。",
       "next": "继续按当前统计口径推进，并在源表/文档里留下可回读证据。",
       "rule": "按六个库表的系统创建时间汇总：今日新增=今日创建记录总数；本周累计=本周一至今日创建记录总数。"
+    }
+  ],
+  "weeks": [
+    {
+      "id": "第一周8.17-8.23",
+      "label": "第一周8.17-8.23",
+      "total": 24,
+      "scriptDone": 24,
+      "cutDone": 23,
+      "publishDone": 3,
+      "dataDone": 1,
+      "issues": 24
+    },
+    {
+      "id": "第二周8.24-8.30",
+      "label": "第二周8.24-8.30",
+      "total": 24,
+      "scriptDone": 24,
+      "cutDone": 0,
+      "publishDone": 0,
+      "dataDone": 0,
+      "issues": 24
+    },
+    {
+      "id": "第三周8.31-9.6",
+      "label": "第三周8.31-9.6",
+      "total": 24,
+      "scriptDone": 24,
+      "cutDone": 0,
+      "publishDone": 0,
+      "dataDone": 0,
+      "issues": 24
+    }
+  ],
+  "contentChains": [
+    {
+      "id": "1-UK-BRAND-01",
+      "key": "1-UK-BRAND-01",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "Steam Roast 家庭晚餐流程",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第一周8.17-8.23\\英式品牌",
+      "fileName": "1-UK-BRAND-01.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接、发布时间，并进入 T+1/T+3/T+7 数据回流。",
+      "note": "脚本码：英式-20260817-001；文档状态：已写 8.14-已剪辑；成片匹配规则：文件名前缀等于内容ID。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-UK-BRAND-02",
+      "key": "1-UK-BRAND-02",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "减少每天晚餐决策",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "英式品牌",
+      "fileName": "1-UK-BRAND-02.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：英式-20260817-002；文档状态：已写 8.14-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：英式品牌\\If you’re always-2026.8.14-2-英品.mp4 -> MOM-BRAND-02-UK-BRAND.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-UK-BRAND-03",
+      "key": "1-UK-BRAND-03",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "让做饭重新容易享受",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "英式品牌",
+      "fileName": "1-UK-BRAND-03.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：英式-20260817-003；文档状态：已写-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：英式品牌\\MOM-BRAND-03-英式品牌.mp4 -> MOM-BRAND-03-UK-BRAND.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-01",
+      "key": "1-UK-UGC-01",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "晚餐不该占掉整晚",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "英式UGC",
+      "fileName": "1-UK-UGC-01.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：英式-20260817-001；文档状态：已写-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：英式UGC\\If you're tired-2026.8.13-1.mp4 -> MOM-UGC-01-UK-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-02",
+      "key": "1-UK-UGC-02",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "Steam Roast 减少晚餐步骤切换",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "已发布",
+      "data": "待回流",
+      "review": "未复盘",
+      "folder": "英式UGC\\已发",
+      "fileName": "1-UK-UGC-02.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已发布，等待发布后数据回流。",
+      "next": "回填视频链接、播放量、CTR/CVR/ROI 和复盘结论。",
+      "note": "脚本码：英式-20260817-002；文档状态：已写-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：英式UGC\\已发\\If dinner's at 6-2026.8.13-2.mp4 -> MOM-UGC-02-UK-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已发布，但缺视频链接。",
+        "已发布，但缺发布时间。",
+        "已发布，但缺发布账号。",
+        "已发布，等待发布后数据回流。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-03",
+      "key": "1-UK-UGC-03",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "Steam Roast 减少厨房混乱",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "英式UGC",
+      "fileName": "1-UK-UGC-03.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：英式-20260817-003；文档状态：已写-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：英式UGC\\Some dinners take -2026.8.13-3.mp4 -> MOM-UGC-03-UK-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-04",
+      "key": "1-UK-UGC-04",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "今晚吃什么太累",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "英式UGC",
+      "fileName": "1-UK-UGC-04.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：英式-20260817-004；文档状态：已写-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：英式UGC\\By Wednesday-2026.8.13-4.mp4 -> MOM-UGC-04-UK-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-05",
+      "key": "1-UK-UGC-05",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "全家口味不同",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "已发布",
+      "data": "待回流",
+      "review": "未复盘",
+      "folder": "英式UGC\\已发",
+      "fileName": "1-UK-UGC-05.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已发布，等待发布后数据回流。",
+      "next": "回填视频链接、播放量、CTR/CVR/ROI 和复盘结论。",
+      "note": "脚本码：英式-20260817-005；文档状态：已写-8.14-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：英式UGC\\已发\\Making dinner -2026.8.14-5-英UGC.mp4 -> MOM-UGC-05-UK-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已发布，但缺视频链接。",
+        "已发布，但缺发布时间。",
+        "已发布，但缺发布账号。",
+        "已发布，等待发布后数据回流。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-06",
+      "key": "1-UK-UGC-06",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "家人问晚饭吃什么",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第一周8.17-8.23\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "脚本文档标记已剪辑，但第一周成片文件未按内容ID前缀命名，待确认对应文件。",
+      "next": "把对应成片补内容ID前缀，或在本表补成片文件名。",
+      "note": "脚本码：英式-20260817-006；文档状态：已写 -已剪辑；成片匹配规则：文件名前缀等于内容ID。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "剪辑状态是已成片，但缺成片文件名。",
+        "脚本文档标记已剪辑，但第一周成片文件未按内容ID前缀命名，待确认对应文件。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-07",
+      "key": "1-UK-UGC-07",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "做饭变成家务",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第一周8.17-8.23\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "脚本文档标记已剪辑，但第一周成片文件未按内容ID前缀命名，待确认对应文件。",
+      "next": "把对应成片补内容ID前缀，或在本表补成片文件名。",
+      "note": "脚本码：英式-20260817-007；文档状态：已写 -已剪辑；成片匹配规则：文件名前缀等于内容ID。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "剪辑状态是已成片，但缺成片文件名。",
+        "脚本文档标记已剪辑，但第一周成片文件未按内容ID前缀命名，待确认对应文件。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-08",
+      "key": "1-UK-UGC-08",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "晚餐什么时候不好玩了",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第一周8.17-8.23\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "脚本文档标记已剪辑，但第一周成片文件未按内容ID前缀命名，待确认对应文件。",
+      "next": "把对应成片补内容ID前缀，或在本表补成片文件名。",
+      "note": "脚本码：英式-20260817-008；文档状态：已写-已剪辑8.21；成片匹配规则：文件名前缀等于内容ID。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "剪辑状态是已成片，但缺成片文件名。",
+        "脚本文档标记已剪辑，但第一周成片文件未按内容ID前缀命名，待确认对应文件。"
+      ]
+    },
+    {
+      "id": "1-UK-UGC-09",
+      "key": "1-UK-UGC-09",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "不想再多一份工作",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第一周8.17-8.23\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "未匹配到按内容ID命名的成片文件。",
+      "next": "剪辑成片后按内容ID命名并放入第一周文件夹。",
+      "note": "脚本码：英式-20260817-009；文档状态：已写；成片匹配规则：文件名前缀等于内容ID。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "未匹配到按内容ID命名的成片文件。"
+      ]
+    },
+    {
+      "id": "1-US-BRAND-01",
+      "key": "1-US-BRAND-01",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "Steam Roast 家庭晚餐流程",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第一周8.17-8.23\\美式品牌",
+      "fileName": "1-US-BRAND-01.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接、发布时间，并进入 T+1/T+3/T+7 数据回流。",
+      "note": "脚本码：美式-20260817-001；文档状态：已写 8.14-已剪辑；成片匹配规则：文件名前缀等于内容ID。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-BRAND-02",
+      "key": "1-US-BRAND-02",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "减少每天晚餐决策",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式品牌",
+      "fileName": "1-US-BRAND-02.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-002；文档状态：已写 8.14-已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式品牌\\If you’re constantly-2026.8.14-4-美品.mp4 -> MOM-BRAND-02-US-BRAND.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-BRAND-03",
+      "key": "1-US-BRAND-03",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "让做饭重新容易享受",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "已发布",
+      "data": "已回流",
+      "review": "未复盘",
+      "folder": "美式品牌\\已发",
+      "fileName": "1-US-BRAND-03.mp4",
+      "publishTime": "2026-08-17 21:00",
+      "publishAccount": "ounin_official",
+      "videoUrl": "https://www.tiktok.com/@ounin_official/video/7674941103509933342",
+      "dataDate": "2026-08-18",
+      "metrics": {
+        "views": 18,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已关联美区视频数据；商品点击数据仍未覆盖到 8.17 后。",
+      "next": "等商品点击数据更新后，补 CTR/CVR/ROI；继续观察 T+3/T+7。",
+      "note": "脚本码：美式-20260817-003；文档状态：已写 -已剪辑；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式品牌\\已发\\MOM-BRAND-03-美区品牌.mp4 -> MOM-BRAND-03-US-BRAND.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已关联美区视频数据；商品点击数据仍未覆盖到 8.17 后。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-01",
+      "key": "1-US-UGC-01",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "晚餐不该占掉整晚",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-01.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-001；文档状态：已剪辑-杨昆；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\If you're tired of dinner taking two hours.mp4 -> MOM-UGC-01-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-02",
+      "key": "1-US-UGC-02",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "Steam Roast 减少晚餐步骤切换",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-02.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-002；文档状态：已剪辑-杨；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\If dinner's at 6, why am I starting at 4.mp4 -> MOM-UGC-02-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-03",
+      "key": "1-US-UGC-03",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "Steam Roast 多设备切换",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-03.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-003；文档状态：已剪辑-杨；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\If dinner takes more than one appliance.mp4 -> MOM-UGC-03-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-04",
+      "key": "1-US-UGC-04",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "今晚吃什么太累",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-04.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-004；文档状态：已剪辑-杨；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\If you're tired of deciding dinner every day.mp4 -> MOM-UGC-04-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-05",
+      "key": "1-US-UGC-05",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "全家口味不同",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-05.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-005；文档状态：已剪辑-杨；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\When everyone wants something different for dinner.mp4 -> MOM-UGC-05-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-06",
+      "key": "1-US-UGC-06",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "家人问晚饭吃什么",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-06.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-006；文档状态：已写-已剪辑 8.20；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\MOM-UGC-06-美式UGC.mp4 -> MOM-UGC-06-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-07",
+      "key": "1-US-UGC-07",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "做饭变成家务",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-07.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-007；文档状态：已写 -已剪辑8.20；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\MOM-UGC-07-美式UGC.mp4 -> MOM-UGC-07-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-08",
+      "key": "1-US-UGC-08",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "晚餐什么时候不好玩了",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-08.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-008；文档状态：已写-已剪辑8.20；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\MOM-UGC-08-美式UGC.mp4 -> MOM-UGC-08-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "1-US-UGC-09",
+      "key": "1-US-UGC-09",
+      "week": "第一周8.17-8.23",
+      "weekStart": "2026-08-17",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "不想再多一份工作",
+      "script": "已写",
+      "cut": "已成片",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "美式UGC",
+      "fileName": "1-US-UGC-09.mp4",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "已匹配成片，未识别为已发布。",
+      "next": "发布后补视频链接与发布时间。",
+      "note": "脚本码：美式-20260817-009；文档状态：已写-已剪辑8.20；成片匹配规则：文件名前缀等于内容ID。；已统一成片命名：美式UGC\\MOM-UGC-09-美式UGC.mp4 -> MOM-UGC-09-US-UGC.mp4",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "已匹配成片，未识别为已发布。"
+      ]
+    },
+    {
+      "id": "2-UK-BRAND-01",
+      "key": "2-UK-BRAND-01",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "Steam Bake 稳定做成功",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式品牌｜脚本文档同步生成；原脚本码：英式-20260824-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-BRAND-02",
+      "key": "2-UK-BRAND-02",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "从一次成功开始",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式品牌｜脚本文档同步生成；原脚本码：英式-20260824-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-BRAND-03",
+      "key": "2-UK-BRAND-03",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "少一点混乱多一点掌控",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式品牌｜脚本文档同步生成；原脚本码：英式-20260824-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-01",
+      "key": "2-UK-UGC-01",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "怕一做饭就翻车",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-02",
+      "key": "2-UK-UGC-02",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "不知道什么时候算做好",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-03",
+      "key": "2-UK-UGC-03",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "肉总是又干又柴",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-04",
+      "key": "2-UK-UGC-04",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "不想看复杂菜谱",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-004；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-05",
+      "key": "2-UK-UGC-05",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "11种功能模式减少选择纠结",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-005；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-06",
+      "key": "2-UK-UGC-06",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "想开始自己做饭",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-006；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-07",
+      "key": "2-UK-UGC-07",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "厨房总是先乱",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-007；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-08",
+      "key": "2-UK-UGC-08",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "少一点来回切换",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-008；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-UK-UGC-09",
+      "key": "2-UK-UGC-09",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "第一次买蒸烤箱看什么",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260824-009；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-BRAND-01",
+      "key": "2-US-BRAND-01",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "Steam Bake 稳定做成功",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式品牌｜脚本文档同步生成；原脚本码：美式-20260824-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-BRAND-02",
+      "key": "2-US-BRAND-02",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "从一次成功开始",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式品牌｜脚本文档同步生成；原脚本码：美式-20260824-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-BRAND-03",
+      "key": "2-US-BRAND-03",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "少一点混乱多一点掌控",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式品牌｜脚本文档同步生成；原脚本码：美式-20260824-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-01",
+      "key": "2-US-UGC-01",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "怕一做饭就翻车",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-02",
+      "key": "2-US-UGC-02",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "不知道什么时候算做好",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-03",
+      "key": "2-US-UGC-03",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "肉总是又干又柴",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-04",
+      "key": "2-US-UGC-04",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "不想看复杂菜谱",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-004；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-05",
+      "key": "2-US-UGC-05",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "11种功能模式减少选择纠结",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-005；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-06",
+      "key": "2-US-UGC-06",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "想开始自己做饭",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-006；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-07",
+      "key": "2-US-UGC-07",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "厨房总是先乱",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-007；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-08",
+      "key": "2-US-UGC-08",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "少一点来回切换",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-008；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "2-US-UGC-09",
+      "key": "2-US-UGC-09",
+      "week": "第二周8.24-8.30",
+      "weekStart": "2026-08-24",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "第一次买蒸烤箱看什么",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第二周8.24-8.30\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260824-009；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-BRAND-01",
+      "key": "3-UK-BRAND-01",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "Steam Bake 肉类干柴压力",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式品牌｜脚本文档同步生成；原脚本码：英式-20260831-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-BRAND-02",
+      "key": "3-UK-BRAND-02",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "Steam Roast 晚餐流程切换",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式品牌｜脚本文档同步生成；原脚本码：英式-20260831-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-BRAND-03",
+      "key": "3-UK-BRAND-03",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "BRAND",
+      "scriptDoc": "英式品牌｜脚本文档",
+      "title": "11种功能模式日常餐食",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式品牌｜脚本文档同步生成；原脚本码：英式-20260831-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-01",
+      "key": "3-UK-UGC-01",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "怕做出来没人爱吃",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-02",
+      "key": "3-UK-UGC-02",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "Steam Bake 减少肉类干柴",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-03",
+      "key": "3-UK-UGC-03",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "怕肉类做干",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-04",
+      "key": "3-UK-UGC-04",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "晚饭占掉整个晚上",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-004；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-05",
+      "key": "3-UK-UGC-05",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "主菜配菜厨具切换",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-005；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-06",
+      "key": "3-UK-UGC-06",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "少用几个锅做晚餐",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-006；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-07",
+      "key": "3-UK-UGC-07",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "早中晚餐安排太累",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-007；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-08",
+      "key": "3-UK-UGC-08",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "更多早中晚餐做法",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-008；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-UK-UGC-09",
+      "key": "3-UK-UGC-09",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "UK",
+      "type": "UGC",
+      "scriptDoc": "英式UGC｜脚本文档",
+      "title": "一台机器覆盖日常餐食",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\英式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从英式UGC｜脚本文档同步生成；原脚本码：英式-20260831-009；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-BRAND-01",
+      "key": "3-US-BRAND-01",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "Steam Bake 肉类干柴压力",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式品牌｜脚本文档同步生成；原脚本码：美式-20260831-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-BRAND-02",
+      "key": "3-US-BRAND-02",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "Steam Roast 晚餐流程切换",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式品牌｜脚本文档同步生成；原脚本码：美式-20260831-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-BRAND-03",
+      "key": "3-US-BRAND-03",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "BRAND",
+      "scriptDoc": "美式品牌｜脚本文档",
+      "title": "11种功能模式日常餐食",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式品牌",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式品牌｜脚本文档同步生成；原脚本码：美式-20260831-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-01",
+      "key": "3-US-UGC-01",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "怕做出来没人爱吃",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-001；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-02",
+      "key": "3-US-UGC-02",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "Steam Bake 减少肉类干柴",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-002；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-03",
+      "key": "3-US-UGC-03",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "怕肉类做干",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-003；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-04",
+      "key": "3-US-UGC-04",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "晚饭占掉整个晚上",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-004；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-05",
+      "key": "3-US-UGC-05",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "主菜配菜厨具切换",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-005；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-06",
+      "key": "3-US-UGC-06",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "少用几个锅做晚餐",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-006；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-07",
+      "key": "3-US-UGC-07",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "早中晚餐安排太累",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-007；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-08",
+      "key": "3-US-UGC-08",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "更多早中晚餐做法",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-008；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
+    },
+    {
+      "id": "3-US-UGC-09",
+      "key": "3-US-UGC-09",
+      "week": "第三周8.31-9.6",
+      "weekStart": "2026-08-31",
+      "region": "US",
+      "type": "UGC",
+      "scriptDoc": "美式UGC｜脚本文档",
+      "title": "一台机器覆盖日常餐食",
+      "script": "已写",
+      "cut": "未剪",
+      "publish": "未发布",
+      "data": "未到期",
+      "review": "未复盘",
+      "folder": "第三周8.31-9.6\\美式UGC",
+      "fileName": "",
+      "publishTime": "",
+      "publishAccount": "",
+      "videoUrl": "",
+      "dataDate": "",
+      "metrics": {
+        "views": null,
+        "ctr": null,
+        "cvr": null,
+        "roi": null
+      },
+      "rawMetrics": {},
+      "blocker": "等待剪辑成片。",
+      "next": "剪辑成片后按内容ID命名，并在本表补成片文件名。",
+      "note": "从美式UGC｜脚本文档同步生成；原脚本码：美式-20260831-009；文档状态：已写。",
+      "dataSource": "内容生产全链路追踪表",
+      "matchMethod": "内容ID / 链路唯一键",
+      "issues": [
+        "还没有成片，或成片文件名没有回填。",
+        "等待剪辑成片。"
+      ]
     }
   ]
 }

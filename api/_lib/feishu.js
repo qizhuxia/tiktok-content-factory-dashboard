@@ -84,6 +84,28 @@ async function feishuGet(path, userAccessToken, query = {}) {
   return payload.data || payload;
 }
 
+async function feishuPost(path, userAccessToken, body = {}) {
+  const payload = await requestJson(`${FEISHU_HOST}/open-apis/${path.replace(/^\//, "")}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${userAccessToken}`
+    },
+    body: JSON.stringify(body)
+  });
+  return payload.data || payload;
+}
+
+async function feishuPut(path, userAccessToken, body = {}) {
+  const payload = await requestJson(`${FEISHU_HOST}/open-apis/${path.replace(/^\//, "")}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${userAccessToken}`
+    },
+    body: JSON.stringify(body)
+  });
+  return payload.data || payload;
+}
+
 async function listTables(userAccessToken) {
   const appToken = getEnv("CONTENT_FACTORY_APP_TOKEN");
   const tables = [];
@@ -168,6 +190,22 @@ async function listTableRecords(userAccessToken, tableId, fieldNames = []) {
   return records;
 }
 
+async function getTableRecord(userAccessToken, tableId, recordId, fieldNames = []) {
+  const appToken = getEnv("CONTENT_FACTORY_APP_TOKEN");
+  const query = {};
+  if (fieldNames.length) query.field_names = JSON.stringify(fieldNames);
+  return feishuGet(`bitable/v1/apps/${encodeURIComponent(appToken)}/tables/${encodeURIComponent(tableId)}/records/${encodeURIComponent(recordId)}`, userAccessToken, query);
+}
+
+async function updateTableRecord(userAccessToken, tableId, recordId, fields) {
+  const appToken = getEnv("CONTENT_FACTORY_APP_TOKEN");
+  return feishuPut(
+    `bitable/v1/apps/${encodeURIComponent(appToken)}/tables/${encodeURIComponent(tableId)}/records/${encodeURIComponent(recordId)}`,
+    userAccessToken,
+    { fields }
+  );
+}
+
 function buildTableUrl(tableId) {
   const baseUrl = (process.env.CONTENT_FACTORY_BASE_URL || "").trim();
   if (!baseUrl) return "";
@@ -191,5 +229,7 @@ module.exports = {
   getTableSnapshots,
   findTableByName,
   listTableRecords,
+  getTableRecord,
+  updateTableRecord,
   buildTableUrl
 };

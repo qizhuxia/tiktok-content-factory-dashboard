@@ -414,7 +414,7 @@ const contentChains = [
     publishAccount: "ounin_official",
     publishTime: "2026-08-17 21:00",
     videoUrl: "https://www.tiktok.com/@ounin_official/video/7674941103509933342",
-    dataSource: "视频数据-美区 / recvsBy96KYIfI",
+    dataSource: "视频数据-美区 / 已关联",
     matchMethod: "视频ID匹配",
     metrics: { views: 18 },
     rawMetrics: { views: 177 },
@@ -476,6 +476,9 @@ let authState = {
   mode: "snapshot"
 };
 let detailCache = {};
+let selectedWeek = "all";
+let selectedStage = "publish";
+let selectedChainId = "";
 
 const overviewView = document.querySelector("#overviewView");
 const detailView = document.querySelector("#detailView");
@@ -847,10 +850,13 @@ function getWeeklyProgress(type, id) {
 
 function renderMetrics() {
   const metrics = dashboardData?.metrics;
-  document.querySelector("#tableAssetCount").textContent = metrics?.todayAdded ?? metrics?.tables ?? "0";
-  document.querySelector("#materialCount").textContent = metrics?.weekTotal ?? metrics?.libraryAssets ?? "0";
-  document.querySelector("#stepCount").textContent = metrics?.trackedSegments ?? metrics?.workflowSteps ?? workflowSteps.length;
-  document.querySelector("#gapCount").textContent = metrics?.blockedSegments ?? metrics?.weakOrBlocked ?? gaps.length;
+  const chains = getContentChains();
+  const total = metrics?.chainTotal ?? chains.length;
+  const published = metrics?.publishDone ?? chains.filter((chain) => isDoneStage(chain, "publish")).length;
+  document.querySelector("#tableAssetCount").textContent = ratioText(metrics?.scriptDone ?? chains.filter((chain) => isDoneStage(chain, "script")).length, total);
+  document.querySelector("#materialCount").textContent = ratioText(metrics?.cutDone ?? chains.filter((chain) => isDoneStage(chain, "cut")).length, total);
+  document.querySelector("#stepCount").textContent = ratioText(published, total);
+  document.querySelector("#gapCount").textContent = ratioText(metrics?.dataDone ?? chains.filter((chain) => isDoneStage(chain, "data")).length, published);
 
   if (snapshotStatus) {
     if (authState.configured && !authState.authenticated) {
@@ -877,7 +883,13 @@ function attachMetricRoutes() {
     if (card.dataset.routeReady === "true") return;
     card.dataset.routeReady = "true";
     const openStats = () => {
-      window.location.hash = `stats/${card.dataset.statsId}`;
+      const stageMap = { today: "script", week: "cut", segments: "publish", blockers: "data" };
+      selectedStage = stageMap[card.dataset.statsId] || "publish";
+      selectedWeek = "all";
+      selectedChainId = "";
+      renderProgressBoard();
+      renderChainQualityBoard();
+      document.querySelector("#chainQualityBoard")?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
     card.addEventListener("click", openStats);
     card.addEventListener("keydown", (event) => {
@@ -1093,6 +1105,77 @@ function getContentChains() {
   return dashboardData?.contentChains?.length ? dashboardData.contentChains : contentChains;
 }
 
+function isDoneStage(chain, stage) {
+  const value = {
+    script: chain.script,
+    cut: chain.cut,
+    publish: chain.publish,
+    data: chain.data
+  }[stage] || "";
+  if (stage === "script") return /已写|已选用/.test(value);
+  if (stage === "cut") return /已成片/.test(value);
+  if (stage === "publish") return /已发布/.test(value);
+  if (stage === "data") return /已回流/.test(value);
+  return false;
+}
+
+function chainHasIssue(chain) {
+  return Boolean(chain.issues?.length || /冲突|异常|错|阻塞|缺失/.test(`${chain.data || ""} ${chain.blocker || ""}`));
+}
+
+function weekIndex(label) {
+  const match = String(label || "").match(/第([一二三四五六七八九十\d]+)周/);
+  const map = { 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9, 十: 10 };
+  return Number(match?.[1]) || map[match?.[1]] || 999;
+}
+
+function buildWeeksFromChains() {
+  const groups = new Map();
+  getContentChains().forEach((chain) => {
+    const key = chain.week || "未分周";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(chain);
+  });
+  return [...groups.entries()].map(([week, items]) => ({
+    id: week,
+    label: week,
+    total: items.length,
+    scriptDone: items.filter((chain) => isDoneStage(chain, "script")).length,
+    cutDone: items.filter((chain) => isDoneStage(chain, "cut")).length,
+    publishDone: items.filter((chain) => isDoneStage(chain, "publish")).length,
+    dataDone: items.filter((chain) => isDoneStage(chain, "data")).length,
+    issues: items.filter(chainHasIssue).length
+  })).sort((a, b) => weekIndex(a.label) - weekIndex(b.label));
+}
+
+function ratioText(done, total) {
+  return `${Number(done || 0)}/${Number(total || 0)}`;
+}
+
+function stageLabel(stage) {
+  return { script: "脚本", cut: "剪辑", publish: "发布", data: "数据" }[stage] || stage;
+}
+
+function stageDoneField(stage) {
+  return { script: "scriptDone", cut: "cutDone", publish: "publishDone", data: "dataDone" }[stage] || "scriptDone";
+}
+
+function stageTotalForWeek(week, stage) {
+  return stage === "data" ? Number(week.publishDone || 0) : Number(week.total || 0);
+}
+
+function filteredChainsForSelection() {
+  return getContentChains().filter((chain) => selectedWeek === "all" || chain.week === selectedWeek);
+}
+
+function selectedStageChains() {
+  return filteredChainsForSelection().sort((a, b) => {
+    const aDone = isDoneStage(a, selectedStage) ? 1 : 0;
+    const bDone = isDoneStage(b, selectedStage) ? 1 : 0;
+    return aDone - bDone || Number(chainHasIssue(b)) - Number(chainHasIssue(a)) || String(a.id).localeCompare(String(b.id), "zh-CN");
+  });
+}
+
 function chainStatusClass(value) {
   if (!value) return "chain-status is-empty";
   if (/冲突|异常|错|阻塞/.test(value)) return "chain-status is-error";
@@ -1112,53 +1195,132 @@ function metricText(chain) {
 function renderChainQualityBoard() {
   const board = document.querySelector("#chainQualityBoard");
   if (!board) return;
-  const chains = getContentChains();
+  const chains = selectedStageChains();
+  const allChains = getContentChains();
   if (!chains.length) {
     board.innerHTML = `<p class="empty-note">还没有逐条链路数据；等待全链路追踪表接入。</p>`;
     return;
   }
-  const conflictCount = chains.filter((chain) => chain.issues?.length || /冲突|异常|错|阻塞/.test(chain.data || "")).length;
+  const conflictCount = allChains.filter(chainHasIssue).length;
+  const selectedChain = allChains.find((chain) => chain.id === selectedChainId) || chains[0];
+  selectedChainId = selectedChain?.id || "";
   board.innerHTML = `
     <div class="chain-quality-summary">
-      <strong>${chains.length}</strong>
-      <span>条内容链路</span>
+      <strong>${allChains.length}</strong>
+      <span>全部链路</span>
       <b>${conflictCount}</b>
       <span>条需处理</span>
+      <button class="text-link-button" type="button" data-week-all>看全部周</button>
     </div>
-    <div class="chain-table">
-      <div class="chain-row chain-head-row">
-        <span>内容</span>
-        <span>脚本</span>
-        <span>成片</span>
-        <span>发布</span>
-        <span>数据</span>
-        <span>播放量</span>
-        <span>证据 / 下一步</span>
-      </div>
-      ${chains.map((chain) => {
-        const issue = chain.issues?.[0] || "";
-        const videoLink = chain.videoUrl ? `<a href="${escapeHtml(chain.videoUrl)}" target="_blank" rel="noopener noreferrer">视频</a>` : "";
-        return `
-          <article class="chain-row ${issue ? "has-issue" : ""}">
-            <div class="chain-main">
+    <div class="stage-toolbar">
+      ${["script", "cut", "publish", "data"].map((stage) => `
+        <button class="${selectedStage === stage ? "active" : ""}" type="button" data-stage-tab="${stage}">${escapeHtml(stageLabel(stage))}</button>
+      `).join("")}
+      <span>${escapeHtml(selectedWeek === "all" ? "全部周" : selectedWeek)} / ${escapeHtml(stageLabel(selectedStage))}</span>
+    </div>
+    <div class="chain-workbench">
+      <div class="chain-list">
+        ${chains.map((chain) => {
+          const issue = chain.issues?.[0] || "";
+          const selected = chain.id === selectedChainId ? " active" : "";
+          return `
+            <button class="chain-list-item${selected} ${issue ? "has-issue" : ""}" type="button" data-chain-id="${escapeHtml(chain.id)}">
               <strong>${escapeHtml(chain.id)}</strong>
-              <small>${escapeHtml(chain.region)} / ${escapeHtml(chain.type)} / ${escapeHtml(chain.title || "")}</small>
-              <em>${escapeHtml(chain.fileName || "未绑定成片")}</em>
-            </div>
-            <span class="${chainStatusClass(chain.script)}">${escapeHtml(chain.script || "未知")}</span>
-            <span class="${chainStatusClass(chain.cut)}">${escapeHtml(chain.cut || "未知")}</span>
-            <span class="${chainStatusClass(chain.publish)}">${escapeHtml(chain.publish || "未知")}</span>
-            <span class="${chainStatusClass(chain.data)}">${escapeHtml(chain.data || "未知")}</span>
-            <b class="chain-views">${escapeHtml(metricText(chain))}</b>
-            <div class="chain-evidence">
-              <p>${escapeHtml(issue || chain.next || "暂无异常。")}</p>
-              <small>${escapeHtml(chain.dataSource || "暂无来源")} · ${escapeHtml(chain.matchMethod || "暂无匹配方式")} ${videoLink}</small>
-            </div>
-          </article>
-        `;
-      }).join("")}
+              <span>${escapeHtml(chain.week || "")} / ${escapeHtml(chain.region || "")} / ${escapeHtml(chain.type || "")}</span>
+              <em>${escapeHtml(chain.title || "未填标题")}</em>
+              <small>${escapeHtml(stageLabel(selectedStage))}: ${escapeHtml({ script: chain.script, cut: chain.cut, publish: chain.publish, data: chain.data }[selectedStage] || "未知")}${issue ? ` · ${escapeHtml(issue)}` : ""}</small>
+            </button>
+          `;
+        }).join("")}
+      </div>
+      ${renderChainDetailCard(selectedChain)}
     </div>
   `;
+  board.querySelector("[data-week-all]")?.addEventListener("click", () => {
+    selectedWeek = "all";
+    selectedChainId = "";
+    renderProgressBoard();
+    renderChainQualityBoard();
+  });
+  board.querySelectorAll("[data-stage-tab]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedStage = button.dataset.stageTab || "publish";
+      selectedChainId = "";
+      renderProgressBoard();
+      renderChainQualityBoard();
+    });
+  });
+  board.querySelectorAll("[data-chain-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedChainId = button.dataset.chainId || "";
+      renderChainQualityBoard();
+    });
+  });
+  board.querySelectorAll("[data-chain-action]").forEach((button) => {
+    button.addEventListener("click", () => updateChainAction(button.dataset.chainAction, button.dataset.recordId));
+  });
+}
+
+function renderChainDetailCard(chain) {
+  if (!chain) return `<aside class="chain-detail-card"><p>请选择一条内容。</p></aside>`;
+  const issueMarkup = chain.issues?.length
+    ? chain.issues.map((issue) => `<li>${escapeHtml(issue)}</li>`).join("")
+    : "<li>暂无明显异常。</li>";
+  const videoLink = chain.videoUrl ? `<a href="${escapeHtml(chain.videoUrl)}" target="_blank" rel="noopener noreferrer">打开 TikTok 视频</a>` : "";
+  const canWrite = authState.configured && authState.authenticated && authState.mode === "live" && chain.recordId;
+  return `
+    <aside class="chain-detail-card">
+      <div class="chain-detail-head">
+        <span>${escapeHtml(chain.week || "")}</span>
+        <h4>${escapeHtml(chain.id)}</h4>
+        <p>${escapeHtml(chain.title || "未填标题")}</p>
+      </div>
+      <dl class="chain-detail-grid">
+        <div><dt>脚本</dt><dd class="${chainStatusClass(chain.script)}">${escapeHtml(chain.script || "未知")}</dd></div>
+        <div><dt>剪辑</dt><dd class="${chainStatusClass(chain.cut)}">${escapeHtml(chain.cut || "未知")}</dd></div>
+        <div><dt>发布</dt><dd class="${chainStatusClass(chain.publish)}">${escapeHtml(chain.publish || "未知")}</dd></div>
+        <div><dt>数据</dt><dd class="${chainStatusClass(chain.data)}">${escapeHtml(chain.data || "未知")}</dd></div>
+        <div><dt>成片</dt><dd>${escapeHtml(chain.fileName || "未绑定")}</dd></div>
+        <div><dt>发布账号</dt><dd>${escapeHtml(chain.publishAccount || "未填")}</dd></div>
+        <div><dt>发布时间</dt><dd>${escapeHtml(chain.publishTime || "未填")}</dd></div>
+        <div><dt>播放量</dt><dd>${escapeHtml(metricText(chain))}</dd></div>
+      </dl>
+      <div class="chain-detail-section">
+        <span>问题/缺口</span>
+        <ul>${issueMarkup}</ul>
+      </div>
+      <div class="chain-detail-section">
+        <span>下一步</span>
+        <p>${escapeHtml(chain.next || "暂无下一步。")}</p>
+      </div>
+      <div class="chain-actions">
+        ${videoLink}
+        <button type="button" data-chain-action="needs_publish_info" data-record-id="${escapeHtml(chain.recordId || "")}" ${canWrite ? "" : "disabled"}>标记待补发布</button>
+        <button type="button" data-chain-action="waiting_data" data-record-id="${escapeHtml(chain.recordId || "")}" ${canWrite ? "" : "disabled"}>标记待回流</button>
+        <button type="button" data-chain-action="clear_conflict" data-record-id="${escapeHtml(chain.recordId || "")}" ${canWrite ? "" : "disabled"}>冲突已处理</button>
+      </div>
+      ${canWrite ? "" : `<p class="write-disabled-note">登录飞书实时模式后，才可写入追踪表状态。</p>`}
+    </aside>
+  `;
+}
+
+async function updateChainAction(action, recordId) {
+  if (!recordId || !authState.authenticated || authState.mode !== "live") return;
+  try {
+    const payload = await fetchJson("/api/chain-update", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action, recordId })
+    });
+    snapshotStatus.textContent = `已写入追踪表并回读：${payload.action}`;
+    snapshotStatus.classList.add("loaded");
+    await loadRealtimeDashboard();
+    renderOverview();
+  } catch (error) {
+    snapshotStatus.textContent = `写入失败：${error.payload?.message || error.message}`;
+    snapshotStatus.classList.remove("loaded");
+    snapshotStatus.classList.add("locked");
+  }
 }
 
 function renderDailyBrief() {
@@ -1178,13 +1340,18 @@ function renderDailyBrief() {
     ? todayRows.map((row) => `${row.segment} ${row.todayAdded}`).join(" + ")
     : "暂无新增";
 
-  line.textContent = `今天新增 ${totalToday} = ${sourceText}；本周累计 ${totalWeek}；逐条链路待处理 ${chainIssues.length} 条。`;
+  const weeks = dashboardData?.weeks?.length ? dashboardData.weeks : buildWeeksFromChains();
+  const total = chains.length;
+  const cutDone = chains.filter((chain) => isDoneStage(chain, "cut")).length;
+  const publishDone = chains.filter((chain) => isDoneStage(chain, "publish")).length;
+  const dataDone = chains.filter((chain) => isDoneStage(chain, "data")).length;
+  line.textContent = `当前追踪 ${total} 条：已成片 ${cutDone}，已发布 ${publishDone}，已数据回流 ${dataDone}；待处理 ${chainIssues.length} 条。${weeks.length ? `可按 ${weeks.map((week) => week.label).join("、")} 查看。` : ""}`;
   chips.innerHTML = [
-    { label: "今日有推进", value: todayRows.length, route: "stats/today" },
-    { label: "今日 0 推进", value: zeroRows.length, route: "stats/segments" },
-    { label: "卡点/冲突", value: blockers.length + chainIssues.length, route: "stats/blockers" },
+    { label: "未剪辑", value: chains.filter((chain) => !isDoneStage(chain, "cut")).length, stage: "cut" },
+    { label: "待发布", value: chains.filter((chain) => isDoneStage(chain, "cut") && !isDoneStage(chain, "publish")).length, stage: "publish" },
+    { label: "待回流", value: chains.filter((chain) => isDoneStage(chain, "publish") && !isDoneStage(chain, "data")).length, stage: "data" },
   ].map((chip) => `
-    <button class="brief-chip" type="button" data-route="${chip.route}">
+    <button class="brief-chip" type="button" data-stage="${chip.stage}">
       <strong>${chip.value}</strong>
       <span>${chip.label}</span>
     </button>
@@ -1192,7 +1359,11 @@ function renderDailyBrief() {
 
   chips.querySelectorAll(".brief-chip").forEach((button) => {
     button.addEventListener("click", () => {
-      window.location.hash = button.dataset.route;
+      selectedStage = button.dataset.stage || "publish";
+      selectedWeek = "all";
+      selectedChainId = "";
+      renderProgressBoard();
+      renderChainQualityBoard();
     });
   });
 }
@@ -1200,29 +1371,51 @@ function renderDailyBrief() {
 function renderProgressBoard() {
   const table = document.querySelector("#progressTable");
   if (!table) return;
-  const rows = getDailyReports();
+  const weeks = dashboardData?.weeks?.length ? dashboardData.weeks : buildWeeksFromChains();
+  const stages = ["script", "cut", "publish", "data"];
   table.innerHTML = `
-    <div class="progress-row progress-head-row">
-      <span>环节</span>
-      <span>今日</span>
-      <span>本周</span>
-      <span>状态</span>
-      <span>入口</span>
+    <div class="funnel-row funnel-head-row">
+      <span>周次</span>
+      <span>脚本</span>
+      <span>剪辑</span>
+      <span>发布</span>
+      <span>数据</span>
+      <span>异常</span>
     </div>
-    ${rows.map((row) => {
-      const url = firstSourceUrl(row);
-      const status = rowStatus(row);
+    ${weeks.map((week) => {
       return `
-        <div class="progress-row">
-          <strong>${escapeHtml(row.segment)}</strong>
-          <b>${Number(row.todayAdded || 0)}</b>
-          <b>${Number(row.weekTotal || 0)}</b>
-          <span class="progress-state ${row.blocker ? "is-blocked" : Number(row.todayAdded || 0) > 0 ? "is-active" : "is-quiet"}">${escapeHtml(status)}</span>
-          ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">打开飞书</a>` : `<span class="muted-cell">暂无</span>`}
+        <div class="funnel-row">
+          <button class="week-button ${selectedWeek === week.label ? "active" : ""}" type="button" data-week="${escapeHtml(week.label)}" data-stage="${escapeHtml(selectedStage)}">
+            <strong>${escapeHtml(week.label)}</strong>
+            <small>${Number(week.total || 0)} 条内容</small>
+          </button>
+          ${stages.map((stage) => {
+            const done = Number(week[stageDoneField(stage)] || 0);
+            const total = stageTotalForWeek(week, stage);
+            const active = selectedWeek === week.label && selectedStage === stage ? " active" : "";
+            const behind = total > 0 && done < total ? " is-behind" : "";
+            return `<button class="funnel-cell${active}${behind}" type="button" data-week="${escapeHtml(week.label)}" data-stage="${stage}">
+              <b>${ratioText(done, total)}</b>
+              <small>${escapeHtml(stageLabel(stage))}</small>
+            </button>`;
+          }).join("")}
+          <button class="funnel-cell issue-cell ${Number(week.issues || 0) ? "is-behind" : ""}" type="button" data-week="${escapeHtml(week.label)}" data-stage="${escapeHtml(selectedStage)}">
+            <b>${Number(week.issues || 0)}</b>
+            <small>待处理</small>
+          </button>
         </div>
       `;
     }).join("")}
   `;
+  table.querySelectorAll("[data-week][data-stage]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedWeek = button.dataset.week || "all";
+      selectedStage = button.dataset.stage || selectedStage;
+      selectedChainId = "";
+      renderProgressBoard();
+      renderChainQualityBoard();
+    });
+  });
 }
 
 function renderBlockerBoard() {

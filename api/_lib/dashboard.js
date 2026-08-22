@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { buildTableUrl, findTableByName, getTableSnapshots, listTableRecords } = require("./feishu");
+const { buildTableUrl, findTableByName, getTableRecord, getTableSnapshots, listTableRecords } = require("./feishu");
 
 const SOURCE_TABLES = ["爆款视频脚本收集表", "开头钩子收集", "中间叙事逻辑收集"];
 const DATA_TABLES = ["视频数据-英区", "视频数据-美区", "达人精灵数据下载-英区", "达人精灵数据下载-美区", "商品点击数据-英区", "商品点击数据-美区"];
@@ -9,6 +9,46 @@ const PLAN_TABLES = ["内容周测试计划表"];
 const REVIEW_TABLES = ["内容周复盘表"];
 const DAILY_TABLE = "内容生产环节日报";
 const DAILY_FIELDS = ["日报标题", "日期", "所属周", "环节", "今日新增数", "今日完成数", "本周累计数", "数据来源表", "统计口径", "卡点", "证据入口"];
+const TRACKING_TABLE = "内容生产全链路追踪表";
+const TRACKING_FIELDS = [
+  "内容ID",
+  "链路唯一键",
+  "周起始日",
+  "周次命名",
+  "地区",
+  "发布地区",
+  "内容类型",
+  "脚本文档",
+  "脚本标题/选题",
+  "脚本状态",
+  "剪辑状态",
+  "发布状态",
+  "数据回流状态",
+  "成片文件夹",
+  "成片文件名",
+  "发布时间",
+  "发布账号",
+  "视频链接",
+  "播放量",
+  "CTR",
+  "CVR",
+  "ROI",
+  "数据日期",
+  "复盘结论",
+  "结果判定",
+  "当前卡点",
+  "下一步动作",
+  "备注",
+  "关联视频数据-美区",
+  "关联视频数据-英区",
+  "关联商品点击数据-美区",
+  "关联商品点击数据-英区"
+];
+const VIDEO_DATA_TABLES = {
+  US: "tbly9uWaQKseUmxa",
+  UK: "tblJglRnYGoeOfvf"
+};
+const VIDEO_DATA_FIELDS = ["Video/Photo Views", "整体数据提取", "视频链接", "视频ID", "账号ID"];
 const SEGMENT_ORDER = ["爆款样本新增", "开头钩子拆解", "中间叙事拆解", "音乐新增", "脚本新增", "视频发布", "数据回流", "复盘完成", "六库新增"];
 const SEGMENT_TARGETS = {
   "爆款样本新增": "source",
@@ -73,6 +113,234 @@ function dateCell(fields, name) {
     if (!Number.isNaN(date.getTime())) return date.toISOString().slice(0, 10);
   }
   return safeText(value);
+}
+
+function firstText(fields, names) {
+  for (const name of names) {
+    const value = textCell(fields, name);
+    if (value) return value;
+  }
+  return "";
+}
+
+function selectText(fields, name) {
+  return textCell(fields, name);
+}
+
+function linkIds(fields, name) {
+  const value = fields?.[name];
+  if (!Array.isArray(value)) return [];
+  return value.map((item) => item?.id).filter(Boolean);
+}
+
+function parseRecordFields(record) {
+  return record?.fields || {};
+}
+
+function extractVideoViewsFromRaw(value) {
+  const text = scalarCell(value);
+  if (!text) return null;
+  try {
+    const parsed = JSON.parse(text);
+    const candidates = [
+      parsed.Videoviews,
+      parsed.videoViews,
+      parsed["Video/Photo Views"],
+      parsed.views,
+      parsed.playCount
+    ];
+    for (const candidate of candidates) {
+      const number = Number(String(candidate ?? "").replace(/[^\d.]/g, ""));
+      if (Number.isFinite(number) && number > 0) return number;
+    }
+  } catch {
+    const match = text.match(/(?:Videoviews|Video\/Photo Views|views)["':\s]+([\d,]+)/i);
+    if (match) {
+      const number = Number(match[1].replace(/,/g, ""));
+      if (Number.isFinite(number)) return number;
+    }
+  }
+  return null;
+}
+
+function weekSortKey(weekName) {
+  const match = String(weekName || "").match(/第([一二三四五六七八九十\d]+)周/);
+  if (!match) return 999;
+  const text = match[1];
+  const map = { 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9, 十: 10 };
+  return Number(text) || map[text] || 999;
+}
+
+function statusDone(value, doneWords) {
+  const text = String(value || "");
+  return doneWords.some((word) => text.includes(word));
+}
+
+function buildIssueList(chain) {
+  const issues = [];
+  if (chain.script !== "已写") issues.push("脚本还没有标记为已写。");
+  if (chain.cut !== "已成片") issues.push("还没有成片，或成片文件名没有回填。");
+  if (chain.cut === "已成片" && !chain.fileName) issues.push("剪辑状态是已成片，但缺成片文件名。");
+  if (chain.publish === "已发布" && !chain.videoUrl) issues.push("已发布，但缺视频链接。");
+  if (chain.publish === "已发布" && !chain.publishTime) issues.push("已发布，但缺发布时间。");
+  if (chain.publish === "已发布" && !chain.publishAccount) issues.push("已发布，但缺发布账号。");
+  if (chain.data === "已回流" && chain.metrics?.views == null) issues.push("数据已回流，但播放量为空。");
+  if (chain.rawMetrics?.views != null && chain.metrics?.views != null && chain.rawMetrics.views !== chain.metrics.views) {
+    issues.push(`播放量冲突：追踪表=${chain.metrics.views}，原始提取=${chain.rawMetrics.views}。`);
+  }
+  if (chain.blocker) issues.push(chain.blocker);
+  return [...new Set(issues)];
+}
+
+async function attachVideoData(userAccessToken, chain) {
+  const tableId = VIDEO_DATA_TABLES[chain.region];
+  const linkedIds = chain.region === "UK" ? chain.videoDataUkIds : chain.videoDataUsIds;
+  if (!tableId || !linkedIds?.length) return chain;
+  try {
+    const data = await getTableRecord(userAccessToken, tableId, linkedIds[0], VIDEO_DATA_FIELDS);
+    const fields = parseRecordFields(data.record || data);
+    const rawViews = extractVideoViewsFromRaw(fields["整体数据提取"]);
+    const structuredViews = numberCell(fields, "Video/Photo Views") || null;
+    const videoUrl = chain.videoUrl || textCell(fields, "视频链接");
+    return {
+      ...chain,
+      videoUrl,
+      dataSource: `${chain.region === "UK" ? "视频数据-英区" : "视频数据-美区"} / 已关联`,
+      matchMethod: "追踪表关联视频数据",
+      rawMetrics: {
+        ...chain.rawMetrics,
+        views: rawViews
+      },
+      sourceMetrics: {
+        views: structuredViews,
+        rawViews
+      }
+    };
+  } catch (error) {
+    return {
+      ...chain,
+      dataSource: `${chain.dataSource || "视频数据表"} / 关联读取失败`,
+      sourceReadError: error.payload?.msg || error.message
+    };
+  }
+}
+
+function normalizeChain(record) {
+  const fields = parseRecordFields(record);
+  const region = firstText(fields, ["发布地区", "地区"]);
+  const chain = {
+    recordId: record.record_id,
+    id: firstText(fields, ["内容ID", "链路唯一键"]),
+    key: firstText(fields, ["链路唯一键", "内容ID"]),
+    week: textCell(fields, "周次命名") || "未分周",
+    weekStart: dateCell(fields, "周起始日"),
+    region,
+    type: selectText(fields, "内容类型") || "未分类",
+    scriptDoc: selectText(fields, "脚本文档"),
+    title: textCell(fields, "脚本标题/选题"),
+    script: selectText(fields, "脚本状态") || "未知",
+    cut: selectText(fields, "剪辑状态") || "未知",
+    publish: selectText(fields, "发布状态") || "未知",
+    data: selectText(fields, "数据回流状态") || "未知",
+    review: selectText(fields, "结果判定") || (textCell(fields, "复盘结论") ? "已复盘" : "未复盘"),
+    folder: textCell(fields, "成片文件夹"),
+    fileName: textCell(fields, "成片文件名"),
+    publishTime: dateCell(fields, "发布时间"),
+    publishAccount: textCell(fields, "发布账号"),
+    videoUrl: textCell(fields, "视频链接").replace(/^\[(.*?)\]\((.*?)\)$/, "$2"),
+    dataDate: dateCell(fields, "数据日期"),
+    metrics: {
+      views: Number.isFinite(numberCell(fields, "播放量")) && numberCell(fields, "播放量") > 0 ? numberCell(fields, "播放量") : null,
+      ctr: Number.isFinite(numberCell(fields, "CTR")) && numberCell(fields, "CTR") > 0 ? numberCell(fields, "CTR") : null,
+      cvr: Number.isFinite(numberCell(fields, "CVR")) && numberCell(fields, "CVR") > 0 ? numberCell(fields, "CVR") : null,
+      roi: Number.isFinite(numberCell(fields, "ROI")) && numberCell(fields, "ROI") > 0 ? numberCell(fields, "ROI") : null
+    },
+    rawMetrics: {},
+    blocker: textCell(fields, "当前卡点"),
+    next: textCell(fields, "下一步动作"),
+    note: textCell(fields, "备注"),
+    dataSource: "内容生产全链路追踪表",
+    matchMethod: "内容ID / 链路唯一键",
+    videoDataUsIds: linkIds(fields, "关联视频数据-美区"),
+    videoDataUkIds: linkIds(fields, "关联视频数据-英区"),
+    productDataUsIds: linkIds(fields, "关联商品点击数据-美区"),
+    productDataUkIds: linkIds(fields, "关联商品点击数据-英区")
+  };
+  chain.issues = buildIssueList(chain);
+  return chain;
+}
+
+function summarizeWeek(week, chains) {
+  const total = chains.length;
+  const scriptDone = chains.filter((chain) => statusDone(chain.script, ["已写", "已选用"])).length;
+  const cutDone = chains.filter((chain) => statusDone(chain.cut, ["已成片"])).length;
+  const publishDone = chains.filter((chain) => statusDone(chain.publish, ["已发布"])).length;
+  const dataDone = chains.filter((chain) => statusDone(chain.data, ["已回流"])).length;
+  const issues = chains.filter((chain) => chain.issues?.length).length;
+  return {
+    id: week,
+    label: week,
+    total,
+    scriptDone,
+    cutDone,
+    publishDone,
+    dataDone,
+    issues,
+    remaining: {
+      script: total - scriptDone,
+      cut: total - cutDone,
+      publish: total - publishDone,
+      data: publishDone - dataDone
+    }
+  };
+}
+
+async function getContentChains(userAccessToken) {
+  const table = await findTableByName(userAccessToken, TRACKING_TABLE);
+  if (!table) return { table: null, chains: [], weeks: [] };
+  const records = await listTableRecords(userAccessToken, table.table_id, TRACKING_FIELDS);
+  const chains = [];
+  for (const record of records) {
+    const attached = await attachVideoData(userAccessToken, normalizeChain(record));
+    attached.issues = buildIssueList(attached);
+    chains.push(attached);
+  }
+  chains.sort((a, b) => weekSortKey(a.week) - weekSortKey(b.week) || String(a.id).localeCompare(String(b.id), "zh-CN"));
+  const groups = new Map();
+  chains.forEach((chain) => {
+    if (!groups.has(chain.week)) groups.set(chain.week, []);
+    groups.get(chain.week).push(chain);
+  });
+  const weeks = [...groups.entries()].map(([week, items]) => summarizeWeek(week, items));
+  return {
+    table: {
+      name: table.name,
+      type: "table",
+      count: records.length,
+      fields: TRACKING_FIELDS,
+      url: buildTableUrl(table.table_id)
+    },
+    chains,
+    weeks
+  };
+}
+
+function buildMetricsFromChains(metrics, chainData, latestReports) {
+  const chains = chainData.chains || [];
+  const weekTotal = chains.length;
+  const todayAdded = latestReports.reduce((sum, report) => sum + report.todayAdded, 0);
+  return {
+    ...metrics,
+    todayAdded,
+    weekTotal,
+    trackedSegments: 4,
+    blockedSegments: chains.filter((chain) => chain.issues?.length).length,
+    chainTotal: chains.length,
+    scriptDone: chains.filter((chain) => statusDone(chain.script, ["已写", "已选用"])).length,
+    cutDone: chains.filter((chain) => statusDone(chain.cut, ["已成片"])).length,
+    publishDone: chains.filter((chain) => statusDone(chain.publish, ["已发布"])).length,
+    dataDone: chains.filter((chain) => statusDone(chain.data, ["已回流"])).length
+  };
 }
 
 function normalizeDailyReports(records) {
@@ -149,6 +417,20 @@ function buildActionsFromDaily(reports) {
     title: blockers.length ? `${report.segment}：先处理卡点` : `${report.segment}：继续推进`,
     detail: report.blocker || `${report.sourceTable} 本周累计 ${report.weekTotal}，今天新增 ${report.todayAdded}。`
   }));
+}
+
+function buildActionsFromChains(chainData) {
+  const chains = chainData.chains || [];
+  const missingCut = chains.filter((chain) => !statusDone(chain.cut, ["已成片"])).length;
+  const missingPublish = chains.filter((chain) => statusDone(chain.cut, ["已成片"]) && !statusDone(chain.publish, ["已发布"])).length;
+  const missingData = chains.filter((chain) => statusDone(chain.publish, ["已发布"]) && !statusDone(chain.data, ["已回流"])).length;
+  const conflicts = chains.filter((chain) => /冲突/.test(`${chain.data} ${chain.issues?.join(" ")}`)).length;
+  return [
+    missingCut ? { title: "先补剪辑缺口", detail: `还有 ${missingCut} 条脚本没有可确认成片。` } : null,
+    missingPublish ? { title: "再推发布", detail: `已有成片但未发布 ${missingPublish} 条，优先补发布时间、账号和视频链接。` } : null,
+    missingData ? { title: "补数据回流", detail: `已发布但未回流 ${missingData} 条，先更新视频数据和商品点击数据。` } : null,
+    conflicts ? { title: "处理数据冲突", detail: `${conflicts} 条内容存在播放量或状态冲突，复盘前先校验。` } : null
+  ].filter(Boolean).slice(0, 4);
 }
 
 function buildGapsFromDaily(reports, fallbackGaps) {
@@ -326,7 +608,7 @@ function buildDailyProgress(resources) {
 }
 
 function buildLiveDashboard(userAccessToken) {
-  return Promise.all([getTableSnapshots(userAccessToken), getDailyReports(userAccessToken)]).then(([resources, daily]) => {
+  return Promise.all([getTableSnapshots(userAccessToken), getDailyReports(userAccessToken), getContentChains(userAccessToken)]).then(([resources, daily, chainData]) => {
     const snapshot = readSnapshot();
     const sanitizedResources = resources.map((resource) => ({
       name: safeText(resource.name),
@@ -351,8 +633,8 @@ function buildLiveDashboard(userAccessToken) {
     const latestReports = latestDailyReports(daily.reports);
     const dailyProgress = latestReports.length ? buildProgressFromDaily(latestReports, "daily") : buildDailyProgress(sanitizedResources);
     const weeklyProgress = latestReports.length ? buildProgressFromDaily(latestReports, "weekly") : buildWeeklyProgress(sanitizedResources);
-    const patchedMetrics = latestReports.length ? buildMetricsFromDaily(metrics, latestReports) : metrics;
-    const todayActions = latestReports.length ? buildActionsFromDaily(latestReports) : buildTodayActions(sanitizedResources);
+    const patchedMetrics = chainData.chains.length ? buildMetricsFromChains(metrics, chainData, latestReports) : (latestReports.length ? buildMetricsFromDaily(metrics, latestReports) : metrics);
+    const todayActions = chainData.chains.length ? buildActionsFromChains(chainData) : (latestReports.length ? buildActionsFromDaily(latestReports) : buildTodayActions(sanitizedResources));
     const gaps = latestReports.length ? buildGapsFromDaily(latestReports, snapshot.gaps) : snapshot.gaps;
 
     const detailPages = {
@@ -376,8 +658,10 @@ function buildLiveDashboard(userAccessToken) {
         note: "已切到飞书登录后的后端只读模式；接口失败时前端会回退静态快照。"
       },
       metrics: patchedMetrics,
-      resources: daily.table ? [...sanitizedResources, daily.table] : sanitizedResources,
+      resources: [daily.table, chainData.table, ...sanitizedResources].filter(Boolean),
       dailyReports: daily.reports,
+      contentChains: chainData.chains,
+      weeks: chainData.weeks,
       libraries: buildLibraries(snapshot, sanitizedResources),
       todayActions,
       dailyProgress,
