@@ -357,92 +357,7 @@ const weeklyProgress = [
   }
 ];
 
-const contentChains = [
-  {
-    id: "1-US-BRAND-01",
-    title: "Steam Roast 家庭晚餐流程",
-    region: "US",
-    type: "BRAND",
-    script: "已写",
-    cut: "已成片",
-    publish: "已成片待发布",
-    data: "未到期",
-    review: "未到期",
-    fileName: "1-US-BRAND-01.mp4",
-    publishAccount: "",
-    publishTime: "",
-    videoUrl: "",
-    dataSource: "内容生产全链路追踪表",
-    matchMethod: "成片文件名匹配",
-    metrics: { views: null },
-    rawMetrics: {},
-    issues: ["已成片，但未补发布时间、账号和视频链接。"],
-    next: "发布后补视频链接、发布时间，并进入 T+1/T+3/T+7 数据回流。"
-  },
-  {
-    id: "1-US-BRAND-02",
-    title: "减少每天晚餐决策",
-    region: "US",
-    type: "BRAND",
-    script: "已写",
-    cut: "已成片",
-    publish: "已成片待发布",
-    data: "未到期",
-    review: "未到期",
-    fileName: "1-US-BRAND-02.mp4",
-    publishAccount: "",
-    publishTime: "",
-    videoUrl: "",
-    dataSource: "内容生产全链路追踪表",
-    matchMethod: "成片文件名匹配",
-    metrics: { views: null },
-    rawMetrics: {},
-    issues: ["已成片，但未补发布时间、账号和视频链接。"],
-    next: "发布后补视频链接与发布时间。"
-  },
-  {
-    id: "1-US-BRAND-03",
-    title: "让做饭重新容易享受",
-    region: "US",
-    type: "BRAND",
-    script: "已写",
-    cut: "已成片",
-    publish: "已发布",
-    data: "数据冲突",
-    review: "待校验",
-    fileName: "1-US-BRAND-03.mp4",
-    publishAccount: "ounin_official",
-    publishTime: "2026-08-17 21:00",
-    videoUrl: "https://www.tiktok.com/@ounin_official/video/7674941103509933342",
-    dataSource: "视频数据-美区 / 已关联",
-    matchMethod: "视频ID匹配",
-    metrics: { views: 18 },
-    rawMetrics: { views: 177 },
-    issues: ["播放量冲突：结构化字段 Video/Photo Views=18，原始提取 Videoviews=177。"],
-    next: "先校验数据采集表播放量，再回填全链路播放量；校验前不要进入复盘判断。"
-  },
-  {
-    id: "1-UK-BRAND-01",
-    title: "Steam Roast 家庭晚餐流程",
-    region: "UK",
-    type: "BRAND",
-    script: "已写",
-    cut: "已成片",
-    publish: "已成片待发布",
-    data: "未到期",
-    review: "未到期",
-    fileName: "1-UK-BRAND-01.mp4",
-    publishAccount: "",
-    publishTime: "",
-    videoUrl: "",
-    dataSource: "内容生产全链路追踪表",
-    matchMethod: "成片文件名匹配",
-    metrics: { views: null },
-    rawMetrics: {},
-    issues: ["已成片，但未补发布时间、账号和视频链接。"],
-    next: "发布后补视频链接、发布时间，并进入 T+1/T+3/T+7 数据回流。"
-  }
-];
+const contentChains = [];
 
 const navItems = [
   { id: "source", label: "爆款收集", icon: "S" },
@@ -494,6 +409,7 @@ const snapshotStatus = document.querySelector("#snapshotStatus");
 const template = document.querySelector("#moduleCardTemplate");
 
 const runtimeConfig = window.CONTENT_FACTORY_CONFIG || {};
+const appVersion = "chain-data-v3-no-demo-fallback";
 const configuredApiBase = runtimeConfig.apiBaseUrl === "same-origin"
   ? window.location.origin
   : String(runtimeConfig.apiBaseUrl || "");
@@ -1669,7 +1585,7 @@ async function loadRealtimeDashboard() {
 
 async function loadSnapshotData(reason) {
   try {
-    const response = await fetch("dashboard-data.json", { cache: "no-store" });
+    const response = await fetch(`dashboard-data.json?v=${encodeURIComponent(appVersion)}`, { cache: "reload" });
     if (!response.ok) throw new Error(`snapshot ${response.status}`);
     dashboardData = await response.json();
     if (authState.mode !== "live") authState.mode = "snapshot";
