@@ -357,6 +357,93 @@ const weeklyProgress = [
   }
 ];
 
+const contentChains = [
+  {
+    id: "1-US-BRAND-01",
+    title: "Steam Roast 家庭晚餐流程",
+    region: "US",
+    type: "BRAND",
+    script: "已写",
+    cut: "已成片",
+    publish: "已成片待发布",
+    data: "未到期",
+    review: "未到期",
+    fileName: "1-US-BRAND-01.mp4",
+    publishAccount: "",
+    publishTime: "",
+    videoUrl: "",
+    dataSource: "内容生产全链路追踪表",
+    matchMethod: "成片文件名匹配",
+    metrics: { views: null },
+    rawMetrics: {},
+    issues: ["已成片，但未补发布时间、账号和视频链接。"],
+    next: "发布后补视频链接、发布时间，并进入 T+1/T+3/T+7 数据回流。"
+  },
+  {
+    id: "1-US-BRAND-02",
+    title: "减少每天晚餐决策",
+    region: "US",
+    type: "BRAND",
+    script: "已写",
+    cut: "已成片",
+    publish: "已成片待发布",
+    data: "未到期",
+    review: "未到期",
+    fileName: "1-US-BRAND-02.mp4",
+    publishAccount: "",
+    publishTime: "",
+    videoUrl: "",
+    dataSource: "内容生产全链路追踪表",
+    matchMethod: "成片文件名匹配",
+    metrics: { views: null },
+    rawMetrics: {},
+    issues: ["已成片，但未补发布时间、账号和视频链接。"],
+    next: "发布后补视频链接与发布时间。"
+  },
+  {
+    id: "1-US-BRAND-03",
+    title: "让做饭重新容易享受",
+    region: "US",
+    type: "BRAND",
+    script: "已写",
+    cut: "已成片",
+    publish: "已发布",
+    data: "数据冲突",
+    review: "待校验",
+    fileName: "1-US-BRAND-03.mp4",
+    publishAccount: "ounin_official",
+    publishTime: "2026-08-17 21:00",
+    videoUrl: "https://www.tiktok.com/@ounin_official/video/7674941103509933342",
+    dataSource: "视频数据-美区 / recvsBy96KYIfI",
+    matchMethod: "视频ID匹配",
+    metrics: { views: 18 },
+    rawMetrics: { views: 177 },
+    issues: ["播放量冲突：结构化字段 Video/Photo Views=18，原始提取 Videoviews=177。"],
+    next: "先校验数据采集表播放量，再回填全链路播放量；校验前不要进入复盘判断。"
+  },
+  {
+    id: "1-UK-BRAND-01",
+    title: "Steam Roast 家庭晚餐流程",
+    region: "UK",
+    type: "BRAND",
+    script: "已写",
+    cut: "已成片",
+    publish: "已成片待发布",
+    data: "未到期",
+    review: "未到期",
+    fileName: "1-UK-BRAND-01.mp4",
+    publishAccount: "",
+    publishTime: "",
+    videoUrl: "",
+    dataSource: "内容生产全链路追踪表",
+    matchMethod: "成片文件名匹配",
+    metrics: { views: null },
+    rawMetrics: {},
+    issues: ["已成片，但未补发布时间、账号和视频链接。"],
+    next: "发布后补视频链接、发布时间，并进入 T+1/T+3/T+7 数据回流。"
+  }
+];
+
 const navItems = [
   { id: "source", label: "爆款收集", icon: "S" },
   { id: "deconstruct", label: "拆解入库", icon: "D" },
@@ -1002,26 +1089,100 @@ function rowStatus(row) {
   return "今日为 0";
 }
 
+function getContentChains() {
+  return dashboardData?.contentChains?.length ? dashboardData.contentChains : contentChains;
+}
+
+function chainStatusClass(value) {
+  if (!value) return "chain-status is-empty";
+  if (/冲突|异常|错|阻塞/.test(value)) return "chain-status is-error";
+  if (/已发布|已回流|可复盘|已成片|已写/.test(value)) return "chain-status is-done";
+  if (/待|未|到期/.test(value)) return "chain-status is-waiting";
+  return "chain-status";
+}
+
+function metricText(chain) {
+  const current = chain.metrics?.views;
+  const raw = chain.rawMetrics?.views;
+  if (current == null && raw == null) return "暂无";
+  if (raw != null && current !== raw) return `${current ?? "空"} / 原始 ${raw}`;
+  return String(current ?? raw);
+}
+
+function renderChainQualityBoard() {
+  const board = document.querySelector("#chainQualityBoard");
+  if (!board) return;
+  const chains = getContentChains();
+  if (!chains.length) {
+    board.innerHTML = `<p class="empty-note">还没有逐条链路数据；等待全链路追踪表接入。</p>`;
+    return;
+  }
+  const conflictCount = chains.filter((chain) => chain.issues?.length || /冲突|异常|错|阻塞/.test(chain.data || "")).length;
+  board.innerHTML = `
+    <div class="chain-quality-summary">
+      <strong>${chains.length}</strong>
+      <span>条内容链路</span>
+      <b>${conflictCount}</b>
+      <span>条需处理</span>
+    </div>
+    <div class="chain-table">
+      <div class="chain-row chain-head-row">
+        <span>内容</span>
+        <span>脚本</span>
+        <span>成片</span>
+        <span>发布</span>
+        <span>数据</span>
+        <span>播放量</span>
+        <span>证据 / 下一步</span>
+      </div>
+      ${chains.map((chain) => {
+        const issue = chain.issues?.[0] || "";
+        const videoLink = chain.videoUrl ? `<a href="${escapeHtml(chain.videoUrl)}" target="_blank" rel="noopener noreferrer">视频</a>` : "";
+        return `
+          <article class="chain-row ${issue ? "has-issue" : ""}">
+            <div class="chain-main">
+              <strong>${escapeHtml(chain.id)}</strong>
+              <small>${escapeHtml(chain.region)} / ${escapeHtml(chain.type)} / ${escapeHtml(chain.title || "")}</small>
+              <em>${escapeHtml(chain.fileName || "未绑定成片")}</em>
+            </div>
+            <span class="${chainStatusClass(chain.script)}">${escapeHtml(chain.script || "未知")}</span>
+            <span class="${chainStatusClass(chain.cut)}">${escapeHtml(chain.cut || "未知")}</span>
+            <span class="${chainStatusClass(chain.publish)}">${escapeHtml(chain.publish || "未知")}</span>
+            <span class="${chainStatusClass(chain.data)}">${escapeHtml(chain.data || "未知")}</span>
+            <b class="chain-views">${escapeHtml(metricText(chain))}</b>
+            <div class="chain-evidence">
+              <p>${escapeHtml(issue || chain.next || "暂无异常。")}</p>
+              <small>${escapeHtml(chain.dataSource || "暂无来源")} · ${escapeHtml(chain.matchMethod || "暂无匹配方式")} ${videoLink}</small>
+            </div>
+          </article>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
 function renderDailyBrief() {
   const line = document.querySelector("#briefLine");
   const chips = document.querySelector("#briefChips");
   if (!line || !chips) return;
 
   const rows = getDailyReports();
+  const chains = getContentChains();
   const todayRows = rows.filter((row) => Number(row.todayAdded || 0) > 0);
   const zeroRows = rows.filter((row) => Number(row.todayAdded || 0) === 0);
   const blockers = rows.filter((row) => row.blocker);
+  const chainIssues = chains.filter((chain) => chain.issues?.length || /冲突|异常|错|阻塞/.test(chain.data || ""));
   const totalToday = rows.reduce((sum, row) => sum + Number(row.todayAdded || 0), 0);
   const totalWeek = rows.reduce((sum, row) => sum + Number(row.weekTotal || 0), 0);
   const sourceText = todayRows.length
     ? todayRows.map((row) => `${row.segment} ${row.todayAdded}`).join(" + ")
     : "暂无新增";
 
-  line.textContent = `今天新增 ${totalToday} = ${sourceText}；本周累计 ${totalWeek}。`;
+  line.textContent = `今天新增 ${totalToday} = ${sourceText}；本周累计 ${totalWeek}；逐条链路待处理 ${chainIssues.length} 条。`;
   chips.innerHTML = [
     { label: "今日有推进", value: todayRows.length, route: "stats/today" },
     { label: "今日 0 推进", value: zeroRows.length, route: "stats/segments" },
-    { label: "卡点", value: blockers.length, route: "stats/blockers" },
+    { label: "卡点/冲突", value: blockers.length + chainIssues.length, route: "stats/blockers" },
   ].map((chip) => `
     <button class="brief-chip" type="button" data-route="${chip.route}">
       <strong>${chip.value}</strong>
@@ -1125,6 +1286,7 @@ function renderOverview() {
   renderDailyBrief();
   renderProgressBoard();
   renderBlockerBoard();
+  renderChainQualityBoard();
   renderQuickLinks();
   renderFilters();
   renderNav();
