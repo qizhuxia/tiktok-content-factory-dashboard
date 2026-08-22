@@ -391,8 +391,9 @@ let authState = {
   mode: "snapshot"
 };
 let detailCache = {};
-let selectedWeek = "all";
+let selectedWeek = "";
 let selectedStage = "publish";
+let selectedStageFilter = "all";
 let selectedChainId = "";
 
 const overviewView = document.querySelector("#overviewView");
@@ -409,7 +410,7 @@ const snapshotStatus = document.querySelector("#snapshotStatus");
 const template = document.querySelector("#moduleCardTemplate");
 
 const runtimeConfig = window.CONTENT_FACTORY_CONFIG || {};
-const appVersion = "chain-data-v3-no-demo-fallback";
+const appVersion = "week-production-v1";
 const configuredApiBase = runtimeConfig.apiBaseUrl === "same-origin"
   ? window.location.origin
   : String(runtimeConfig.apiBaseUrl || "");
@@ -765,14 +766,14 @@ function getWeeklyProgress(type, id) {
 }
 
 function renderMetrics() {
-  const metrics = dashboardData?.metrics;
-  const chains = getContentChains();
-  const total = metrics?.chainTotal ?? chains.length;
-  const published = metrics?.publishDone ?? chains.filter((chain) => isDoneStage(chain, "publish")).length;
-  document.querySelector("#tableAssetCount").textContent = ratioText(metrics?.scriptDone ?? chains.filter((chain) => isDoneStage(chain, "script")).length, total);
-  document.querySelector("#materialCount").textContent = ratioText(metrics?.cutDone ?? chains.filter((chain) => isDoneStage(chain, "cut")).length, total);
+  const chains = currentWeekChains();
+  const total = chains.length;
+  const published = chains.filter((chain) => isDoneStage(chain, "publish")).length;
+  const issues = chains.filter(chainHasIssue).length;
+  document.querySelector("#tableAssetCount").textContent = ratioText(chains.filter((chain) => isDoneStage(chain, "script")).length, total);
+  document.querySelector("#materialCount").textContent = ratioText(chains.filter((chain) => isDoneStage(chain, "cut")).length, total);
   document.querySelector("#stepCount").textContent = ratioText(published, total);
-  document.querySelector("#gapCount").textContent = ratioText(metrics?.dataDone ?? chains.filter((chain) => isDoneStage(chain, "data")).length, published);
+  document.querySelector("#gapCount").textContent = String(issues);
 
   if (snapshotStatus) {
     if (authState.configured && !authState.authenticated) {
@@ -799,13 +800,14 @@ function attachMetricRoutes() {
     if (card.dataset.routeReady === "true") return;
     card.dataset.routeReady = "true";
     const openStats = () => {
-      const stageMap = { today: "script", week: "cut", segments: "publish", blockers: "data" };
+      const stageMap = { today: "script", week: "cut", segments: "publish", blockers: "issues" };
       selectedStage = stageMap[card.dataset.statsId] || "publish";
-      selectedWeek = "all";
+      selectedStageFilter = stageMap[card.dataset.statsId] === "issues" ? "issues" : selectedStage;
       selectedChainId = "";
-      renderProgressBoard();
-      renderChainQualityBoard();
-      document.querySelector("#chainQualityBoard")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      renderWeekOverview();
+      renderStageLanes();
+      renderChainList();
+      document.querySelector("#chainListBoard")?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
     card.addEventListener("click", openStats);
     card.addEventListener("keydown", (event) => {
@@ -1039,6 +1041,10 @@ function chainHasIssue(chain) {
   return Boolean(chain.issues?.length || /冲突|异常|错|阻塞|缺失/.test(`${chain.data || ""} ${chain.blocker || ""}`));
 }
 
+function chainHasDataIssue(chain) {
+  return Boolean(/冲突|异常|错/.test(`${chain.data || ""} ${(chain.issues || []).join(" ")} ${chain.blocker || ""}`));
+}
+
 function weekIndex(label) {
   const match = String(label || "").match(/第([一二三四五六七八九十\d]+)周/);
   const map = { 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9, 十: 10 };
@@ -1062,6 +1068,54 @@ function buildWeeksFromChains() {
     dataDone: items.filter((chain) => isDoneStage(chain, "data")).length,
     issues: items.filter(chainHasIssue).length
   })).sort((a, b) => weekIndex(a.label) - weekIndex(b.label));
+}
+
+function getWeeks() {
+  const weeks = dashboardData?.weeks?.length ? dashboardData.weeks : buildWeeksFromChains();
+  return weeks.slice().sort((a, b) => weekIndex(a.label) - weekIndex(b.label));
+}
+
+function latestWeekLabel() {
+  const weeks = getWeeks();
+  return weeks.length ? weeks[weeks.length - 1].label : "all";
+}
+
+function dashboardReferenceDate() {
+  const date = new Date(dashboardData?.generatedAt || Date.now());
+  return Number.isNaN(date.getTime()) ? new Date() : date;
+}
+
+function currentCalendarWeekLabel() {
+  const reference = dashboardReferenceDate();
+  const byWeek = new Map();
+  getContentChains().forEach((chain) => {
+    if (!chain.week || !chain.weekStart || byWeek.has(chain.week)) return;
+    const start = new Date(`${chain.weekStart}T00:00:00`);
+    if (Number.isNaN(start.getTime())) return;
+    const end = new Date(start);
+    end.setDate(start.getDate() + 7);
+    byWeek.set(chain.week, { start, end });
+  });
+  for (const [label, range] of byWeek.entries()) {
+    if (reference >= range.start && reference < range.end) return label;
+  }
+  return "";
+}
+
+function ensureSelectedWeek() {
+  const weeks = getWeeks();
+  if (!weeks.length) {
+    selectedWeek = "all";
+    return;
+  }
+  if (!selectedWeek || selectedWeek === "all" || !weeks.some((week) => week.label === selectedWeek)) {
+    selectedWeek = currentCalendarWeekLabel() || latestWeekLabel();
+  }
+}
+
+function currentWeekChains() {
+  ensureSelectedWeek();
+  return getContentChains().filter((chain) => selectedWeek === "all" || chain.week === selectedWeek);
 }
 
 function ratioText(done, total) {
@@ -1106,6 +1160,228 @@ function metricText(chain) {
   if (current == null && raw == null) return "暂无";
   if (raw != null && current !== raw) return `${current ?? "空"} / 原始 ${raw}`;
   return String(current ?? raw);
+}
+
+function resourceByName(name) {
+  return (dashboardData?.resources || []).find((item) => item.name === name);
+}
+
+function chainResourceLinks(chain) {
+  const names = [
+    "内容周测试计划表",
+    chain.region === "UK" ? "视频数据-英区" : "视频数据-美区",
+    chain.scriptDoc || "",
+    "内容周复盘表"
+  ].filter(Boolean);
+  const uniqueNames = [...new Set(names)];
+  return uniqueNames.map((name) => {
+    const resource = resourceByName(name);
+    return { name, url: resource?.url || "" };
+  });
+}
+
+function stageFilterLabel(filter) {
+  return {
+    all: "全部",
+    script: "已写脚本",
+    cut: "已成片",
+    publish: "已发布",
+    data: "已回流",
+    pending_cut: "待剪辑",
+    pending_publish: "待发布",
+    pending_data: "待回流",
+    issues: "数据异常"
+  }[filter] || "全部";
+}
+
+function matchesStageFilter(chain) {
+  if (selectedStageFilter === "all") return true;
+  if (selectedStageFilter === "script") return isDoneStage(chain, "script");
+  if (selectedStageFilter === "cut") return isDoneStage(chain, "cut");
+  if (selectedStageFilter === "publish") return isDoneStage(chain, "publish");
+  if (selectedStageFilter === "data") return isDoneStage(chain, "data");
+  if (selectedStageFilter === "pending_cut") return !isDoneStage(chain, "cut");
+  if (selectedStageFilter === "pending_publish") return isDoneStage(chain, "cut") && !isDoneStage(chain, "publish");
+  if (selectedStageFilter === "pending_data") return isDoneStage(chain, "publish") && !isDoneStage(chain, "data");
+  if (selectedStageFilter === "issues") return chainHasDataIssue(chain);
+  return true;
+}
+
+function orderedContentChains() {
+  return currentWeekChains()
+    .filter(matchesStageFilter)
+    .sort((a, b) => {
+      const issueSort = Number(chainHasIssue(b)) - Number(chainHasIssue(a));
+      if (issueSort) return issueSort;
+      const aPublished = isDoneStage(a, "publish") ? 1 : 0;
+      const bPublished = isDoneStage(b, "publish") ? 1 : 0;
+      return aPublished - bPublished || String(a.id).localeCompare(String(b.id), "zh-CN");
+    });
+}
+
+function stageCounts(chains) {
+  const total = chains.length;
+  const scriptDone = chains.filter((chain) => isDoneStage(chain, "script")).length;
+  const cutDone = chains.filter((chain) => isDoneStage(chain, "cut")).length;
+  const publishDone = chains.filter((chain) => isDoneStage(chain, "publish")).length;
+  const dataDone = chains.filter((chain) => isDoneStage(chain, "data")).length;
+  const issues = chains.filter(chainHasIssue).length;
+  const dataIssues = chains.filter(chainHasDataIssue).length;
+  return {
+    total,
+    scriptDone,
+    cutDone,
+    publishDone,
+    dataDone,
+    issues,
+    pendingCut: total - cutDone,
+    pendingPublish: chains.filter((chain) => isDoneStage(chain, "cut") && !isDoneStage(chain, "publish")).length,
+    pendingData: chains.filter((chain) => isDoneStage(chain, "publish") && !isDoneStage(chain, "data")).length,
+    dataIssues
+  };
+}
+
+function renderWeekOverview() {
+  const box = document.querySelector("#weekSelector");
+  if (!box) return;
+  const weeks = getWeeks();
+  ensureSelectedWeek();
+  box.innerHTML = weeks.length ? weeks.map((week) => {
+    const active = week.label === selectedWeek ? " active" : "";
+    return `
+      <button class="week-select-card${active}" type="button" data-week="${escapeHtml(week.label)}">
+        <strong>${escapeHtml(week.label)}</strong>
+        <span>${Number(week.total || 0)} 条</span>
+        <small>剪辑 ${ratioText(week.cutDone, week.total)} · 发布 ${ratioText(week.publishDone, week.total)} · 数据 ${ratioText(week.dataDone, week.publishDone)}</small>
+      </button>
+    `;
+  }).join("") : `<p class="empty-note">还没有周次数据。</p>`;
+  box.querySelectorAll("[data-week]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedWeek = button.dataset.week || selectedWeek;
+      selectedStageFilter = "all";
+      selectedChainId = "";
+      renderMetrics();
+      renderWeekOverview();
+      renderStageLanes();
+      renderChainList();
+    });
+  });
+}
+
+function renderStageLanes() {
+  const box = document.querySelector("#stageLanes");
+  if (!box) return;
+  const chains = currentWeekChains();
+  const counts = stageCounts(chains);
+  const lanes = [
+    { id: "script", title: "脚本", done: counts.scriptDone, total: counts.total, pending: counts.total - counts.scriptDone, hint: "选题脚本已写入文档" },
+    { id: "cut", title: "剪辑", done: counts.cutDone, total: counts.total, pending: counts.pendingCut, hint: "成片文件已匹配内容 ID" },
+    { id: "publish", title: "发布", done: counts.publishDone, total: counts.total, pending: counts.pendingPublish, hint: "发布账号、时间、链接已回填" },
+    { id: "data", title: "数据", done: counts.dataDone, total: Math.max(1, counts.publishDone), pending: counts.pendingData, hint: "发布后数据已回流" }
+  ];
+  box.innerHTML = lanes.map((lane) => {
+    const percent = lane.total ? Math.round((lane.done / lane.total) * 100) : 0;
+    const active = selectedStageFilter === lane.id ? " active" : "";
+    return `
+      <button class="stage-lane${active}" type="button" data-filter="${lane.id}">
+        <span>${escapeHtml(lane.title)}</span>
+        <strong>${ratioText(lane.done, lane.total)}</strong>
+        <i><em style="width:${Math.max(0, Math.min(100, percent))}%"></em></i>
+        <small>${lane.pending > 0 ? `待处理 ${lane.pending}` : "已处理完"} · ${escapeHtml(lane.hint)}</small>
+      </button>
+    `;
+  }).join("") + `
+    <button class="stage-lane issue ${selectedStageFilter === "issues" ? "active" : ""}" type="button" data-filter="issues">
+      <span>异常</span>
+      <strong>${counts.dataIssues}</strong>
+      <i><em style="width:${counts.dataIssues ? "100" : "0"}%"></em></i>
+      <small>${counts.dataIssues ? "需要先校验数据冲突" : "暂无数据异常"}</small>
+    </button>
+  `;
+  box.querySelectorAll("[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedStageFilter = button.dataset.filter || "all";
+      selectedStage = ["script", "cut", "publish", "data"].includes(selectedStageFilter) ? selectedStageFilter : selectedStage;
+      selectedChainId = "";
+      renderMetrics();
+      renderStageLanes();
+      renderChainList();
+    });
+  });
+}
+
+function renderChainFilterTabs() {
+  const tabs = document.querySelector("#chainFilterTabs");
+  if (!tabs) return;
+  const filters = [
+    ["all", "全部"],
+    ["pending_cut", "待剪辑"],
+    ["pending_publish", "待发布"],
+    ["pending_data", "待回流"],
+    ["issues", "数据异常"]
+  ];
+  tabs.innerHTML = filters.map(([id, label]) => `
+    <button class="${selectedStageFilter === id ? "active" : ""}" type="button" data-filter="${id}">${label}</button>
+  `).join("");
+  tabs.querySelectorAll("[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedStageFilter = button.dataset.filter || "all";
+      selectedChainId = "";
+      renderMetrics();
+      renderStageLanes();
+      renderChainList();
+    });
+  });
+}
+
+function renderChainList() {
+  const board = document.querySelector("#chainListBoard");
+  if (!board) return;
+  renderChainFilterTabs();
+  const chains = orderedContentChains();
+  if (!chains.length) {
+    selectedChainId = "";
+    board.innerHTML = `<p class="empty-note">当前筛选没有内容。可以切换周次或查看全部。</p>`;
+    return;
+  }
+  const selectedChain = chains.find((chain) => chain.id === selectedChainId) || chains[0];
+  selectedChainId = selectedChain.id;
+  board.innerHTML = `
+    <div class="content-list-column">
+      <div class="content-list-summary">
+        <strong>${chains.length}</strong>
+        <span>${escapeHtml(selectedWeek)} / ${escapeHtml(stageFilterLabel(selectedStageFilter))}</span>
+      </div>
+      <div class="content-list">
+        ${chains.map((chain) => {
+          const selected = chain.id === selectedChainId ? " active" : "";
+          const issue = chainHasDataIssue(chain);
+          const status = [
+            isDoneStage(chain, "script") ? "脚本已写" : "脚本待补",
+            isDoneStage(chain, "cut") ? "已成片" : "待剪辑",
+            isDoneStage(chain, "publish") ? "已发布" : "待发布",
+            isDoneStage(chain, "data") ? "已回流" : "待回流"
+          ].join(" / ");
+          return `
+            <button class="content-chain-item${selected}${issue ? " has-issue" : ""}" type="button" data-chain-id="${escapeHtml(chain.id)}">
+              <strong>${escapeHtml(chain.id)}</strong>
+              <span>${escapeHtml(chain.region || "")} / ${escapeHtml(chain.type || "")} / ${escapeHtml(chain.scriptDoc || "")}</span>
+              <em>${escapeHtml(chain.title || "未填标题")}</em>
+              <small>${escapeHtml(status)}</small>
+            </button>
+          `;
+        }).join("")}
+      </div>
+    </div>
+    ${renderChainDetailCard(selectedChain)}
+  `;
+  board.querySelectorAll("[data-chain-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedChainId = button.dataset.chainId || "";
+      renderChainList();
+    });
+  });
 }
 
 function renderChainQualityBoard() {
@@ -1183,7 +1459,7 @@ function renderChainDetailCard(chain) {
     ? chain.issues.map((issue) => `<li>${escapeHtml(issue)}</li>`).join("")
     : "<li>暂无明显异常。</li>";
   const videoLink = chain.videoUrl ? `<a href="${escapeHtml(chain.videoUrl)}" target="_blank" rel="noopener noreferrer">打开 TikTok 视频</a>` : "";
-  const canWrite = authState.configured && authState.authenticated && authState.mode === "live" && chain.recordId;
+  const resourceLinks = chainResourceLinks(chain);
   return `
     <aside class="chain-detail-card">
       <div class="chain-detail-head">
@@ -1200,6 +1476,7 @@ function renderChainDetailCard(chain) {
         <div><dt>发布账号</dt><dd>${escapeHtml(chain.publishAccount || "未填")}</dd></div>
         <div><dt>发布时间</dt><dd>${escapeHtml(chain.publishTime || "未填")}</dd></div>
         <div><dt>播放量</dt><dd>${escapeHtml(metricText(chain))}</dd></div>
+        <div><dt>CTR/CVR/ROI</dt><dd>${escapeHtml([chain.metrics?.ctr, chain.metrics?.cvr, chain.metrics?.roi].map((value) => value ?? "暂无").join(" / "))}</dd></div>
       </dl>
       <div class="chain-detail-section">
         <span>问题/缺口</span>
@@ -1211,11 +1488,12 @@ function renderChainDetailCard(chain) {
       </div>
       <div class="chain-actions">
         ${videoLink}
-        <button type="button" data-chain-action="needs_publish_info" data-record-id="${escapeHtml(chain.recordId || "")}" ${canWrite ? "" : "disabled"}>标记待补发布</button>
-        <button type="button" data-chain-action="waiting_data" data-record-id="${escapeHtml(chain.recordId || "")}" ${canWrite ? "" : "disabled"}>标记待回流</button>
-        <button type="button" data-chain-action="clear_conflict" data-record-id="${escapeHtml(chain.recordId || "")}" ${canWrite ? "" : "disabled"}>冲突已处理</button>
+        ${resourceLinks.map((item) => item.url
+          ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.name)}</a>`
+          : `<button type="button" disabled>${escapeHtml(item.name)} · 暂无入口</button>`
+        ).join("")}
       </div>
-      ${canWrite ? "" : `<p class="write-disabled-note">登录飞书实时模式后，才可写入追踪表状态。</p>`}
+      <p class="write-disabled-note">当前网页只读；要修改状态、补链接或补数据，请回到飞书表处理。</p>
     </aside>
   `;
 }
@@ -1390,13 +1668,12 @@ function renderWeeklyProgressSummary() {
 
 function renderOverview() {
   renderAuthControls();
+  ensureSelectedWeek();
   renderMetrics();
   attachMetricRoutes();
-  renderDailyBrief();
-  renderProgressBoard();
-  renderBlockerBoard();
-  renderChainQualityBoard();
-  renderQuickLinks();
+  renderWeekOverview();
+  renderStageLanes();
+  renderChainList();
   renderFilters();
   renderNav();
   renderWorkflow();
@@ -1543,7 +1820,8 @@ document.querySelector("#focusGaps").addEventListener("click", () => {
   history.pushState("", document.title, window.location.pathname + window.location.search);
   overviewView.hidden = false;
   detailView.hidden = true;
-  currentFilter = "阻塞";
+  selectedStageFilter = "issues";
+  selectedChainId = "";
   renderOverview();
 });
 
@@ -1551,7 +1829,8 @@ document.querySelector("#showAll").addEventListener("click", () => {
   history.pushState("", document.title, window.location.pathname + window.location.search);
   overviewView.hidden = false;
   detailView.hidden = true;
-  currentFilter = "全部";
+  selectedStageFilter = "all";
+  selectedChainId = "";
   renderOverview();
 });
 

@@ -56,80 +56,56 @@
       <div id="overviewView">
         <section class="overview-grid" aria-label="内容工厂指标">
           <article class="metric-card clickable-card stats-card" role="button" tabindex="0" data-stats-id="today">
-            <span class="metric-label">脚本</span>
+            <span class="metric-label">本周脚本</span>
             <strong id="tableAssetCount">0</strong>
-            <small>已写 / 全部 · 点开看脚本链路</small>
+            <small>已写 / 本周全部</small>
           </article>
           <article class="metric-card clickable-card stats-card" role="button" tabindex="0" data-stats-id="week">
-            <span class="metric-label">剪辑</span>
+            <span class="metric-label">本周剪辑</span>
             <strong id="materialCount">0</strong>
-            <small>已成片 / 全部 · 点开看未剪</small>
+            <small>已成片 / 本周全部</small>
           </article>
           <article class="metric-card clickable-card stats-card" role="button" tabindex="0" data-stats-id="segments">
-            <span class="metric-label">发布</span>
+            <span class="metric-label">本周发布</span>
             <strong id="stepCount">8</strong>
-            <small>已发布 / 全部 · 点开看待发布</small>
+            <small>已发布 / 本周全部</small>
           </article>
           <article class="metric-card attention clickable-card stats-card" role="button" tabindex="0" data-stats-id="blockers">
-            <span class="metric-label">数据</span>
+            <span class="metric-label">待处理</span>
             <strong id="gapCount">0</strong>
-            <small>已回流 / 已发布 · 点开看待回流</small>
+            <small>卡点 / 数据异常 / 待补信息</small>
           </article>
         </section>
 
-        <section class="daily-brief" aria-label="今日生产简报">
+        <section class="week-control-panel" aria-label="周次筛选">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Daily Brief</p>
-              <h3>今天发生了什么</h3>
+              <p class="eyebrow">Current Week</p>
+              <h3>选择要看的生产周</h3>
             </div>
           </div>
-          <div id="briefLine" class="brief-line">等待快照加载。</div>
-          <div id="briefChips" class="brief-chips"></div>
+          <div id="weekSelector" class="week-selector"></div>
         </section>
 
-        <section class="operator-grid" aria-label="日常操作区">
-          <section class="operator-panel progress-board">
-            <div class="section-heading compact">
-              <div>
-                <p class="eyebrow">Weekly Funnel</p>
-                <h3>每周四段进度</h3>
-              </div>
+        <section class="stage-lane-panel" aria-label="四段生产进度">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Production Flow</p>
+              <h3>脚本 → 剪辑 → 发布 → 数据</h3>
             </div>
-            <div id="progressTable" class="progress-table"></div>
-          </section>
-
-          <aside class="operator-side">
-            <section class="operator-panel">
-              <div class="section-heading compact">
-                <div>
-                  <p class="eyebrow">Blocked</p>
-                  <h3>卡点清单</h3>
-                </div>
-              </div>
-              <div id="blockerBoard" class="blocker-board"></div>
-            </section>
-
-            <section class="operator-panel">
-              <div class="section-heading compact">
-                <div>
-                  <p class="eyebrow">Open</p>
-                  <h3>快捷入口</h3>
-                </div>
-              </div>
-              <div id="quickLinks" class="quick-links"></div>
-            </section>
-          </aside>
+          </div>
+          <div id="stageLanes" class="stage-lanes"></div>
         </section>
 
-        <section class="operator-panel chain-quality-panel" aria-label="逐条内容链路质检">
+        <section class="content-workbench-panel" aria-label="逐条内容链路">
           <div class="section-heading compact">
             <div>
               <p class="eyebrow">Content List</p>
               <h3>点开看每条内容进度</h3>
             </div>
+            <div id="chainFilterTabs" class="chain-filter-tabs"></div>
           </div>
-          <div id="chainQualityBoard" class="chain-quality-board"></div>
+          <div id="chainListBoard" class="content-workbench"></div>
         </section>
 
         <details class="management-details">
